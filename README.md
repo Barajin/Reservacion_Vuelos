@@ -1,6 +1,6 @@
 # KatyProject
 
-## Reresvación de vuelos 
+## Reservación de vuelos 
 
 Este sistema permitirá la venta de boletos de una linea aérea. Tambien es importante agregar la opción de pasajeros frecuentes que acomularán millas. Se manejara información para ciudades a las que vuela la aerolinea, vuelos que ofrece, datos para usuarios de club premier y boletos vendidos.
 
