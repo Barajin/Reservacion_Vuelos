@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
 
+
+
 namespace KatyProject {
 	class MainClass {
 
 		private ReadHelper read = new ReadHelper();
 		private Hashtable hashClub = new Hashtable();
+		private ArrayList arrayVuelos = new ArrayList();
 		private ClubPremier newCliente; //Tengo declarado el objeto a la altura de la clase para 
 		                                // hacer pool de objetos y no estar creando nuevas instancias
 		                               
@@ -31,12 +34,11 @@ namespace KatyProject {
 				Console.Clear();
 				switch (opc) {
 
-					case 0: /* No es necesario poner nada aqui solo se usa para el soporte de la salida */break;
-
 					case 1:
 					break;
 
 					case 2:
+						AltaVuelo();
 					break;
 
 					case 3:
@@ -55,7 +57,7 @@ namespace KatyProject {
 
 					default:
 					Console.WriteLine("================================");
-					Console.WriteLine("Esa no fue una opción valida. :C");
+					Console.WriteLine("Esa no fue una opción valida. :c");
 					Console.WriteLine("================================");
 					break;
 
@@ -92,6 +94,66 @@ namespace KatyProject {
 			return str.ToUpper().Trim();
 		}
 
+		private void AltaVuelo () {
+			// Primero validar si hay ciudades disponibles
+
+			int numPasajeros, capacidad, boletosVendidos;
+			string origen, destino, dias;
+			double costo, millas; 
+
+			Console.WriteLine("==========================");
+			Console.WriteLine("$$ ALTA DE VUELOS $$");
+			Console.WriteLine("==========================");
+
+			Console.Write("Número de pasajeros: ");
+			numPasajeros = read.ReadInt();
+
+			// Validar que existan en el arreglo de objetos
+			Console.Write("Origen: ");
+			origen = read.ReadString().Trim().ToUpper();
+			Console.Write("Destino: ");
+			destino = read.ReadString().Trim().ToUpper();
+
+			Console.Write("Capacidad: ");
+			capacidad = read.ReadInt();
+			Console.Write("Boletos vendidos: ");
+			boletosVendidos = read.ReadInt();
+			Console.Write("Costo: ");
+			costo = read.ReadDouble();
+			Console.Write("Millas: ");
+			millas = read.ReadDouble();
+
+			do {
+				Console.Write("Días en que se realiza el vuelo: ");
+				Console.WriteLine("1.- Diaria\n2.- Lunes\n3.- Martes\n4.- Miércoles\n5.- Jueves\n6.- Viernes\n7.- Sábado" +
+							  "\n8.- Domingo");
+				Console.Write("Opción: ");
+				int opc = read.ReadInt();
+				dias = DiaVuelo(opc);
+			} while (dias == "");
+
+			Vuelo vuelo = new Vuelo(origen, destino, dias, numPasajeros, capacidad, boletosVendidos, costo, millas);
+			arrayVuelos.Add(vuelo);
+			Console.WriteLine("\n>> Vuelo añadido exitosamente <<\n");
+
+		}
+
+		private string DiaVuelo (int dia) {
+			switch(dia) {
+				case 1: return "DIARIA";
+				case 2: return "LUNES";
+				case 3: return "MARTES";
+				case 4: return "MIÉRCOLES";
+				case 5: return "JUEVES";
+				case 6: return "VIERNES";
+				case 7: return "SÁBADO";
+				case 8: return "DOMINGO";
+				default: 
+					Console.WriteLine(">> OPCIÓN INVÁLIDA <<");
+					return "";
+			}
+		}
+
 		private int Salir() {
 			int opc;
 			Console.WriteLine("==========================");
@@ -112,5 +174,6 @@ namespace KatyProject {
 			}
 			return 0;
 		}
+
 	}
 }
