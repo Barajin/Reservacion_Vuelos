@@ -10,6 +10,12 @@ namespace KatyProject {
         string Nombre;
         string Estado;
 
+        public Ciudad(string clave, string nombre, string estado) {
+            Clave = clave;
+            Nombre = nombre;
+            Estado = estado;
+        }
+
         public string pClave {
             get {
                 return Clave;
