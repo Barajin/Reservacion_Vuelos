@@ -1,5 +1,9 @@
 ﻿<Properties StartupConfiguration="{41954789-59BA-4399-9713-9610BCF37C12}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="KatyProject/Program.cs">
+    <Files>
+      <File FileName="KatyProject/Program.cs" Line="12" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
