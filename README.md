@@ -2,7 +2,7 @@
 
 ## Reservación de vuelos 
 
-Este sistema permitirá la venta de boletos de una linea aérea. Tambien es importante agregar la opción de pasajeros frecuentes que acomularán millas. Se manejara información para ciudades a las que vuela la aerolinea, vuelos que ofrece, datos para usuarios de club premier y boletos vendidos.
+Este sistema permitirá la venta de boletos de una linea aérea. También es importante agregar la opción de pasajeros frecuentes que acomularán millas. Se manejara información para ciudades a las que vuela la aerolinea, vuelos que ofrece, datos para usuarios de club premier y boletos vendidos.
 
 Opciones a incluir:
 - <strong>Alta de ciudades:</strong> que serán destinos u origenes para viajar. Los datos a incluir son: Clave de la ciudad, Nombre de la ciudad, Estado. Utiliza un arreglo de objetos para que guardes la información de las ciudades.
