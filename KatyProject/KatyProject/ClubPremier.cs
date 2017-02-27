@@ -14,7 +14,7 @@ namespace KatyProject {
 			this.millas = millas;
 		}
 
-		public string ClaveClup { 
+		public string ClaveClub { 
 			get { return claveClub; }
 			set { claveClub = value; }
 		}
