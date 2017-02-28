@@ -6,6 +6,8 @@ using System.Collections;
 namespace KatyProject {
 	class MainClass {
 
+		private Ciudad[] Arreglo = new Ciudad[100];
+		private int Contador = 0;
 		private ReadHelper read = new ReadHelper();
 		private Hashtable hashClub = new Hashtable();
 		private ArrayList arrayVuelos = new ArrayList();
@@ -35,7 +37,8 @@ namespace KatyProject {
 				switch (opc) {
 
 					case 1:
-					break;
+						AltaCiudades();
+						break;
 
 					case 2:
 						AltaVuelo();
@@ -96,6 +99,10 @@ namespace KatyProject {
 
 		private void AltaVuelo () {
 			// Primero validar si hay ciudades disponibles
+			if (Contador == 0) {
+				Console.WriteLine("\n>> Aún no se han agregado ciudades <<\n");
+				return;
+			}
 
 			int numPasajeros, capacidad, boletosVendidos;
 			string origen, destino, dias;
@@ -109,10 +116,27 @@ namespace KatyProject {
 			numPasajeros = read.ReadInt();
 
 			// Validar que existan en el arreglo de objetos
-			Console.Write("Origen: ");
-			origen = read.ReadString().Trim().ToUpper();
-			Console.Write("Destino: ");
-			destino = read.ReadString().Trim().ToUpper();
+			int posicion;
+			do {
+				Console.Write("Origen: ");
+				origen = read.ReadString().Trim().ToUpper();
+				posicion = CityPosition(origen);
+
+				if (posicion == -1) 
+					Console.WriteLine("\nNo existe esa ciudad. Ingrese otra. \n");
+				
+			} while (posicion == -1);
+
+			do {
+				Console.Write("Destino: ");
+				destino = read.ReadString().Trim().ToUpper();
+				posicion = CityPosition(destino);
+
+				if (posicion == -1)
+					Console.WriteLine("\nNo existe esa ciudad. Ingrese otra. \n");
+
+			} while (posicion == -1);
+
 
 			Console.Write("Capacidad: ");
 			capacidad = read.ReadInt();
@@ -175,6 +199,64 @@ namespace KatyProject {
 
 			}
 			return 0;
+		}
+
+		//METHOD TO SAVE CITIES.
+		public void AltaCiudades () {
+			// Validar que haya espacio
+			Console.Write("Introduzca clave de la ciudad: ");
+			string clave = read.ReadString().Trim().ToUpper();
+			Console.Write("Introduzca nombre de la ciudad: ");
+			string nombre = read.ReadString().Trim().ToUpper();
+			Console.Write("Introduzca estado de la ciudad: ");
+			string estado = read.ReadString().Trim().ToUpper();
+			Console.WriteLine("\nCiudad guardada.\n");
+			Ciudad City = new Ciudad(clave, nombre, estado);
+			Arreglo[Contador] = City;
+			Contador++;
+		}
+
+		//METHOD TO PRINT CITIES.
+		public void Ciudades () {
+			if (Contador == 0) {
+				Console.WriteLine("No se han ingresado ciudades.");
+			} else {
+				for (int i = 0; i < Contador; i++) {
+					Console.WriteLine("Ciudad: {0} | Estado: {1} | Clave: {2}", Arreglo[i].pNombre, Arreglo[i].pEstado, Arreglo[i].pClave);
+				}
+			}
+		}
+
+		//METHOD TO GET CITY OBJECT
+		public Ciudad CityObject () {
+			Ciudad ciudad = null;
+			if (Contador == 0) {
+				Console.WriteLine("\nNo se han agregado ciudades.\n");
+			} else {
+				Console.Write("Introduzca nombre de la ciudad: ");
+				string Nombre = read.ReadString().Trim().ToUpper();
+				for (int i = 0; i < Contador; i++) {
+					if (Arreglo[i].pNombre.CompareTo(Nombre) == 0) {
+						ciudad = Arreglo[i];
+						break;
+					}
+				}
+			}
+			return ciudad;
+		}
+
+		//METHOD TO GET CITY POSITION IN ARRAY
+		public int CityPosition (string Nombre) {
+			int Position = -1;
+
+				for (int i = 0; i < Contador; i++) {
+					if (Arreglo[i].pNombre.CompareTo(Nombre) == 0) {
+						Position = i;
+						break;
+					}
+				}
+
+			return Position;
 		}
 
 	}

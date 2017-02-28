@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{41954789-59BA-4399-9713-9610BCF37C12}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="KatyProject/Program.cs">
     <Files>
-      <File FileName="KatyProject/Program.cs" Line="157" Column="4" />
-      <File FileName="KatyProject/ReadHelper.cs" Line="1" Column="1" />
+      <File FileName="KatyProject/Program.cs" Line="54" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
