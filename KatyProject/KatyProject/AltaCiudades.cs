@@ -37,8 +37,8 @@ namespace KatyProject {
             }
         }
 
-        //METHOD TO GET CITY
-        public Ciudad City() {
+        //METHOD TO GET CITY OBJECT
+        public Ciudad CityObject() {
             Ciudad ciudad = null;
             if (Contador == 0) {
                 Console.WriteLine("No se han agregado ciudades.");
@@ -54,5 +54,24 @@ namespace KatyProject {
             }
             return ciudad;
         }
+
+        //METHOD TO GET CITY POSITION IN ARRAY
+        public int CityPosition() {
+            int Position = -1;
+            if (Contador == 0) {
+                Console.WriteLine("No se han agregado ciudades.");
+            } else {
+                Console.WriteLine("Introduzca nombre de la ciudad: ");
+                string Nombre = RH.ReadString();
+                for(int i = 0; i < Contador; i++) {
+                    if (Arreglo[i].pNombre.CompareTo(Nombre) == 0) {
+                        Position = i;
+                        break;
+                    }
+                }
+            }
+            return Position;
+        }
+
     }
 }
