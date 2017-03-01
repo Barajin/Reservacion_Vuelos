@@ -11,6 +11,9 @@ namespace KatyProject {
 		private ReadHelper read = new ReadHelper();
 		private Hashtable hashClub = new Hashtable();
 		private ArrayList arrayVuelos = new ArrayList();
+		private ArrayList boletosVendidos = new ArrayList();
+		private Vuelo newVuelo;
+		private Boleto newBoleto;
 		private ClubPremier newCliente; //Tengo declarado el objeto a la altura de la clase para 
 		                                // hacer pool de objetos y no estar creando nuevas instancias
 		                               
@@ -49,6 +52,7 @@ namespace KatyProject {
 						break;
 
 					case 4:
+					    CompraBoletos();
 						break;
 
 					case 5:
@@ -105,12 +109,15 @@ namespace KatyProject {
 			}
 
 			int numPasajeros, capacidad, boletosVendidos;
-			string origen, destino, dias;
+			string origen, destino, dias, claveVuelo;
 			double costo, millas; 
 
 			Console.WriteLine("==========================");
 			Console.WriteLine("$$ ALTA DE VUELOS $$");
 			Console.WriteLine("==========================");
+
+			Console.Write("Clave del vuelo: ");
+			claveVuelo = read.ReadString();
 
 			Console.Write("Número de pasajeros: ");
 			numPasajeros = read.ReadInt();
@@ -156,7 +163,7 @@ namespace KatyProject {
 				dias = DiaVuelo(opc);
 			} while (dias == "");
 
-			Vuelo vuelo = new Vuelo(origen, destino, dias, numPasajeros, capacidad, boletosVendidos, costo, millas);
+			Vuelo vuelo = new Vuelo(claveVuelo,origen, destino, dias, numPasajeros, capacidad, boletosVendidos, costo, millas);
 			arrayVuelos.Add(vuelo);
 			Console.WriteLine("\n>> Vuelo añadido exitosamente, enter para volver al menú <<\n");
 			Console.ReadLine();
@@ -202,7 +209,7 @@ namespace KatyProject {
 		}
 
 		//METHOD TO SAVE CITIES.
-		public void AltaCiudades () {
+		private void AltaCiudades () {
 			// Validar que haya espacio
 			Console.Write("Introduzca clave de la ciudad: ");
 			string clave = read.ReadString().Trim().ToUpper();
@@ -217,7 +224,7 @@ namespace KatyProject {
 		}
 
 		//METHOD TO PRINT CITIES.
-		public void Ciudades () {
+		private void Ciudades () {
 			if (Contador == 0) {
 				Console.WriteLine("No se han ingresado ciudades.");
 			} else {
@@ -228,7 +235,7 @@ namespace KatyProject {
 		}
 
 		//METHOD TO GET CITY OBJECT
-		public Ciudad CityObject () {
+		private Ciudad CityObject () {
 			Ciudad ciudad = null;
 			if (Contador == 0) {
 				Console.WriteLine("\nNo se han agregado ciudades.\n");
@@ -246,7 +253,7 @@ namespace KatyProject {
 		}
 
 		//METHOD TO GET CITY POSITION IN ARRAY
-		public int CityPosition (string Nombre) {
+		private int CityPosition (string Nombre) {
 			int Position = -1;
 
 				for (int i = 0; i < Contador; i++) {
@@ -257,6 +264,73 @@ namespace KatyProject {
 				}
 
 			return Position;
+		}
+
+		private void CompraBoletos() {
+			string claveBoleto, nomPasajero, claveVuelo, claveClub;
+			int edad, opc;
+
+			Console.Write("Clave del Boleto:");
+			claveBoleto = NString(read.ReadString());
+			Console.Write("Nombre Pasajero:");
+			nomPasajero = NString(read.ReadString());
+			Console.Write("Edad del pasajero:");
+			edad = read.ReadInt();
+
+			Console.Write("Clave del vuelo:");
+			claveVuelo = NString(read.ReadString());
+
+
+			if (existeVuelo(claveVuelo) == null) {
+				Console.WriteLine("No existe ese vuelo.");
+			} else {
+				
+				Console.Write("¿Club premier? 1.- Si , 2.- No");
+				opc = read.ReadInt(1, 2);
+				if (opc == 1) {
+					do {
+						Console.Write("Clave del club premier:");
+						claveClub = NString(read.ReadString());
+					} while (hashClub.ContainsKey(NString(claveClub)));
+
+					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
+					newBoleto.ClaveClubPremier = claveClub;
+
+					existePremier(claveClub).Millas = existeVuelo(claveVuelo).pMillas;
+					existeVuelo(claveVuelo).pBoletosVendidos = 1;
+
+					boletosVendidos.Add(newBoleto);
+					Console.WriteLine("Boleto comprado vendido.");
+				} else {
+					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
+					boletosVendidos.Add(newBoleto);
+					Console.WriteLine("Boleto comprado vendido.");
+				}
+			}
+
+
+			
+		}
+
+		private Vuelo existeVuelo(string clave) {
+
+			foreach (Vuelo val in arrayVuelos) 
+				if (val != null)
+					if (val.pClaveVuelo.Equals(clave))
+						return val;
+
+			return null;
+		}
+
+		private ClubPremier existePremier(string key) {
+
+			foreach (DictionaryEntry entry in hashClub) {
+				if (entry.Key.Equals(key))
+					return (ClubPremier) entry.Value;
+			}
+
+
+			return null;
 		}
 
 	}

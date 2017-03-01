@@ -31,7 +31,7 @@ namespace KatyProject {
 
 		public double Millas { 
 			get { return millas; }
-			set { millas = value; }
+			set { millas += value; }
 		}
 	}
 }
