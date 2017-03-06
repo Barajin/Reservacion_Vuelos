@@ -30,6 +30,7 @@ namespace KatyProject {
 				Console.WriteLine("4.- Compra de boletos.");
 				Console.WriteLine("5.- Consulta de vuelos disponibles.");
 				Console.WriteLine("6.- Salir.");
+
 				Console.Write("=> ");
 				opc = read.ReadInt();
 
