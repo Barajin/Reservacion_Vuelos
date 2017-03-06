@@ -1,10 +1,7 @@
 ﻿<Properties StartupConfiguration="{41954789-59BA-4399-9713-9610BCF37C12}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KatyProject/ClubPremier.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KatyProject/Program.cs">
     <Files>
-      <File FileName="KatyProject/Boleto.cs" Line="30" Column="33" />
-      <File FileName="KatyProject/ReadHelper.cs" Line="38" Column="27" />
-      <File FileName="KatyProject/Ciudad.cs" Line="1" Column="1" />
-      <File FileName="KatyProject/ClubPremier.cs" Line="18" Column="29" />
+      <File FileName="KatyProject/Program.cs" Line="142" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

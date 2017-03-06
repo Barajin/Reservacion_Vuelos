@@ -123,6 +123,7 @@ namespace KatyProject {
 			Console.Write("Número de pasajeros: ");
 			numPasajeros = read.ReadInt();
 
+			Ciudades();
 			// Validar que existan en el arreglo de objetos
 			int posicion;
 			do {
@@ -134,7 +135,7 @@ namespace KatyProject {
 					Console.WriteLine("\nNo existe esa ciudad. Ingrese otra. \n");
 				
 			} while (posicion == -1);
-
+			Ciudades();
 			do {
 				Console.Write("Destino: ");
 				destino = read.ReadString().Trim().ToUpper();
@@ -142,6 +143,11 @@ namespace KatyProject {
 
 				if (posicion == -1)
 					Console.WriteLine("\nNo existe esa ciudad. Ingrese otra. \n");
+
+				if (destino == origen) {
+					Console.WriteLine("\nLa ciudad de destino no puede ser igual a la de origen. Ingrese otra. \n");
+					posicion = -1;
+				}
 
 			} while (posicion == -1);
 
@@ -215,6 +221,12 @@ namespace KatyProject {
 			Console.Write("Introduzca clave de la ciudad: ");
 			string clave = read.ReadString().Trim().ToUpper();
 			Console.Write("Introduzca nombre de la ciudad: ");
+
+			if (ValidarClave(clave)) {
+				Console.WriteLine("\nYa existe esa clave.\n");
+				return;
+			}
+
 			string nombre = read.ReadString().Trim().ToUpper();
 			Console.Write("Introduzca estado de la ciudad: ");
 			string estado = read.ReadString().Trim().ToUpper();
@@ -224,6 +236,15 @@ namespace KatyProject {
 			Contador++;
 		}
 
+		private bool ValidarClave (string cve) {
+			for (int i = 0; i < Contador; i++) {
+				Ciudad c = Arreglo[i];
+				if (c.pClave.CompareTo(cve)==0)
+					return true;
+			}
+
+			return false;
+		}
 		//METHOD TO PRINT CITIES.
 		private void Ciudades () {
 			if (Contador == 0) {
