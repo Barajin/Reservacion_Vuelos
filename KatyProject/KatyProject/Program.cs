@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-
-
+using System.Linq;
+using ConsoleTables;
 
 namespace KatyProject {
 	class MainClass {
@@ -57,6 +57,7 @@ namespace KatyProject {
 						break;
 
 					case 5:
+					ImprimeVuelos();
 						break;
 
 					case 6:
@@ -271,12 +272,15 @@ namespace KatyProject {
 			string claveBoleto, nomPasajero, claveVuelo, claveClub;
 			int edad, opc;
 
-			Console.Write("Clave del Boleto:");
-			claveBoleto = NString(read.ReadString());
+			do  
+				claveBoleto = RandomString(34);
+			while (ExisteBoleto(NString(claveBoleto)));
+
 			Console.Write("Nombre Pasajero:");
 			nomPasajero = NString(read.ReadString());
 			Console.Write("Edad del pasajero:");
 			edad = read.ReadInt();
+			Console.WriteLine("Claves de vuelo disponibles");
 
 			Console.Write("Clave del vuelo:");
 			claveVuelo = NString(read.ReadString());
@@ -313,6 +317,13 @@ namespace KatyProject {
 			
 		}
 
+		private static Random random = new Random();
+		public static string RandomString(int length) {
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			return new string(Enumerable.Repeat(chars, length)
+			  .Select(s => s[random.Next(s.Length)]).ToArray());
+		}
+
 		private Vuelo existeVuelo(string clave) {
 
 			foreach (Vuelo val in arrayVuelos) 
@@ -321,6 +332,26 @@ namespace KatyProject {
 						return val;
 
 			return null;
+		}
+
+		private bool ExisteBoleto(string claveBoleto) {
+
+			foreach (Boleto val in boletosVendidos)
+				if (val.ClaveBoleto.Equals(claveBoleto))
+					return true;
+			
+			return false;
+		}
+
+		private void ImprimeVuelos() {
+			var table = new ConsoleTable("Clave de vuelo","num Pasajeros","capacidad","destino");
+
+			foreach (Vuelo val in arrayVuelos)
+				table.AddRow(val.pClaveVuelo, val.pNumPasajeros, val.pCapacidad, val.pDestino);
+			
+			table.Write();
+			Console.WriteLine();
+
 		}
 
 		private ClubPremier existePremier(string key) {
