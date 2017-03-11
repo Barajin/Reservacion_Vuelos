@@ -25,6 +25,30 @@ namespace KatyProject {
 			return num;
 		}
 
+		public int ReadInt(int from, int to) {
+			int num = 0;
+			bool helper;
+			do {
+				try {
+					num = int.Parse(Console.ReadLine());
+					if (num < from || num > to) {
+						Console.Write("Tiene que ser una opcion valida: ");
+					}
+					helper = true;
+				} catch (FormatException) {
+					helper = false;
+					Console.Write("Error al castear números, teclea de nuevo: ");
+				} catch (OverflowException) {
+					helper = false;
+					Console.Write("El número es demasiado grande, teclea de nuevo: ");
+				}
+
+			}
+			while (num < from || num > to || !helper);
+
+			return num;
+		}
+
 		public double ReadDouble () {
 			double num = 0;
 			bool helper;

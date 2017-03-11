@@ -11,6 +11,16 @@ Opciones a incluir:
 
 - <strong>Alta club premier:</strong> se darán de alta los pasajeros que cuenten con club premier para que acumulen millas en cada vuelo que compren, los datos que se deben de considerar son: clave del club premier, Nombre, Domicilio, Millas acomuladas. Se debe de crear una clase, llamada ClubPremier para que se agregen los objetos a una TablaHash.
 
-- <strong>Compra de boletos:</strong> Se utilizará para vende boletos de los vuelos dados de alta, seleccionar el origen, destino y siempre y cuando se tenga disponibilidad. Hay que considerar Clave del Boleto, Nombre del pasajero, Edad del pasajero, Clave del vuelo(tomado del catálogo de vuelos), Clave del club premier(si es que se tiene). Al realizar una compra se debe de considerar actualizar la información de los datos de Boletos vendidos(para el vuelo seleccionado, en el ArrayList de vuelos) y también se deben de acomular las millas en caso de que el pasajero esté dado de alta en el club premier de la TablaHash de los clientes que tienen Club Premier.
+- <strong>Compra de boletos:</strong> Se utilizará para vende boletos de los vuelos dados de alta, seleccionar el origen, destino y siempre y cuando se tenga disponibilidad. Hay que considerar Clave del Boleto, Nombre del pasajero, Edad del pasajero, Clave del vuelo(tomado del catálogo de vuelos), Clave del club premier(si es que se tiene). Al realizar una compra se debe de considerar actualizar la información de los datos de Boletos vendidos(para el vuelo seleccionado, en el ArrayList de vuelos) y también se deben de acumular las millas en caso de que el pasajero esté dado de alta en el club premier de la TablaHash de los clientes que tienen Club Premier.
 
-- <strong>Consulta de vuelos disponibles:</strong> Aqui aparecerán todos los vuelos para una ciudad que se proporcione, siempre y cuando el vuelo tenga disponibilidad.
+- <strong>Consulta de vuelos disponibles:</strong> Aquí aparecerán todos los vuelos para una ciudad que se proporcione, siempre y cuando el vuelo tenga disponibilidad.
+
+ <strong>1er. Avance Proyecto Integrador: Diseño conceptual y lógico </strong>
+Con las necesidades de información de la empresa diseñe:
+
+  - El diagrama E-R ( a mano, digitalizado)
+  - El diagrama E-R ( en Word o herramienta)
+  - El esquema para MySQL o SQLServer (el script que cree las tablas).
+  - Un script que llene las tablas con datos muestra:
+      Los catálogos  deben tener al menos 10 filas 
+      Al menos 100 filas en las tablas de operación
