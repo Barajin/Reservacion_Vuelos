@@ -8,6 +8,10 @@ namespace Scripts {
 		ArrayList ciudadArray = new ArrayList();
 		ArrayList premierArray = new ArrayList();
 		ArrayList domicilioArray = new ArrayList();
+		ArrayList vueloArray = new ArrayList();
+		ArrayList clienteArray = new ArrayList();
+		ArrayList boletoArray = new ArrayList();
+		string[] clave = new string[32];
 		string script= "USE reservación_vuelos;\nGO\n";
 
 		public static void Main (string[] args) {
@@ -17,8 +21,73 @@ namespace Scripts {
 			clase.GenerarClientes();	
 			clase.GenerarDomicilio();
 			clase.GenerarScriptClubpremier();
+			clase.GenerarClienteGenerico();
+			clase.GenerarVuelo();
+			clase.GenerarBoleto();
+			clase.GenerarScript();
 		
-		
+		}
+
+		public void GenerarClienteGenerico() {
+			int cliente;
+			for (int i = 0; i < nameArray.Count-premierArray.Count; i++) {
+				Random r1 = new Random();
+				do {
+					cliente = r1.Next(0, 120);
+				} while (ValidarRepetido(cliente, premierArray) || ValidarRepetido(cliente, clienteArray) );
+				clienteArray.Add(cliente);
+				script += string.Format("\nINSERT INTO clienteGenérico(cveCliente)\n   VALUES({0})\n",
+										cliente);
+				
+			}
+
+		}
+
+		public void GenerarBoleto () {
+			int ra1, ra2;
+			for (int i = 0; i < 90; i++) {
+				Random r1 = new Random();
+				do {
+					ra1 = r1.Next(1, 99);
+					ra2 = r1.Next(1, 119);
+				} while (ValidarRepetido(ra1, boletoArray));
+				boletoArray.Add(ra1);
+				script += string.Format("\nINSERT INTO boleto(cveVuelo, cveCliente)\n   VALUES({0},{1})\n", 
+				                       ra1, ra2);
+			}
+
+		}
+
+
+		public void GenerarVuelo () {
+
+			int ra1, ra2;
+	
+			string vuelo="";
+			for (int i = 0; i < 100; i++) {
+				do {
+					Random r1 = new Random();
+					ra1 = r1.Next(0, 31);
+					ra2 = r1.Next(0, 31);
+			
+					string cadena1 = r1.Next(200, 4500).ToString() + "." + r1.Next(40, 100).ToString();
+					string cadena2 = r1.Next(10, 4500).ToString() + "." + r1.Next(0, 100).ToString();
+					vuelo = string.Format("{0},'{1}','{2}',{3},{4},{5}", r1.Next(10, 50), clave[ra1], clave[ra2],
+					                      r1.Next(10,50), Convert.ToDouble(cadena1),Convert.ToDouble(cadena2));
+				} while (ValidarRepetido(vuelo, vueloArray) || ra1==ra2);
+				vueloArray.Add(vuelo);
+				Console.WriteLine(vuelo);
+			}
+
+			GenerarScriptVuelo();
+		}
+
+		public void GenerarScriptVuelo () {
+
+			foreach (string v in vueloArray)
+				script += string.Format("\nINSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)\n   VALUES({0})\n", v);
+
+			//Console.WriteLine(script);
 		}
 
 		public void GenerarClientes () {
@@ -31,7 +100,7 @@ namespace Scripts {
 
 			int ra1, ra2;
 			string name;
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 120; i++) {
 				do {
 					Random r1 = new Random();
 					ra1 = r1.Next(0, 11);
@@ -72,21 +141,25 @@ namespace Scripts {
 
 
 		public void GenerarCiudadEstado () {
-			string[] ciudad =  {"'Aguascalientes','Aguascalientes'","'Mexicali','Baja California'","'La Paz','Baja California Sur'",
-				"'Campeche', 'Campeche'","'Saltillo','Coahuila'","'Colima', 'Colima'","'Tuxtla Gutiérrez','Chiapas'","'Chihuahua', 'Chihuahua'",
-				"'Ciudad de México','Distrito Federal'","'Durango', 'Durango'","'Guanajuato', 'Guanajuato'","'Chilpancingo','Guerrero'",
-				"'Pachuca','Hidalgo'","'Guadalajara','Jalisco'","'Toluca','México '","'Morelia','Michoacán'","'Cuernavaca','Morelos'",
-				"'Tepic','Nayarit'","'Monterrey','Nuevo León'","'Oaxaca', 'Oaxaca'","'Puebla', 'Puebla'","'Querétaro', 'Querétaro'",
-				"'Chetumal','Quintana Roo'","'San Luis Potosí', 'San Luis Potosí'","'Culiacán','Sinaloa'","'Hermosillo','Sonora '",
-				"'Villahermosa','Tabasco'","'Ciudad Victoria','Tamaulipas'","'Tlaxcala', 'Tlaxcala'","'Xalapa','Veracruz'" ,
-				"'Mérida','Yucatán'" ,"'Zacatecas', 'Zacatecas'" };
+			string[] ciudad =  {"Aguascalientes","Mexicali","La Paz",
+				"Campeche","Saltillo","Colima","Tuxtla Gutiérrez","Chihuahua",
+				"Ciudad de México","Durango","Guanajuato","Chilpancingo",
+				"Pachuca","Guadalajara","Toluca","Morelia","Cuernavaca",
+				"Tepic","Monterrey","Oaxaca","Puebla","Querétaro",
+				"Chetumal","San Luis Potosí","Culiacán","Hermosillo",
+				"Villahermosa","Ciudad Victoria","Tlaxcala","Xalapa" ,
+				"Mérida","Zacatecas"};
+
+			string[] estado = {"Aguascalientes","Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas",
+				"Chihuahua", "Distrito Federal", "Durango", "Guanajuato","Guerrero","Hidalgo","Jalisco","México","Michoacán", "Morelos",
+				"Narayit","Nuevo León","Oaxaca", "Puebla","Querétaro","Quintana Roo","San Luis Potosí","Sinaloa","Sonora",
+				"Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucatán","Zacatecas"};
 
 
 			string text;
-			string clave;
 			for (int i = 0; i < ciudad.Length; i++) {
-				clave = string.Format("{0}{1}{2}", ciudad[i][1], ciudad[i].ToUpper()[2], ciudad[i].ToUpper()[5]);
-				text = string.Format("'{0}',{1}", clave,ciudad[i]);
+				clave[i] = string.Format("{0}{1}{2}", ciudad[i][0], ciudad[i].ToUpper()[1], ciudad[i].ToUpper()[4]);
+				text = string.Format("'{0}','{1}','{2}'", clave[i],ciudad[i], estado[i]);
 				ciudadArray.Add(text);
 				Console.WriteLine(text);
 			}
@@ -128,7 +201,7 @@ namespace Scripts {
 				script += string.Format("\nINSERT INTO club_premier(cveCliente, domicilio)\n   VALUES({0}, '{1}')\n", r, domicilioArray[i]);
 			}
 
-			Console.WriteLine(script);
+			//Console.WriteLine(script);
 
 		}
 
@@ -146,6 +219,13 @@ namespace Scripts {
 					return true;
 
 			return false;
+		}
+
+		public void GenerarScript () { 
+
+			Console.WriteLine("\n{0}", script);
+			System.IO.File.WriteAllText(@"POBLACIÓN.sql", script);
+			Console.WriteLine("\n>> SCRIPT GENERADO CON ÉXITO <<");
 		}
 	}
 }
