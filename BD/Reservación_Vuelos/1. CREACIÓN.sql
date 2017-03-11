@@ -1,8 +1,8 @@
 
-CREATE DATABASE reservación_vuelos;
+CREATE DATABASE reservaciï¿½n_vuelos;
 GO
 
-USE reservación_vuelos;
+USE reservaciï¿½n_vuelos;
 GO
 
 CREATE TABLE ciudad (
@@ -33,7 +33,7 @@ CREATE TABLE club_premier (
   domicilio VARCHAR(60) NOT NULL
 )
 
-CREATE TABLE clienteGenérico(
+CREATE TABLE clienteGenï¿½rico(
 	cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
 )
   
@@ -44,8 +44,8 @@ CREATE TABLE boleto (
 )
 
 INSERT INTO ciudad (cveCiudad, nombreCiudad, estado)
-	VALUES ('CLN', 'Culiacán', 'Sinaloa'),
-	('MZN', 'Mazatlán', 'Sinaloa')
+	VALUES ('CLN', 'Culiacï¿½n', 'Sinaloa'),
+	('MZN', 'Mazatlï¿½n', 'Sinaloa')
 
 SELECT * FROM ciudad;
 
