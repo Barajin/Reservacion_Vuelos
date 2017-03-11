@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
-
+using ConsoleTables;
+using System.Linq;
 
 
 namespace KatyProject {
@@ -32,7 +33,9 @@ namespace KatyProject {
 				Console.WriteLine("3.- Alta club premier.");
 				Console.WriteLine("4.- Compra de boletos.");
 				Console.WriteLine("5.- Consulta de vuelos disponibles.");
-				Console.WriteLine("6.- Salir.");
+				Console.WriteLine("6.- Club Premier.");
+				Console.WriteLine("7.- Boletos vendidos.");
+				Console.WriteLine("7 - Salir.");
 
 				Console.Write("=> ");
 				opc = read.ReadInt();
@@ -57,9 +60,17 @@ namespace KatyProject {
 						break;
 
 					case 5:
+					    Vuelos();
 						break;
 
 					case 6:
+				    	ClubPremier();
+					break;
+
+					case 7:
+					BoletosVendidos();
+					break;
+					case 8:
 						opc = Salir();
 						break;
 
@@ -70,7 +81,7 @@ namespace KatyProject {
 					break;
 
 				}
-			} while(opc != 6);
+			} while(opc != 8);
 		}
 
 		private void AltaClubPremier() {
@@ -83,16 +94,16 @@ namespace KatyProject {
 			Console.WriteLine("==========================");
 
 			Console.Write("Clave del usuario: ");
-			claveClub = read.ReadString();
-			if (hashClub.ContainsKey(claveClub.ToUpper().Trim())) {
+			claveClub = NString(read.ReadString());
+			if (hashClub.ContainsKey(claveClub)) {
 				Console.WriteLine("Esa clave ya existe.");
 			} else { 
 				Console.Write("Nombre del cliente: ");
-				nombre = read.ReadString();
+				nombre = NString(read.ReadString());
 				Console.Write("Domicilio: ");
-				domicilio = read.ReadString();
-				newCliente = new ClubPremier(NString(claveClub), NString(nombre), NString(domicilio), millas);
-				hashClub.Add(NString(claveClub), newCliente);
+				domicilio = NString(read.ReadString());
+				newCliente = new ClubPremier(claveClub, nombre, domicilio, millas);
+				hashClub.Add(claveClub, newCliente);
 				Console.WriteLine("\n>> Cliente añadido al club exitosamente <<\n");
 			}
 		}
@@ -109,7 +120,7 @@ namespace KatyProject {
 				return;
 			}
 
-			int numPasajeros, capacidad, boletosVendidos;
+			int capacidad;
 			string origen, destino, dias, claveVuelo;
 			double costo, millas; 
 
@@ -118,17 +129,14 @@ namespace KatyProject {
 			Console.WriteLine("==========================");
 
 			Console.Write("Clave del vuelo: ");
-			claveVuelo = read.ReadString();
-
-			Console.Write("Número de pasajeros: ");
-			numPasajeros = read.ReadInt();
+			claveVuelo = NString(read.ReadString());
 
 			Ciudades();
 			// Validar que existan en el arreglo de objetos
 			int posicion;
 			do {
 				Console.Write("Origen: ");
-				origen = read.ReadString().Trim().ToUpper();
+				origen = NString(read.ReadString());
 				posicion = CityPosition(origen);
 
 				if (posicion == -1) 
@@ -138,7 +146,7 @@ namespace KatyProject {
 			Ciudades();
 			do {
 				Console.Write("Destino: ");
-				destino = read.ReadString().Trim().ToUpper();
+				destino = NString(read.ReadString());
 				posicion = CityPosition(destino);
 
 				if (posicion == -1)
@@ -154,8 +162,6 @@ namespace KatyProject {
 
 			Console.Write("Capacidad: ");
 			capacidad = read.ReadInt();
-			Console.Write("Boletos vendidos: ");
-			boletosVendidos = read.ReadInt();
 			Console.Write("Costo: ");
 			costo = read.ReadDouble();
 			Console.Write("Millas: ");
@@ -170,8 +176,8 @@ namespace KatyProject {
 				dias = DiaVuelo(opc);
 			} while (dias == "");
 
-			Vuelo vuelo = new Vuelo(claveVuelo,origen, destino, dias, numPasajeros, capacidad, boletosVendidos, costo, millas);
-			arrayVuelos.Add(vuelo);
+			newVuelo = new Vuelo(claveVuelo,origen, destino, dias, capacidad, 0, costo, millas);
+			arrayVuelos.Add(newVuelo);
 			Console.WriteLine("\n>> Vuelo añadido exitosamente, enter para volver al menú <<\n");
 			Console.ReadLine();
 			Console.Clear();
@@ -250,9 +256,12 @@ namespace KatyProject {
 			if (Contador == 0) {
 				Console.WriteLine("No se han ingresado ciudades.");
 			} else {
+				var table = new ConsoleTable("Ciudad","Estado","Clave");
 				for (int i = 0; i < Contador; i++) {
-					Console.WriteLine("Ciudad: {0} | Estado: {1} | Clave: {2}", Arreglo[i].pNombre, Arreglo[i].pEstado, Arreglo[i].pClave);
+					table.AddRow(Arreglo[i].pNombre,Arreglo[i].pEstado,Arreglo[i].pClave);
 				}
+				table.Write(Format.Alternative);
+				Console.WriteLine();
 			}
 		}
 
@@ -292,28 +301,31 @@ namespace KatyProject {
 			string claveBoleto, nomPasajero, claveVuelo, claveClub;
 			int edad, opc;
 
-			Console.Write("Clave del Boleto:");
-			claveBoleto = NString(read.ReadString());
-			Console.Write("Nombre Pasajero:");
-			nomPasajero = NString(read.ReadString());
-			Console.Write("Edad del pasajero:");
-			edad = read.ReadInt();
+			do
+				claveBoleto = NString(RandomKey(15));
+			while (existeBoleto(claveBoleto));
 
+
+			Vuelos();
 			Console.Write("Clave del vuelo:");
 			claveVuelo = NString(read.ReadString());
 
 
 			if (existeVuelo(claveVuelo) == null) {
-				Console.WriteLine("No existe ese vuelo.");
+				Console.WriteLine("Ese vuelo no está disponible.");
 			} else {
 				
-				Console.Write("¿Club premier? 1.- Si , 2.- No");
+				Console.Write("¿Club premier? 1.- Si , 2.- No : ");
 				opc = read.ReadInt(1, 2);
 				if (opc == 1) {
 					do {
+						ClubPremier();
 						Console.Write("Clave del club premier:");
 						claveClub = NString(read.ReadString());
-					} while (hashClub.ContainsKey(NString(claveClub)));
+					} while (!hashClub.ContainsKey(NString(claveClub)));
+					nomPasajero = ((ClubPremier)hashClub[claveClub]).Nombre;
+					Console.Write("Edad del pasajero:");
+					edad = read.ReadInt();
 
 					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
 					newBoleto.ClaveClubPremier = claveClub;
@@ -322,11 +334,18 @@ namespace KatyProject {
 					existeVuelo(claveVuelo).pBoletosVendidos = 1;
 
 					boletosVendidos.Add(newBoleto);
-					Console.WriteLine("Boleto comprado vendido.");
+					Console.WriteLine("Boleto vendido.");
 				} else {
+					Console.Write("Nombre Pasajero:");
+					nomPasajero = NString(read.ReadString());
+					Console.Write("Edad del pasajero:");
+					edad = read.ReadInt();
+
 					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
 					boletosVendidos.Add(newBoleto);
-					Console.WriteLine("Boleto comprado vendido.");
+					existeVuelo(claveVuelo).pBoletosVendidos = 1;
+
+					Console.WriteLine("Boleto vendido.");
 				}
 			}
 
@@ -337,8 +356,7 @@ namespace KatyProject {
 		private Vuelo existeVuelo(string clave) {
 
 			foreach (Vuelo val in arrayVuelos) 
-				if (val != null)
-					if (val.pClaveVuelo.Equals(clave))
+				if (val.pClaveVuelo.Equals(clave) && (val.pBoletosVendidos < val.pCapacidad))
 						return val;
 
 			return null;
@@ -353,6 +371,49 @@ namespace KatyProject {
 
 
 			return null;
+		}
+
+		private bool existeBoleto(string claveBoleto) {
+			foreach (Boleto val in boletosVendidos)
+				if (val.ClaveBoleto.Equals(claveBoleto))
+					return true;
+
+			return false;
+		}
+
+		private static Random random = new Random();
+		public static string RandomKey(int length) {
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			return new string(Enumerable.Repeat(chars, length)
+			  .Select(s => s[random.Next(s.Length)]).ToArray());
+		}
+
+		private void ClubPremier() { 
+		    var table = new ConsoleTable("ID","NOMBRE","DOMICILIO","MILLAS");
+			foreach (DictionaryEntry val in hashClub) {
+				newCliente = (ClubPremier)val.Value;
+				table.AddRow(val.Key,newCliente.Nombre,newCliente.Domicilio,newCliente.Millas);
+			}
+			table.Write(Format.Alternative);
+			Console.WriteLine();
+		}
+
+		private void Vuelos() {
+			var table = new ConsoleTable("CLAVE","ORIGEN","DESTINO","BOLETOS VENDIDOS","CAPACIDAD","MILLAS","COSTO");
+			foreach (Vuelo val in arrayVuelos)
+				if(val.pBoletosVendidos < val.pCapacidad)
+					table.AddRow(val.pClaveVuelo,val.pOrigen,val.pDestino,val.pBoletosVendidos,val.pCapacidad,val.pMillas,val.pCosto);
+			table.Write(Format.Alternative);
+			Console.WriteLine();
+		}
+
+		private void BoletosVendidos() {
+			var table = new ConsoleTable("CLAVE","NOMBRE","EDAD","CLAVE VUELO","CLUBPREMIER");
+			foreach (Boleto val in boletosVendidos) {
+				table.AddRow(val.ClaveBoleto,val.Nompasajero,val.EdadPasajero,val.ClaveVuelo,val.ClaveClubPremier);
+			}
+			table.Write(Format.Alternative);
+			Console.WriteLine();
 		}
 
 	}
