@@ -2,16 +2,15 @@
 	public class Vuelo {
 		
 		private string Origen, Destino, Dias, claveVuelo;
-		private int NumPasajeros, Capacidad, BoletosVendidos;
+		private int Capacidad, BoletosVendidos;
 		private double Costo, Millas;
 
-		public Vuelo (string claveVuelo,string Origen, string Destino, string Dias, int NumPasajeros, int Capacidad, 
+		public Vuelo (string claveVuelo,string Origen, string Destino, string Dias, int Capacidad, 
 		              int BoletosVendidos, double Costo, double Millas) {
 			this.claveVuelo = claveVuelo;
 			this.Origen = Origen;
 			this.Destino = Destino;
 			this.Dias = Dias;
-			this.NumPasajeros = NumPasajeros;
 			this.Capacidad = Capacidad;
 			this.BoletosVendidos = BoletosVendidos;
 			this.Costo = Costo;
@@ -36,11 +35,6 @@
 		public string pDias {
 			get { return Dias; }
 			set { Dias = value; }
-		}
-
-		public int pNumPasajeros {
-			get { return NumPasajeros ; }
-			set { NumPasajeros = value; }
 		}
 
 		public int pCapacidad {
