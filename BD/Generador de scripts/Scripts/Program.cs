@@ -11,6 +11,7 @@ namespace Scripts {
 		ArrayList vueloArray = new ArrayList();
 		ArrayList clienteArray = new ArrayList();
 		ArrayList boletoArray = new ArrayList();
+		ArrayList diasArray = new ArrayList();
 		string[] clave = new string[32];
 		string script= "USE reservación_vuelos;\nGO\n";
 
@@ -23,6 +24,7 @@ namespace Scripts {
 			clase.GenerarScriptClubpremier();
 			clase.GenerarClienteGenerico();
 			clase.GenerarVuelo();
+			clase.GenerarDiasVuelo();
 			clase.GenerarBoleto();
 			clase.GenerarScript();
 		
@@ -80,6 +82,36 @@ namespace Scripts {
 			}
 
 			GenerarScriptVuelo();
+		}
+
+		public void GenerarDiasVuelo () {
+
+			DiaRandom();
+			DiaRandom();
+			GenerarScriptDias();
+		}
+
+		public void DiaRandom () {
+			string[] d = { "Diaria", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" };
+			int r = -1, rAnt;
+			string cadena;
+			for (int i = 1; i <= 100; i++) {
+				do {
+					Random r1 = new Random();
+					do {
+						rAnt = r;
+						r = r1.Next(0, 8);
+					} while (r == rAnt);
+					cadena = string.Format("{0}, '{1}'", i, d[r]);
+				} while (ValidarRepetido(cadena, diasArray));
+				diasArray.Add(cadena);
+				Console.WriteLine(cadena);
+			}
+		}
+
+		public void GenerarScriptDias () {
+			foreach (string d in diasArray)
+				script += string.Format("\nINSERT INTO dias(cveVuelo, díaVuelo)\n   VALUES({0})\n", d);
 		}
 
 		public void GenerarScriptVuelo () {
