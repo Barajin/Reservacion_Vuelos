@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream:BD/Reservacio虂n_Vuelos/1. CREACIO虂N.sql
 CREATE DATABASE reservaci贸n_vuelos;
+=======
+CREATE DATABASE reservaci髇_vuelos;
+>>>>>>> Stashed changes:BD/Reservaci贸n_Vuelos/Reservaci贸n_Vuelos/1. CREACI脫N.sql
 GO
 
-USE reservaci贸n_vuelos;
+USE reservaci髇_vuelos;
 GO
 
 CREATE TABLE ciudad (
@@ -20,10 +24,15 @@ CREATE TABLE vuelo (
   millas DECIMAL(10,3) NOT NULL CHECK(millas>0),
 )
 
-CREATE TABLE d铆as (
+CREATE TABLE d韆s (
 	cveVuelo INT FOREIGN KEY REFERENCES vuelo(cveVuelo),
+<<<<<<< Updated upstream:BD/Reservacio虂n_Vuelos/1. CREACIO虂N.sql
 	d铆aVuelo VARCHAR(10) CHECK(d铆aVuelo IN ('Lunes','Martes','Mi茅rcoles','Jueves','Viernes','S谩bado','Domingo','Diaria')),
 	PRIMARY KEY (cveVuelo, d铆aVuelo)
+=======
+	d韆Vuelo VARCHAR(10) CHECK(d韆Vuelo IN ('Lunes','Martes','Mi閞coles','Jueves','Viernes','S醔ado','Domingo','Diaria')),
+	PRIMARY KEY (cveVuelo, d韆Vuelo)
+>>>>>>> Stashed changes:BD/Reservaci贸n_Vuelos/Reservaci贸n_Vuelos/1. CREACI脫N.sql
 )
 
 CREATE TABLE cliente (
@@ -38,8 +47,13 @@ CREATE TABLE club_premier (
   domicilio VARCHAR(60) NOT NULL
 )
 
+<<<<<<< Updated upstream:BD/Reservacio虂n_Vuelos/1. CREACIO虂N.sql
 CREATE TABLE clienteGen茅rico(
   cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
+=======
+CREATE TABLE clienteGen閞ico(
+	cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
+>>>>>>> Stashed changes:BD/Reservaci贸n_Vuelos/Reservaci贸n_Vuelos/1. CREACI脫N.sql
 )
   
 CREATE TABLE boleto (

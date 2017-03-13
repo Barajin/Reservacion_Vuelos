@@ -1,4 +1,4 @@
-USE reservaciÃ³n_vuelos;
+USE reservación_vuelos;
 GO
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
@@ -20,13 +20,13 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('COM','Colima','Colima')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('TUL','Tuxtla GutiÃ©rrez','Chiapas')
+   VALUES('TUL','Tuxtla Gutiérrez','Chiapas')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('CHU','Chihuahua','Chihuahua')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('CIA','Ciudad de MÃ©xico','Distrito Federal')
+   VALUES('CIA','Ciudad de México','Distrito Federal')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('DUN','Durango','Durango')
@@ -41,13 +41,13 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('PAU','Pachuca','Hidalgo')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('GUA','Guadalajara','Jalisco')
+   VALUES('GUJ','Guadalajara','Jalisco')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('TOC','Toluca','MÃ©xico')
+   VALUES('TOC','Toluca','México')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('MOL','Morelia','MichoacÃ¡n')
+   VALUES('MOL','Morelia','Michoacán')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('CUN','Cuernavaca','Morelos')
@@ -56,7 +56,7 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('TEC','Tepic','Narayit')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('MOE','Monterrey','Nuevo LeÃ³n')
+   VALUES('MOE','Monterrey','Nuevo León')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('OAC','Oaxaca','Oaxaca')
@@ -65,16 +65,16 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('PUL','Puebla','Puebla')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('QUÃ‰','QuerÃ©taro','QuerÃ©taro')
+   VALUES('QUÉ','Querétaro','Querétaro')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('CHU','Chetumal','Quintana Roo')
+   VALUES('CHT','Chetumal','Quintana Roo')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('SAL','San Luis PotosÃ­','San Luis PotosÃ­')
+   VALUES('SAL','San Luis Potosí','San Luis Potosí')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('CUA','CuliacÃ¡n','Sinaloa')
+   VALUES('CUA','Culiacán','Sinaloa')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('HEO','Hermosillo','Sonora')
@@ -83,7 +83,7 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('VIA','Villahermosa','Tabasco')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('CIA','Ciudad Victoria','Tamaulipas')
+   VALUES('CIV','Ciudad Victoria','Tamaulipas')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('TLC','Tlaxcala','Tlaxcala')
@@ -92,13 +92,13 @@ INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('XAP','Xalapa','Veracruz')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
-   VALUES('MÃ‰D','MÃ©rida','YucatÃ¡n')
+   VALUES('MÉD','Mérida','Yucatán')
 
 INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)
    VALUES('ZAT','Zacatecas','Zacatecas')
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Fernando GÃ¡lvez', 70)
+   VALUES('Fernando Gálvez', 70)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Herondale', 34)
@@ -110,13 +110,13 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Diego Vidriales', 77)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Daniel GonzÃ¡lez', 72)
+   VALUES('Daniel González', 72)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Eduardo Gallardo', 5)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Karen GÃ¡lvez', 36)
+   VALUES('Karen Gálvez', 36)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Eduardo Pulido', 49)
@@ -131,7 +131,7 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Emma Bajo', 66)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Fernando OrtÃ­z', 86)
+   VALUES('Fernando Ortíz', 86)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Emma Gallardo', 89)
@@ -140,7 +140,7 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Vidriales', 33)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Melisse GonzÃ¡lez', 67)
+   VALUES('Melisse González', 67)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Medina', 11)
@@ -152,22 +152,22 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Bajo', 44)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Herondale', 6)
+   VALUES('René Herondale', 6)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Preciado', 41)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Vidriales', 79)
+   VALUES('René Vidriales', 79)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs GonzÃ¡lez', 59)
+   VALUES('Jesús González', 59)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Gallardo', 19)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs GÃ¡lvez', 69)
+   VALUES('Jesús Gálvez', 69)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Pulido', 79)
@@ -182,13 +182,13 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Bajo', 63)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Eduardo OrtÃ­z', 47)
+   VALUES('Eduardo Ortíz', 47)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Karen Gallardo', 50)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Karen GonzÃ¡lez', 7)
+   VALUES('Karen González', 7)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Fernando Medina', 48)
@@ -209,34 +209,34 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Melisse Vidriales', 54)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Pedro GonzÃ¡lez', 21)
+   VALUES('Pedro González', 21)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Melisse Medina', 43)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Pedro GÃ¡lvez', 17)
+   VALUES('Pedro Gálvez', 17)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Pulido', 62)
+   VALUES('René Pulido', 62)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Herondale', 13)
+   VALUES('Jesús Herondale', 13)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Preciado', 21)
+   VALUES('René Preciado', 21)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Bajo', 74)
+   VALUES('Jesús Bajo', 74)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Diego OrtÃ­z', 9)
+   VALUES('Diego Ortíz', 9)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Gallardo', 15)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Diego GÃ¡lvez', 77)
+   VALUES('Diego Gálvez', 77)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Pulido', 40)
@@ -251,7 +251,7 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Eduardo Bajo', 6)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Karen OrtÃ­z', 11)
+   VALUES('Karen Ortíz', 11)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Fernando Preciado', 81)
@@ -260,13 +260,13 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Emma Vidriales', 46)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Fernando GonzÃ¡lez', 30)
+   VALUES('Fernando González', 30)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Emma Medina', 15)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Roberto GÃ¡lvez', 20)
+   VALUES('Roberto Gálvez', 20)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Melisse Pulido', 20)
@@ -278,34 +278,34 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Vidriales', 12)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© OrtÃ­z', 68)
+   VALUES('René Ortíz', 68)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Gallardo', 63)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© GÃ¡lvez', 6)
+   VALUES('René Gálvez', 6)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Pulido', 51)
+   VALUES('Jesús Pulido', 51)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Medina', 9)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Apodaca', 23)
+   VALUES('Jesús Apodaca', 23)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Bajo', 53)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Daniel OrtÃ­z', 70)
+   VALUES('Daniel Ortíz', 70)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Vidriales', 81)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Eduardo GonzÃ¡lez', 18)
+   VALUES('Eduardo González', 18)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Karen Medina', 47)
@@ -326,13 +326,13 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Fernando Vidriales', 70)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Emma OrtÃ­z', 42)
+   VALUES('Emma Ortíz', 42)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Gallardo', 34)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Melisse GÃ¡lvez', 64)
+   VALUES('Melisse Gálvez', 64)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Pulido', 69)
@@ -344,22 +344,22 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Apodaca', 76)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Bajo', 81)
+   VALUES('René Bajo', 81)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Pedro OrtÃ­z', 60)
+   VALUES('Pedro Ortíz', 60)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Gallardo', 49)
+   VALUES('René Gallardo', 49)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Vidriales', 85)
+   VALUES('Jesús Vidriales', 85)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Diego GonzÃ¡lez', 56)
+   VALUES('Diego González', 56)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Medina', 82)
+   VALUES('Jesús Medina', 82)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Apodaca', 83)
@@ -380,7 +380,7 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Roberto Apodaca', 36)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Roberto OrtÃ­z', 38)
+   VALUES('Roberto Ortíz', 38)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Melisse Gallardo', 89)
@@ -389,43 +389,43 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Medina', 11)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Apodaca', 60)
+   VALUES('René Apodaca', 60)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Preciado', 70)
+   VALUES('Jesús Preciado', 70)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Daniel GÃ¡lvez', 76)
+   VALUES('Daniel Gálvez', 76)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Karen Bajo', 52)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Emma GonzÃ¡lez', 11)
+   VALUES('Emma González', 11)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Melisse OrtÃ­z', 48)
+   VALUES('Melisse Ortíz', 48)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© Medina', 57)
+   VALUES('René Medina', 57)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Diego Preciado', 34)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Eduardo GÃ¡lvez', 67)
+   VALUES('Eduardo Gálvez', 67)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Fernando Bajo', 10)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Roberto GonzÃ¡lez', 7)
+   VALUES('Roberto González', 7)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Herondale', 68)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs Gallardo', 49)
+   VALUES('Jesús Gallardo', 49)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Apodaca', 63)
@@ -440,7 +440,7 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Pedro Pulido', 23)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('JesÃºs OrtÃ­z', 24)
+   VALUES('Jesús Ortíz', 24)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Daniel Medina', 82)
@@ -449,372 +449,372 @@ INSERT INTO cliente(nombre, edad)
    VALUES('Karen Preciado', 71)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('Emma GÃ¡lvez', 36)
+   VALUES('Emma Gálvez', 36)
 
 INSERT INTO cliente(nombre, edad)
    VALUES('Melisse Bajo', 7)
 
 INSERT INTO cliente(nombre, edad)
-   VALUES('RenÃ© GonzÃ¡lez', 13)
+   VALUES('René González', 13)
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(60, 'Tierra, Nuevo CuliacÃ¡n #2287')
+   VALUES(60, 'Tierra, Nuevo Culiacán #2287')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(55, 'RÃ­o Acaponeta, Popular #3762')
+   VALUES(55, 'Río Acaponeta, Popular #3762')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(21, 'RÃ­o Aguanaval, Infonavit Humaya #337')
+   VALUES(21, 'Río Aguanaval, Infonavit Humaya #337')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(35, 'RÃ­o Acaponeta, Los Pinos #1812')
+   VALUES(35, 'Río Acaponeta, Los Pinos #1812')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(45, 'RÃ­o Aguanaval, Popular #3287')
+   VALUES(45, 'Río Aguanaval, Popular #3287')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(89, 'RÃ­o Lerma, Infonavit Humaya #4762')
+   VALUES(89, 'Río Lerma, Infonavit Humaya #4762')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(19, 'RÃ­o Aguanaval, Los Pinos #1337')
+   VALUES(19, 'Río Aguanaval, Los Pinos #1337')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(47, 'RÃ­o Lerma, Industrial Bravo #2812')
+   VALUES(47, 'Río Lerma, Industrial Bravo #2812')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(43, 'RÃ­o Suchiate, Las Quintas #4287')
+   VALUES(43, 'Río Suchiate, Las Quintas #4287')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(17, 'RÃ­o Lerma, Guadalupe #862')
+   VALUES(17, 'Río Lerma, Guadalupe #862')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(102, 'RÃ­o Suchiate, Nuevo CuliacÃ¡n #2337')
+   VALUES(102, 'Río Suchiate, Nuevo Culiacán #2337')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(88, 'Av. Guadalupe Victoria, Popular #3812')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(96, 'RÃ­o Suchiate, Infonavit Humaya #387')
+   VALUES(96, 'Río Suchiate, Infonavit Humaya #387')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(26, 'Av. Guadalupe Victoria, Los Pinos #1862')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(103, 'Juan de Dios BÃ¡tiz, Industrial Bravo #3337')
+   VALUES(103, 'Juan de Dios Bátiz, Industrial Bravo #3337')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(39, 'Av. Guadalupe Victoria, Las Quintas #4812')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(84, 'Juan de Dios BÃ¡tiz, Guadalupe #1387')
+   VALUES(84, 'Juan de Dios Bátiz, Guadalupe #1387')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(108, 'Tierra, Nuevo CuliacÃ¡n #2862')
+   VALUES(108, 'Tierra, Nuevo Culiacán #2862')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(61, 'Juan de Dios BÃ¡tiz, Popular #4337')
+   VALUES(61, 'Juan de Dios Bátiz, Popular #4337')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(56, 'Tierra, Infonavit Humaya #911')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(77, 'RÃ­o Acaponeta, Los Pinos #2386')
+   VALUES(77, 'Río Acaponeta, Los Pinos #2386')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(42, 'Tierra, Industrial Bravo #3861')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(4, 'RÃ­o Acaponeta, Las Quintas #436')
+   VALUES(4, 'Río Acaponeta, Las Quintas #436')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(97, 'RÃ­o Aguanaval, Los Pinos #1911')
+   VALUES(97, 'Río Aguanaval, Los Pinos #1911')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(64, 'RÃ­o Acaponeta, Industrial Bravo #3386')
+   VALUES(64, 'Río Acaponeta, Industrial Bravo #3386')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(107, 'RÃ­o Aguanaval, Las Quintas #4861')
+   VALUES(107, 'Río Aguanaval, Las Quintas #4861')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(91, 'RÃ­o Lerma, Guadalupe #1436')
+   VALUES(91, 'Río Lerma, Guadalupe #1436')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(24, 'RÃ­o Aguanaval, Nuevo CuliacÃ¡n #2911')
+   VALUES(24, 'Río Aguanaval, Nuevo Culiacán #2911')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(9, 'RÃ­o Lerma, Popular #4386')
+   VALUES(9, 'Río Lerma, Popular #4386')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(31, 'RÃ­o Aguanaval, Infonavit Humaya #961')
+   VALUES(31, 'Río Aguanaval, Infonavit Humaya #961')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(75, 'RÃ­o Lerma, Los Pinos #2436')
+   VALUES(75, 'Río Lerma, Los Pinos #2436')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(95, 'RÃ­o Suchiate, Industrial Bravo #3911')
+   VALUES(95, 'Río Suchiate, Industrial Bravo #3911')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(63, 'RÃ­o Lerma, Las Quintas #486')
+   VALUES(63, 'Río Lerma, Las Quintas #486')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(25, 'RÃ­o Suchiate, Guadalupe #1961')
+   VALUES(25, 'Río Suchiate, Guadalupe #1961')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(93, 'Av. Guadalupe Victoria, Nuevo CuliacÃ¡n #3436')
+   VALUES(93, 'Av. Guadalupe Victoria, Nuevo Culiacán #3436')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(23, 'RÃ­o Suchiate, Popular #4911')
+   VALUES(23, 'Río Suchiate, Popular #4911')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(52, 'Av. Guadalupe Victoria, Infonavit Humaya #1486')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(10, 'Juan de Dios BÃ¡tiz, Los Pinos #2961')
+   VALUES(10, 'Juan de Dios Bátiz, Los Pinos #2961')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(33, 'Av. Guadalupe Victoria, Industrial Bravo #4436')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(62, 'Juan de Dios BÃ¡tiz, Las Quintas #1011')
+   VALUES(62, 'Juan de Dios Bátiz, Las Quintas #1011')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(78, 'Tierra, Guadalupe #2486')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(81, 'Juan de Dios BÃ¡tiz, Industrial Bravo #3961')
+   VALUES(81, 'Juan de Dios Bátiz, Industrial Bravo #3961')
 
 INSERT INTO club_premier(cveCliente, domicilio)
    VALUES(72, 'Tierra, Las Quintas #536')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(53, 'RÃ­o Acaponeta, Guadalupe #2011')
+   VALUES(53, 'Río Acaponeta, Guadalupe #2011')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(18, 'Tierra, Nuevo CuliacÃ¡n #3485')
+   VALUES(18, 'Tierra, Nuevo Culiacán #3485')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(51, 'RÃ­o Acaponeta, Popular #4960')
+   VALUES(51, 'Río Acaponeta, Popular #4960')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(48, 'RÃ­o Aguanaval, Infonavit Humaya #1535')
+   VALUES(48, 'Río Aguanaval, Infonavit Humaya #1535')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(104, 'RÃ­o Acaponeta, Los Pinos #3010')
+   VALUES(104, 'Río Acaponeta, Los Pinos #3010')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(92, 'RÃ­o Aguanaval, Industrial Bravo #4485')
+   VALUES(92, 'Río Aguanaval, Industrial Bravo #4485')
 
 INSERT INTO club_premier(cveCliente, domicilio)
-   VALUES(38, 'RÃ­o Lerma, Las Quintas #1060')
+   VALUES(38, 'Río Lerma, Las Quintas #1060')
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(118)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(11)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(82)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(6)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(22)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(99)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(111)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(2)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(37)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(14)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(16)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(116)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(20)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(59)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(46)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(58)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(98)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(73)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(113)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(30)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(112)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(110)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(76)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(27)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(80)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(106)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(50)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(69)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
-   VALUES(0)
-
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(5)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(68)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(114)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(32)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(109)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(119)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(13)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(86)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(54)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(36)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(29)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(83)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(40)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(7)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(71)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(117)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(44)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(15)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(74)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(70)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(67)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(49)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(3)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(100)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(105)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(87)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(101)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(41)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(66)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(12)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(85)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(79)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(115)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(94)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(28)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(8)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(57)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(34)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(65)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(90)
+   
+INSERT INTO clienteGenérico(cveCliente)
+   VALUES(120)
 
-INSERT INTO clienteGenÃ©rico(cveCliente)
+INSERT INTO clienteGenérico(cveCliente)
    VALUES(1)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
@@ -839,7 +839,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(48,'MOL','COM',45,3301.99,558.96)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(30,'MÃ‰D','CIA',25,296.86,3021.9)
+   VALUES(30,'MÉD','CIA',25,296.86,3021.9)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(13,'GUA','MOE',45,1590.73,994.21)
@@ -848,10 +848,10 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(35,'TLC','DUN',25,2884.6,3457.34)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(17,'PAU','MÃ‰D',45,4179.48,1430.46)
+   VALUES(17,'PAU','MÉD',45,4179.48,1430.46)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(39,'CIA','QUÃ‰',25,1173.95,3892.59)
+   VALUES(39,'CIA','QUÉ',25,1173.95,3892.59)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(21,'CHP','PAU',45,2468.82,1865.72)
@@ -875,7 +875,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(33,'TUL','PUL',44,1634.65,3172.47)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(15,'QUÃ‰','CHP',24,2928.52,1145.6)
+   VALUES(15,'QUÉ','CHP',24,2928.52,1145.6)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(38,'COM','MEC',44,4222.99,3608.72)
@@ -941,7 +941,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(21,'TUL','CIA',23,1304.71,1447.37)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(43,'QUÃ‰','MOE',43,2598.58,3910.5)
+   VALUES(43,'QUÉ','MOE',43,2598.58,3910.5)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(25,'COM','DUN',23,3892.45,1883.63)
@@ -968,7 +968,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(20,'MOL','CIA',42,4353.75,1163.51)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(42,'MÃ‰D','XAP',22,1347.62,3626.63)
+   VALUES(42,'MÉD','XAP',22,1347.62,3626.63)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(24,'TOC','PUL',42,2642.5,1598.76)
@@ -1019,10 +1019,10 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(35,'OAC','CIA',21,557.98,2621.65)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(17,'CAE','MÃ‰D',41,1851.85,594.78)
+   VALUES(17,'CAE','MÉD',41,1851.85,594.78)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(39,'MOE','QUÃ‰',21,3146.72,3057.9)
+   VALUES(39,'MOE','QUÉ',21,3146.72,3057.9)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(21,'MEC','PAU',41,4440.59,1029.3)
@@ -1034,7 +1034,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(26,'AGS','CUA',41,2729.94,1465.28)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(30,'MÃ‰D','TUL',41,1017.68,1901.53)
+   VALUES(30,'MÉD','TUL',41,1017.68,1901.53)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(12,'GUA','TLC',20,2312.55,4363.66)
@@ -1067,7 +1067,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(10,'SAL','CIA',40,1061.6,4079.8)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(33,'TUL','MÃ‰D',20,2355.47,2052.92)
+   VALUES(33,'TUL','MÉD',20,2355.47,2052.92)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(37,'COM','PAU',20,644.81,2487.17)
@@ -1094,7 +1094,7 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(31,'CUN','GUA',39,1104.52,1767.6)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
-   VALUES(13,'MÃ‰D','MEC',19,2399.99,4230.18)
+   VALUES(13,'MÉD','MEC',19,2399.99,4230.18)
 
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(35,'TOC','SAL',39,3693.86,2203.31)
@@ -1117,604 +1117,604 @@ INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
 INSERT INTO vuelo(numPasajeros, origen, destino, capacidad, costo, millas)
    VALUES(48,'GUA','AGS',39,2859.69,3510.7)
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(1, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(2, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(3, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(4, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(5, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(6, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(7, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(8, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(9, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(10, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(11, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(12, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(13, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(14, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(15, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(16, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(17, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(18, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(19, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(20, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(21, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(22, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(23, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(24, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(25, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(26, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(27, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(28, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(29, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(30, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(31, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(32, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(33, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(34, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(35, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(36, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(37, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(38, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(39, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(40, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(41, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(42, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(43, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(44, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(45, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(46, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(47, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(48, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(49, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(50, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(51, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(52, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(53, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(53, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(54, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(55, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(55, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(56, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(57, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(57, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(58, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(59, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(59, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(60, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(61, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(62, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(62, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(63, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(64, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(64, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(65, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(66, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(66, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(67, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(68, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(68, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(69, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(70, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(71, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(72, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(73, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(74, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(75, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(76, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(77, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(78, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(79, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(80, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(81, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(82, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(83, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(84, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(85, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(86, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(87, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(88, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(89, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(90, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(91, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(92, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(93, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(94, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(95, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(96, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(97, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(98, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(99, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(99, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(100, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(1, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(1, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(2, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(3, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(3, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(4, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(5, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(6, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(7, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(8, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(9, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(10, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(10, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(11, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(12, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(12, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(13, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(14, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(14, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(15, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(16, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(17, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(18, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(19, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(20, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(21, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(22, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(22, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(23, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(24, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(24, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(25, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(26, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(26, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(27, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(28, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(28, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(29, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(30, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(31, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(32, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(33, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(34, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(34, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(35, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(36, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(36, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(37, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(38, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(39, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(40, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(40, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(41, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(42, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(42, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(43, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(44, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(45, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(46, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(47, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(48, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(48, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(49, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(50, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(50, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(51, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(52, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(52, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(53, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(54, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(54, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(55, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(56, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(57, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(58, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(59, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(60, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(61, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(62, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(63, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(64, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(65, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(66, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(67, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(68, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(69, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(70, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(71, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(72, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(73, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(74, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(75, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(76, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(77, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(78, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(79, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(80, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(81, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(81, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(82, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(83, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(83, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(84, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(85, 'Diaria')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(86, 'Lunes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(87, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(87, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(88, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(88, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(89, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(89, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(90, 'SÃ¡bado')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(90, 'Sábado')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(91, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(92, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(93, 'Jueves')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(94, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(95, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(95, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
-   VALUES(96, 'MiÃ©rcoles')
+INSERT INTO días(cveVuelo, díaVuelo)
+   VALUES(96, 'Miércoles')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(97, 'Martes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(98, 'Domingo')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(99, 'Viernes')
 
-INSERT INTO dias(cveVuelo, dÃ­aVuelo)
+INSERT INTO días(cveVuelo, díaVuelo)
    VALUES(100, 'Domingo')
 
 INSERT INTO boleto(cveVuelo, cveCliente)
