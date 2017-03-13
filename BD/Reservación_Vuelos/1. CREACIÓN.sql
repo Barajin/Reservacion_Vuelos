@@ -1,4 +1,3 @@
-
 CREATE DATABASE reservación_vuelos;
 GO
 
@@ -23,7 +22,7 @@ CREATE TABLE vuelo (
 
 CREATE TABLE días (
 	cveVuelo INT FOREIGN KEY REFERENCES vuelo(cveVuelo),
-	díaVuelo VARCHAR(10),
+	díaVuelo VARCHAR(10) CHECK(díaVuelo IN ('Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo','Diaria')),
 	PRIMARY KEY (cveVuelo, díaVuelo)
 )
 
@@ -40,7 +39,7 @@ CREATE TABLE club_premier (
 )
 
 CREATE TABLE clienteGenérico(
-	cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
+  cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
 )
   
 CREATE TABLE boleto (
