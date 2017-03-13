@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatyProject", "KatyProject\KatyProject.csproj", "{41954789-59BA-4399-9713-9610BCF37C12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservación_Vuelos", "KatyProject\Reservación_Vuelos.csproj", "{41954789-59BA-4399-9713-9610BCF37C12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
