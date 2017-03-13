@@ -44,7 +44,10 @@
       <HintPath>..\packages\ConsoleTables.2.1.0\lib\net40\ConsoleTables.dll</HintPath>
     </Reference>
     <Reference Include="ReadHelperLibrary">
-      <HintPath>..\..\..\Projects\ReadHelperLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\ReadHelperLibrary\ReadHelperLibrary\bin\Debug\ReadHelperLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ReadHelperLibrary">
+      <HintPath>..\ReadHelperLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

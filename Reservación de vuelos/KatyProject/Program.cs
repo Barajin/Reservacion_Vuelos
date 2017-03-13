@@ -36,7 +36,7 @@ namespace Reservación_Vuelos {
 				Console.WriteLine("6.- Club Premier.");
 				Console.WriteLine("7.- Boletos vendidos.");
 				Console.WriteLine("8 - Salir.");
-				opc = ReadHelperLibrary.Class1.ReadInt("=> ");
+				opc = ReadHelperLibrary.ReadHelper.ReadInt("=> ");
 				Console.Clear();
 				switch (opc) {
 					case 1:
@@ -81,12 +81,12 @@ namespace Reservación_Vuelos {
 			Console.WriteLine("$$ ALTA DE CLUB PREMIER $$");
 			Console.WriteLine("==========================");
 
-			nombre = ReadHelperLibrary.Class1.ReadString("Nombre del cliente: ");
+			nombre = ReadHelperLibrary.ReadHelper.ReadString("Nombre del cliente: ");
 
 			if (ValidarNombre(nombre))
 				Console.WriteLine("\n>> Ese cliente ya está registrado en Club Premier <<\n");
 			else {
-				domicilio = ReadHelperLibrary.Class1.ReadString("Domicilio: ");
+				domicilio = ReadHelperLibrary.ReadHelper.ReadString("Domicilio: ");
 				newCliente = new ClubPremier(nombre, domicilio, millas);
 				hashClub.Add(hashClub.Count + 1, newCliente);
 				Console.WriteLine("\n>> Cliente añadido al club exitosamente <<\n");
@@ -116,7 +116,7 @@ namespace Reservación_Vuelos {
 			int posicion;
 
 			do {
-				origen = ReadHelperLibrary.Class1.ReadString("Origen: ");
+				origen = ReadHelperLibrary.ReadHelper.ReadString("Clave origen: ");
 				posicion = CityPosition(origen);
 
 				if (posicion == -1) 
@@ -125,7 +125,7 @@ namespace Reservación_Vuelos {
 			} while (posicion == -1);
 
 			do {
-				destino = ReadHelperLibrary.Class1.ReadString("Destino: ");
+				destino = ReadHelperLibrary.ReadHelper.ReadString("Clave destino: ");
 				posicion = CityPosition(destino);
 
 				if (posicion == -1)
@@ -138,16 +138,16 @@ namespace Reservación_Vuelos {
 
 			} while (posicion == -1);
 
-			numPasajeros = ReadHelperLibrary.Class1.ReadInt("Número de pasajeros disponibles en ese vuelo: ");
-			capacidad = ReadHelperLibrary.Class1.ReadDouble("Capacidad del avión: ");
-			costo = ReadHelperLibrary.Class1.ReadDouble("Costo: ");
-			millas = ReadHelperLibrary.Class1.ReadDouble("Millas: ");
+			numPasajeros = ReadHelperLibrary.ReadHelper.ReadInt("Número de pasajeros disponibles en ese vuelo: ");
+			capacidad = ReadHelperLibrary.ReadHelper.ReadDouble("Capacidad del avión: ");
+			costo = ReadHelperLibrary.ReadHelper.ReadDouble("Costo: ");
+			millas = ReadHelperLibrary.ReadHelper.ReadDouble("Millas: ");
 
 			do {
 				Console.WriteLine("\nDías en que se realiza el vuelo: ");
 				Console.WriteLine("1.- Diaria\n2.- Lunes\n3.- Martes\n4.- Miércoles\n5.- Jueves\n6.- Viernes\n7.- Sábado" +
 							  "\n8.- Domingo");
-				int opc = ReadHelperLibrary.Class1.ReadInt("\nOpción: ");
+				int opc = ReadHelperLibrary.ReadHelper.ReadInt("\nOpción: ");
 				dias = DiaVuelo(opc);
 			} while (dias == "");
 
@@ -164,7 +164,7 @@ namespace Reservación_Vuelos {
 				return;
 			}
 
-			string clave = ReadHelperLibrary.Class1.ReadString("Introduzca clave de la ciudad: ");
+			string clave = ReadHelperLibrary.ReadHelper.ReadString("Introduzca clave de la ciudad: ");
 
 			if (ValidarClave(clave)) {
 				Console.WriteLine("\n>> YA EXISTE ESA UNA CIUDAD CON ESA CLAVE <<\n");
@@ -172,8 +172,8 @@ namespace Reservación_Vuelos {
 				return;
 			}
 
-			string nombre = ReadHelperLibrary.Class1.ReadString("Introduzca nombre de la ciudad: ");
-			string estado = ReadHelperLibrary.Class1.ReadString("Introduzca estado de la ciudad: ");
+			string nombre = ReadHelperLibrary.ReadHelper.ReadString("Introduzca nombre de la ciudad: ");
+			string estado = ReadHelperLibrary.ReadHelper.ReadString("Introduzca estado de la ciudad: ");
 			Ciudad City = new Ciudad(clave, nombre, estado);
 			Console.WriteLine("\n>> CIUDAD GUARDADA <<\n");
 			Arreglo[Contador] = City;
@@ -199,13 +199,13 @@ namespace Reservación_Vuelos {
 							
 			Vuelos();
 			
-			claveVuelo = ReadHelperLibrary.Class1.ReadInt("Clave del vuelo: ");
+			claveVuelo = ReadHelperLibrary.ReadHelper.ReadInt("Clave del vuelo: ");
 
 			if (existeVuelo(claveVuelo) == null) {
 				Console.WriteLine("Ese vuelo no está disponible.");
 			} else {
 				
-				opc = ReadHelperLibrary.Class1.ReadIntRango("¿Club premier? 1.- Si , 2.- No : ", 1,2);
+				opc = ReadHelperLibrary.ReadHelper.ReadIntRango("¿Club premier? 1.- Si , 2.- No : ", 1,2);
 		
 				if (opc == 1) {
 
@@ -218,10 +218,10 @@ namespace Reservación_Vuelos {
 			
 					do {
 						ClubPremier();
-						claveClub = ReadHelperLibrary.Class1.ReadInt("Clave del club premier: ");
+						claveClub = ReadHelperLibrary.ReadHelper.ReadInt("Clave del club premier: ");
 					} while (!hashClub.ContainsKey(claveClub));
 					nomPasajero = ((ClubPremier)hashClub[claveClub]).Nombre;
-					edad = ReadHelperLibrary.Class1.ReadInt("Edad del pasajero: ");
+					edad = ReadHelperLibrary.ReadHelper.ReadInt("Edad del pasajero: ");
 
 					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
 					newBoleto.ClaveClubPremier = claveClub;
@@ -232,8 +232,8 @@ namespace Reservación_Vuelos {
 					boletosVendidos.Add(newBoleto);
 					Console.WriteLine("Boleto vendido.");
 				} else {
-					nomPasajero = ReadHelperLibrary.Class1.ReadString("Nombre Pasajero: ");
-					edad = ReadHelperLibrary.Class1.ReadIntRango("Edad del pasajero: ",1,105);
+					nomPasajero = ReadHelperLibrary.ReadHelper.ReadString("Nombre Pasajero: ");
+					edad = ReadHelperLibrary.ReadHelper.ReadIntRango("Edad del pasajero: ",1,105);
 					newBoleto = new Boleto(claveBoleto, nomPasajero, edad, claveVuelo);
 					boletosVendidos.Add(newBoleto);
 					existeVuelo(claveVuelo).pBoletosVendidos = 1;
@@ -248,9 +248,9 @@ namespace Reservación_Vuelos {
 			if (Contador == 0) 
 				Console.WriteLine("No se han ingresado ciudades.");
 			else {
-				var table = new ConsoleTable("Ciudad", "Estado", "Clave");
+				var table = new ConsoleTable("Clave","Ciudad", "Estado");
 				for (int i = 0; i < Contador; i++) {
-					table.AddRow(Arreglo[i].pNombre, Arreglo[i].pEstado, Arreglo[i].pClave);
+					table.AddRow(Arreglo[i].pClave,Arreglo[i].pNombre, Arreglo[i].pEstado);
 				}
 				table.Write(Format.Alternative);
 				Console.WriteLine();
@@ -357,9 +357,9 @@ namespace Reservación_Vuelos {
 			if (Contador == 0)
 				Console.WriteLine("\nNo se han agregado ciudades.\n");
 			else {
-				string Nombre = ReadHelperLibrary.Class1.ReadString("Introduzca nombre de la ciudad: ");
+				string Nombre = ReadHelperLibrary.ReadHelper.ReadString("Introduzca clave de la ciudad: ");
 				for (int i = 0; i < Contador; i++) 
-					if (Arreglo[i].pNombre.CompareTo(Nombre) == 0) {
+					if (Arreglo[i].pClave.CompareTo(Nombre) == 0) {
 						ciudad = Arreglo[i];
 						break;
 					}
@@ -371,7 +371,7 @@ namespace Reservación_Vuelos {
 			int Position = -1;
 
 			for (int i = 0; i < Contador; i++) 
-				if (Arreglo[i].pNombre.CompareTo(Nombre) == 0) {
+				if (Arreglo[i].pClave.CompareTo(Nombre) == 0) {
 					Position = i;
 					break;
 				}
@@ -427,7 +427,7 @@ namespace Reservación_Vuelos {
 			Console.WriteLine("  ¡Los datos se perderan!");
 			Console.WriteLine("1.- Para salir.");
 			Console.WriteLine("2.- Para volver.");
-			opc = ReadHelperLibrary.Class1.ReadInt("=> ");
+			opc = ReadHelperLibrary.ReadHelper.ReadInt("=> ");
 			switch (opc) {
 				case 1:
 					Console.Clear();
@@ -447,6 +447,5 @@ namespace Reservación_Vuelos {
 			Console.WriteLine("\t\t\t─────────────────────────────");
 			Console.ReadLine();
 		}
-
 	}
 }
