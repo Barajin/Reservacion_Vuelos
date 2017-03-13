@@ -1,13 +1,14 @@
-﻿namespace KatyProject {
+﻿namespace Reservación_Vuelos {
 	public class Vuelo {
-		
-		private string Origen, Destino, Dias, claveVuelo;
-		private int Capacidad, BoletosVendidos;
-		private double Costo, Millas;
 
-		public Vuelo (string claveVuelo,string Origen, string Destino, string Dias, int Capacidad, 
+		private string Origen, Destino, Dias;
+		private int BoletosVendidos, claveVuelo, numPasajeros;
+		private double Costo, Millas, Capacidad;
+
+		public Vuelo (int claveVuelo, int numPasajeros, string Origen, string Destino, string Dias, double Capacidad, 
 		              int BoletosVendidos, double Costo, double Millas) {
 			this.claveVuelo = claveVuelo;
+			this.numPasajeros = numPasajeros;
 			this.Origen = Origen;
 			this.Destino = Destino;
 			this.Dias = Dias;
@@ -17,9 +18,14 @@
 			this.Millas = Millas;
 		}
 
-		public string pClaveVuelo { 
+		public int pClaveVuelo { 
 			get { return claveVuelo; }
 			set { claveVuelo = value; }
+		}
+
+		public int pNumPasajeros {
+			get { return numPasajeros; }
+			set { numPasajeros = value; }
 		}
 
 		public string pOrigen {
@@ -37,7 +43,7 @@
 			set { Dias = value; }
 		}
 
-		public int pCapacidad {
+		public double pCapacidad {
 			get { return Capacidad; }
 			set { Capacidad = value; }
 		}
@@ -45,11 +51,10 @@
 		public int pBoletosVendidos {
 			get { return BoletosVendidos; }
 			set {
-				if (BoletosVendidos <= Capacidad)
+				if (BoletosVendidos < numPasajeros)
 					BoletosVendidos += value;
 				else
-					System.Console.WriteLine("Ya no hay espacio en este vuelo.");
-					
+					System.Console.WriteLine("\n>> YA NO HAY ESPACIO EN ESE VUELO <<\n");
 			}
 		}
 

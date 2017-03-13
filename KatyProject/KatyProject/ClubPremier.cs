@@ -1,23 +1,17 @@
 ﻿using System;
-namespace KatyProject {
+namespace Reservación_Vuelos {
 	public class ClubPremier {
 		//clave del club premier, Nombre, Domicilio, Millas acomuladas.
-		private string claveClub;
 		private string nombre;
 		private string domicilio;
 		private double millas;
 
-		public ClubPremier(string claveClub,string nombre, string domicilio, double millas) {
-			this.claveClub = claveClub;
+		public ClubPremier(string nombre, string domicilio, double millas) {
 			this.nombre = nombre;
 			this.domicilio = domicilio;
 			this.millas = millas;
 		}
 
-		public string ClaveClub { 
-			get { return claveClub; }
-			set { claveClub = value; }
-		}
 
 		public string Nombre { 
 			get { return nombre; }

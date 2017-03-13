@@ -1,14 +1,14 @@
 ﻿using System;
-namespace KatyProject {
+namespace Reservación_Vuelos {
 	public class Boleto {
 
 		private string claveBoleto;
 		private string nomPasajero;
 		private int edadPasajero;
-		private string claveVuelo;
-		private string claveClubPremier;
+		private int claveVuelo;
+		private int claveClubPremier;
 
-		public Boleto(string claveBoleto,string nomPasajero,int edadPasajero,string claveVuelo) {
+		public Boleto(string claveBoleto,string nomPasajero,int edadPasajero, int claveVuelo) {
 			this.claveBoleto = claveBoleto;
 			this.nomPasajero = nomPasajero;
 			this.edadPasajero = edadPasajero;
@@ -30,12 +30,12 @@ namespace KatyProject {
 			set { edadPasajero = value; }
 		}
 
-		public string ClaveVuelo { 
+		public int ClaveVuelo { 
 			get { return claveVuelo; }
 			set { claveVuelo = value; }
 		}
 
-		public string ClaveClubPremier { 
+		public int ClaveClubPremier { 
 			get { return claveClubPremier; }
 			set { claveClubPremier = value; }
 		}

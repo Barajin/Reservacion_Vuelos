@@ -21,6 +21,6 @@ Con las necesidades de información de la empresa diseñe:
   - El diagrama E-R ( a mano, digitalizado)
   - El diagrama E-R ( en Word o herramienta)
   - El esquema para MySQL o SQLServer (el script que cree las tablas).
-  - Un script que llene las tablas con datos muestra:
-      Los catálogos  deben tener al menos 10 filas 
-      Al menos 100 filas en las tablas de operación
+  - Un script que llene las tablas con datos muestra:<br>
+       Los catálogos  deben tener al menos 10 filas <br>
+       Al menos 100 filas en las tablas de operación

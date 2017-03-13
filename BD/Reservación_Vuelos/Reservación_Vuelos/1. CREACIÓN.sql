@@ -1,8 +1,7 @@
-
-CREATE DATABASE reservaciÛn_vuelos;
+CREATE DATABASE reservaci√≥n_vuelos;
 GO
 
-USE reservaciÛn_vuelos;
+USE reservaci√≥n_vuelos;
 GO
 
 CREATE TABLE ciudad (
@@ -21,6 +20,12 @@ CREATE TABLE vuelo (
   millas DECIMAL(10,3) NOT NULL CHECK(millas>0),
 )
 
+CREATE TABLE d√≠as (
+	cveVuelo INT FOREIGN KEY REFERENCES vuelo(cveVuelo),
+	d√≠aVuelo VARCHAR(10) CHECK(d√≠aVuelo IN ('Lunes','Martes','Mi√©rcoles','Jueves','Viernes','S√°bado','Domingo','Diaria')),
+	PRIMARY KEY (cveVuelo, d√≠aVuelo)
+)
+
 CREATE TABLE cliente (
   cveCliente INT IDENTITY(1,1) PRIMARY KEY,
   nombre VARCHAR(50) NOT NULL,
@@ -33,7 +38,7 @@ CREATE TABLE club_premier (
   domicilio VARCHAR(60) NOT NULL
 )
 
-CREATE TABLE clienteGenÈrico(
+CREATE TABLE clienteGen√©rico(
 	cveCliente INT PRIMARY KEY FOREIGN KEY REFERENCES cliente(cveCliente)
 )
   
@@ -42,29 +47,3 @@ CREATE TABLE boleto (
   cveVuelo INT FOREIGN KEY REFERENCES vuelo(cveVuelo),
   cveCliente INT FOREIGN KEY REFERENCES cliente(cveCliente)
 )
-
-INSERT INTO ciudad (cveCiudad, nombreCiudad, estado)
-	VALUES ('CLN', 'Culiac·n', 'Sinaloa'),
-	('MZN', 'Mazatl·n', 'Sinaloa')
-
-SELECT * FROM ciudad;
-
-INSERT INTO vuelo (numPasajeros, origen, destino, capacidad, costo, millas)
-	VALUES(30,'CLN','MZN',14,500,1400)
-
-SELECT * FROM vuelo;
-
-INSERT INTO cliente (nombre, edad)
-	VALUES ('Manuel Bernal', 19)
-
-SELECT * FROM cliente;
-
-INSERT INTO club_premier (cveCliente, domicilio)
-	VALUES (1, 'Av Guadalupe Victoria')
-
-SELECT * FROM club_premier;
-
-INSERT INTO boleto (cveVuelo, cveCliente)
-	VALUES (1,1)
-
-SELECT * FROM boleto;

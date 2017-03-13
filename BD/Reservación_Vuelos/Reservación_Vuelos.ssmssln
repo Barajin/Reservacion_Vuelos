@@ -3,14 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # SQL Server Management Studio Solution File, Format Version 13.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Reservación_Vuelos", "Reservación_Vuelos\Reservación_Vuelos.ssmssqlproj", "{A0E51669-F2FC-47D1-95B0-7A0D3326CB78}"
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Reservación_Vuelos", "Reservación_Vuelos\Reservación_Vuelos.ssmssqlproj", "{5128E38D-AD96-4EDE-A7D5-FDD6410F18C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0E51669-F2FC-47D1-95B0-7A0D3326CB78}.Default|Default.ActiveCfg = Default
+		{5128E38D-AD96-4EDE-A7D5-FDD6410F18C3}.Default|Default.ActiveCfg = Default
+		{677F97DC-4D99-4275-8702-02B37E85983C}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
