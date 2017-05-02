@@ -1,0 +1,463 @@
+USE reservación_vuelos;
+GO
+
+SELECT * FROM boleto;
+SELECT * FROM ciudad;
+SELECT * FROM cliente;
+SELECT * FROM clienteGenérico;
+SELECT * FROM club_premier;
+SELECT * FROM días;
+SELECT * FROM vuelo;
+
+1-- Nombre de todos los vuelos con capacidad mayor a 20
+SELECT * FROM vuelo WHERE capacidad >20;
+
+2-- Vuelos donde la ciudad de origen sea Campeche
+SELECT * FROM vuelo WHERE origen = 'CAE';
+
+3-- Vuelos donde las millas sean menor a 1000
+SELECT * FROM vuelo WHERE millas <1000;
+
+4-- Vuelos con más de 20 pasajeros
+SELECT * FROM vuelo WHERE numPasajeros >20;
+
+5-- Vuelos con destino Ciudad de México o Saltillo
+SELECT * FROM vuelo WHERE destino = 'CIA' OR destino = 'SAL';
+
+6-- Vuelos desde Hermosillo a Mérida
+SELECT * FROM vuelo WHERE origen = 'HEO' AND destino = 'MÉD';
+
+7-- Vuelos con capacidad mayor a 40
+SELECT * FROM vuelo WHERE capacidad > 40;
+
+8-- Ciudades que empiecen con C
+SELECT * FROM ciudad WHERE nombreCiudad LIKE 'C%';
+
+9-- Ciudades que empiecen con A
+SELECT * FROM ciudad WHERE nombreCiudad LIKE 'A%';
+
+10-- Ciudades que terminen con A
+SELECT * FROM ciudad WHERE nombreCiudad LIKE '%A';
+
+11-- Vuelos que cuesten menos de mil pesos
+SELECT * FROM vuelo WHERE costo < 1000;
+
+12-- Nombre, edad y direccion de todos los clientes de club premier ordenados por edad
+SELECT nombre, edad, domicilio FROM cliente c JOIN club_premier cp ON c.cveCliente = cp.cveCliente ORDER BY edad;
+
+13-- Nombre, edad, direccion y ciudad de origen de todos los clientes de club premier que han comprado vuelos
+SELECT nombre, edad, domicilio, v.cveVuelo AS 'Vuelo', nombreCiudad AS 'Ciudad' FROM cliente c 
+	JOIN club_premier cp ON c.cveCliente = cp.cveCliente 
+	JOIN boleto b ON b.cveCliente = cp.cveCliente 
+	JOIN vuelo v ON b.cveVuelo = v.cveVuelo 
+	JOIN ciudad ci ON ci.cveCiudad = v.origen;
+
+14-- Todos los boletos comprados por los clientes genéricos
+SELECT c.cveCliente, v.cveVuelo, origen, destino FROM boleto b 
+	JOIN clienteGenérico c ON b.cveCliente = c.cveCliente
+	JOIN vuelo v ON b.cveVuelo = v.cveVuelo;
+
+15-- Vuelos que salgan los miércoles
+SELECT d.cveVuelo, origen, destino FROM vuelo v 
+JOIN días d ON v.cveVuelo = d.cveVuelo WHERE d.díaVuelo = 'Miércoles';
+
+16-- Nombre de todas las ciudades de las que hay vuelos y número de vuelos
+SELECT nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.origen = c.cveCiudad GROUP BY nombreCiudad;
+
+17-- Nombre de todas las ciudades a las que hay vuelos y número de vuelos
+SELECT nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.destino = c.cveCiudad GROUP BY nombreCiudad;
+
+18-- Ciudades a las que todavía no hay vuelos
+SELECT nombreCiudad FROM ciudad c WHERE cveCiudad NOT IN 
+(SELECT nombreCiudad FROM vuelo v JOIN ciudad c ON v.destino = c.cveCiudad GROUP BY nombreCiudad);
+
+19-- Ciudades desde las que todavía no hay vuelos
+SELECT nombreCiudad FROM ciudad c WHERE cveCiudad NOT IN 
+(SELECT nombreCiudad FROM vuelo v JOIN ciudad c ON v.origen = c.cveCiudad GROUP BY nombreCiudad);
+
+20-- Número de vuelos a Ciudad de México
+SELECT nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.destino = c.cveCiudad  WHERE nombreCiudad = 'Ciudad de México' GROUP BY nombreCiudad;
+
+21-- Número de vuelos desde hermosillo
+SELECT nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.origen = c.cveCiudad  WHERE nombreCiudad = 'Hermosillo' GROUP BY nombreCiudad;
+
+22-- Ciudad con menos vuelos
+SELECT TOP 1 nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.destino = c.cveCiudad GROUP BY nombreCiudad ORDER BY '# vuelos';
+
+23-- Ciudad con más vuelos
+SELECT TOP 1 nombreCiudad, COUNT(nombreCiudad) AS '# vuelos' FROM vuelo v 
+	JOIN ciudad c ON v.destino = c.cveCiudad GROUP BY nombreCiudad ORDER BY '# vuelos' DESC;
+
+24-- Clientes menores de 15 que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<15 AND vuelo.destino='CLN'
+ORDER BY edad
+
+25-- Clientes menores de 3 años
+SELECT *
+FROM cliente
+WHERE edad<3
+
+26-- Clientes mayores de 7 años
+SELECT *
+FROM cliente
+WHERE edad>7
+
+27-- Clientes que son Club Premier
+SELECT c.nombre, cp.cveClubPremier
+FROM cliente c JOIN club_premier cp ON c.cveCliente = cp.cveCliente
+ORDER BY nombre;
+
+28-- Clientes que son Club Premier Y van a Culiacán 
+/*SELECT cliente.nombre, vuelo.destino, club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier cp ON cp.cveCliente =  WHERE ='CLN'
+ORDER BY nombre*/
+
+29-- Clientes menores de 14 que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<14 AND vuelo.destino='CLN'
+ORDER BY nombre
+
+30-- Clientes mayores de edad que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad>18 AND vuelo.destino='CLN'
+ORDER BY nombre
+
+31-- Clientes que se llaman Karen
+SELECT cliente.nombre
+FROM cliente
+WHERE nombre='Karen'
+
+32-- Clientes que se llaman Karen y van a Culiacán
+SELECT cliente.nombre,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.nombre='Karen' AND vuelo.destino='CLN'
+
+33-- Clientes que se llaman Diego y van a Guadalajara
+SELECT cliente.nombre,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.nombre='Diego' AND vuelo.destino='GDL'
+
+34-- Clientes que se llaman Diego y son mayores de edad
+SELECT cliente.nombre, cliente.edad
+FROM cliente
+WHERE nombre='Diego' AND edad>18
+
+35-- Clientes que se llaman Karen y son mayores de edad
+SELECT cliente.nombre, cliente.edad
+FROM cliente
+WHERE nombre='Karen' AND edad>18
+
+36-- Clientes que son Club Premier Y se llaman Karen 
+SELECT cliente.nombre,club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON nombre='Karen'
+
+37-- Todos los pasajeros que son menores de edad
+SELECT *
+FROM cliente 
+WHERE edad<18
+ORDER BY nombre
+
+38-- Clientes que son Club Premier Y menores de edad 
+SELECT cliente.edad,club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON edad<18
+
+39-- Clientes que son Club Premier Y van a Ciudad de Mexico
+/*SELECT cliente.nombre, vuelo.destino, club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON vuelo='CDMX'
+ORDER BY nombre*/
+
+40-- Clientes menores de 17 que van a Sonora
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<17 AND vuelo.destino='SON'
+ORDER BY nombre
+
+41-- Clientes que son Club Premier y viajan en Lunes
+/*SELECT cliente.nombre, club_premier.cveClubPremier, días.díaVuelo
+FROM cliente
+INNER JOIN club_premier ON díaVuelo ='Lunes'
+ORDER BY nombre */
+
+42-- Clientes que son Club Premier, viajan en Domingo y se llaman Karen
+/*SELECT cliente.nombre, club_premier.cveClubPremier, días.díaVuelo
+FROM cliente
+INNER JOIN club_premier ON díaVuelo ='Domingo' AND nombre='Karen'
+ORDER BY cveClubPremier*/
+
+43-- Clientes que son menores de edad y viajan en Miercoles
+SELECT cliente.nombre,cliente.edad, días.díaVuelo
+FROM cliente
+INNER JOIN días ON nombre='Karen' AND díaVuelo ='Miercoles'
+ORDER BY nombre 
+
+
+44 /*Vuelos completamente llenos*/
+SELECT origen,destino,capacidad,numPasajeros
+FROM vuelo
+WHERE capacidad = numPasajeros
+
+45/*Vuelos en donde las millas son menores a 1000*/
+SELECT cveVuelo,destino
+FROM vuelo
+WHERE millas<1000
+
+46/*Vuelos entre 500 y 1000 pesos*/
+SELECT cveVuelo,origen,destino,costo
+FROM vuelo
+WHERE (costo BETWEEN 500 and 1000)
+ORDER BY costo
+
+47/*Clientes que van a Culiacan*/
+SELECT cliente.nombre,ciudad.nombreCiudad
+from cliente
+INNER JOIN ciudad ON ciudad.nombreCiudad='Culiacán'
+
+48/*Nombre de los clientes que saldrán el día viernes*/
+SELECT cliente.nombre,días.díaVuelo
+FROM cliente
+INNER JOIN días ON díaVuelo='Viernes'
+
+/* 49 vuelos que tienen clientes con edad mayor de 40 años*/
+SELECT cliente.nombre,vuelo.cveVuelo,cliente.edad
+FROM cliente
+INNER JOIN vuelo ON cliente.edad>40
+ORDER BY edad
+
+/* 50 Vuelos que no están llenos*/
+SELECT cveVuelo,numPasajeros,capacidad
+FROM vuelo
+WHERE numPasajeros<capacidad
+ORDER BY numPasajeros
+
+/* 51 Clientes premier cuyo destino es su ciudad de origen*/
+SELECT club_premier.cveCliente,vuelo.destino
+FROM club_premier
+INNER JOIN vuelo ON vuelo.destino=club_premier.domicilio
+/* 52 Domicilios de los primeros 5 clientes premier*/
+SELECT domicilio
+FROM club_premier
+WHERE cveClubPremier<=5
+
+/* 53 Vuelos en donde las millas son mayores de 1000*/
+SELECT cveVuelo,destino
+FROM vuelo
+WHERE millas>1000
+
+/* 54 Vuelos donde el número de pasajeros sea mayor a 30*/
+SELECT cveVuelo, destino,origen,numPasajeros
+FROM vuelo
+WHERE numPasajeros>30
+ORDER BY numPasajeros
+
+/* 55Clientes menores de edad*/
+SELECT nombre,edad
+FROM cliente
+WHERE edad<18
+
+/* 56Clientes menores de edad que van a guadalajra*/
+SELECT cliente.nombre,cliente.edad,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<18 AND vuelo.destino='GUA'
+ORDER BY cliente.edad
+
+/* 57 Clientes mayores de edad que van a guadalajra*/
+SELECT cliente.nombre,cliente.edad,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad>=18 AND vuelo.destino='GUA'
+ORDER BY cliente.edad
+
+/* 58 Clientes mayores de 25 años que son premier*/
+SELECT cliente.nombre,cliente.edad,club_premier.cveClubPremier
+FROM cliente
+INNER JOIN club_premier ON cliente.edad >25 
+ORDER BY edad
+
+/* 59 Clientes menores de 18 que son club premier*/
+SELECT cliente.nombre,cliente.edad,club_premier.cveClubPremier
+FROM cliente
+INNER JOIN club_premier ON cliente.edad<18
+ORDER BY edad
+
+/* 60 Todos los clientes club premier que se llamen Eduardo y tengan más de 4 años*/
+SELECT cliente.nombre,cliente.edad,club_premier.cveClubPremier
+FROM cliente
+INNER JOIN club_premier ON cliente.edad>4 AND cliente.nombre LIKE '%Eduardo'
+ORDER BY cliente.edad
+
+/* 61 Todos los clientes que su apellido empiece con E y sean premier*/
+SELECT cliente.nombre, club_premier.cveClubPremier
+FROM cliente
+INNER JOIN club_premier ON cliente.cveCliente = club_premier.cveCliente WHERE cliente.nombre LIKE 'E%'
+
+/* 62 Clientes que pertenecen al club premier, tienen masd de 19 años y su Nombre comienza con E*/
+SELECT cliente.nombre,club_premier.cveClubPremier,cliente.edad
+FROM cliente
+INNER JOIN club_premier ON cliente.edad>19 AND cliente.nombre LIKE 'E%'
+
+/* 63 Nombres cuyo destino comience con la letra C*/
+SELECT destino
+FROM vuelo
+WHERE destino LIKE'C%'
+/**/
+
+
+---- CHECAR: ----
+
+1.-Clientes menores de 15 que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<15 AND vuelo.destino='CLN'
+ORDER BY edad
+
+2.- Clientes menores de 3 años
+SELECT *
+FROM cliente
+WHERE edad<3
+
+3.- Clientes mayores de 7 años
+SELECT *
+FROM cliente
+WHERE edad>7
+
+4.- Clientes que son Club Premier
+SELECT cliente.nombre, club_premier.cveClubPremier
+FROM cliente
+ORDER BY nombre
+
+5.- Clientes que son Club Premier Y van a Culiacán 
+SELECT cliente.nombre, vuelo.destino, club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON vuelo='CLN'
+ORDER BY nombre
+
+6.-Clientes menores de 14 que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<14 AND vuelo.destino='CLN'
+ORDER BY nombre
+
+7.-Clientes mayores de edad que van a Culiacán
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad>18 AND vuelo.destino='CLN'
+ORDER BY nombre
+
+8.-Clientes que se llaman Karen
+SELECT cliente.nombre
+FROM cliente
+WHERE nombre='Karen'
+
+9.-Clientes que se llaman Karen y van a Culiacán
+SELECT cliente.nombre,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.nombre='Karen' AND vuelo.destino='CLN'
+
+10.-Clientes que se llaman Diego y van a Guadalajara
+SELECT cliente.nombre,vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.nombre='Diego' AND vuelo.destino='GDL'
+
+11.-Clientes que se llaman Diego y son mayores de edad
+SELECT cliente.nombre, cliente.edad
+FROM cliente
+WHERE nombre='Diego' AND edad>18
+
+12.-Clientes que se llaman Karen y son mayores de edad
+SELECT cliente.nombre, cliente.edad
+FROM cliente
+WHERE nombre='Karen' AND edad>18
+
+13.- Clientes que son Club Premier Y se llaman Karen 
+SELECT cliente.nombre,club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON nombre='Karen'
+
+14.-Todos los clientos que son menores de edad
+SELECT *
+FROM cliente 
+WHERE edad<18
+ORDER BY nombre
+
+15.- Clientes que son Club Premier Y menores de edad 
+SELECT cliente.edad,club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON edad<18
+
+16.- Clientes que son Club Premier Y van a Ciudad de Mexico 
+SELECT cliente.nombre, vuelo.destino, club_premier.cveClubPremier
+FROM cliente 
+INNER JOIN club_premier ON vuelo='CDMX'
+ORDER BY nombre
+
+17.-Clientes menores de 17 que van a Sonora
+SELECT cliente.nombre, cliente.edad, vuelo.destino
+FROM cliente
+INNER JOIN vuelo ON cliente.edad<17 AND vuelo.destino='SON'
+ORDER BY nombre
+
+18.- Clientes que son Club Premier y viajan en Lunes
+SELECT cliente.nombre, club_premier.cveClubPremier, dias.diaVuelo
+FROM cliente
+INNER JOIN club_premier ON diaVuelo ='Lunes'
+ORDER BY nombre 
+
+19.- Clientes que son Club Premier, viajan en Domingo y se llaman Karen
+SELECT cliente.nombre, club_premier.cveClubPremier, dias.diaVuelo
+FROM cliente
+INNER JOIN club_premier ON diaVuelo ='diaVuelo' AND nombre='Karen'
+ORDER BY cveClubPremier
+
+20.- Clientes que son menores de edad y viajan en Miercoles
+SELECT cliente.nombre,cliente.edad, dias.diaVuelo
+FROM cliente
+INNER JOIN dias ON nombre='Karen' AND diaVuelo ='Miercoles'
+ORDER BY nombre 
+
+21.- Clientes que viajen más 500 millas
+SELECT cliente.nombre,vuelo.millas
+FROM cliente
+WHERE millas>500
+ORDER BY nombre 
+
+22.- Clientes que viajen más 1000 millas y sean mayores de edad
+SELECT cliente.nombre, cliente.edad ,vuelo.millas
+FROM cliente
+INNER JOIN vuelo ON edad>18 AND vuelo.millas>1000
+ORDER BY nombre 
+
+23.- Clientes que viajen más 700 millas y se llamen Karen
+SELECT cliente.nombre,vuelo.millas
+FROM cliente
+INNER JOIN vuelo ON nombre='Karen' AND vuelo.millas>700
+ORDER BY millas
+
+24.- Clientes que viajen más 1000 millas y sean club premier
+SELECT cliente.nombre,club_premier.cveClubPremier ,vuelo.millas
+FROM cliente
+INNER JOIN club_premier ON club_premier.cveClubPremier AND vuelo.millas>1000
+ORDER BY nombre
+
+25.- Clientes que viajen más 1000 millas y sean club premier
+SELECT cliente.nombre,club_premier.cveClubPremier ,vuelo.millas
+FROM cliente
+INNER JOIN club_premier ON club_premier.cveClubPremier AND vuelo.millas>1000
+ORDER BY nombre
+
+26.- Clientes que viajen más 1000 millas y sean club premier
+SELECT cliente.nombre,club_premier.cveClubPremier ,vuelo.millas
+FROM cliente
+INNER JOIN club_premier ON club_premier.cveClubPremier AND vuelo.millas>1000
+ORDER BY nombre
