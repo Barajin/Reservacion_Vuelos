@@ -1,0 +1,35 @@
+  private void cambiarMillas() {
+            String str = "SELECT o.nombreCiudad, d.nombreCiudad FROM vuelo v INNER JOIN ciudad o ON o.cveCiudad = v.origen INNER JOIN ciudad d ON d.cveCiudad = v.destino;";
+            SqlDataReader lector = UsoDB.Consulta(str,conn);
+            ArrayList arrayOrigen = new ArrayList();
+            ArrayList arrayDestino = new ArrayList();
+            if (lector.HasRows)
+                while (lector.Read()) {
+                    arrayOrigen.Add(lector.GetValue(0).ToString());
+                    arrayDestino.Add(lector.GetValue(1).ToString());
+
+                }
+
+
+            lector.Close();
+
+            for (int i = 0; i < 100; i++) {
+                string origen = arrayOrigen[i].ToString();
+                string destino = arrayDestino[i].ToString();
+                Double millas = convertirMillas(getDistance(origen, destino));
+
+                string strComando = "UPDATE vuelo SET millas = @millas WHERE cveVuelo = @clave";
+                SqlCommand cmd = new SqlCommand(strComando,conn);
+                cmd.Parameters.AddWithValue("@millas", millas);
+                cmd.Parameters.AddWithValue("@clave", i+1);
+
+                try {
+                    cmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+
+            MessageBox.Show("listo",arrayDestino[43].ToString(),MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+        }

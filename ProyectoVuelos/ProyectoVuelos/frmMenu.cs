@@ -8,25 +8,25 @@ using LibreriaBD;
 namespace ProyectoVuelos {
 	public partial class frmMenu : Form {
 
-		string[] pictures = { "b1.png", "b2.png","b3.png" };
-		int i = 0;
-		int contador = 0;
-		const string strCon = "Data Source=KARENGGV\\SQLEXPRESS;Initial Catalog=reservación_vuelos;Integrated Security=True";
+        const string strCon = "Data Source=KARENGGV-PC\\KARENGGV;Initial Catalog = reservación_vuelos; Integrated Security = True";
+        public SqlConnection conn = UsoDB.ConectaBD(strCon);
 
-		private Ciudad[] arrayCiudades = new Ciudad[100];
-		private Hashtable hashClub = new Hashtable();
-		private ArrayList arrayVuelos = new ArrayList();
-		private ArrayList arrayBoletos = new ArrayList();
+        string[] pictures = { "b1.png", "b2.png","b3.png" };
+		int i = 0;
 
 		public frmMenu() {
 			InitializeComponent();
-		}
 
-		private void salirToolStripMenuItem_Click(object sender,EventArgs e) {
-			DialogResult d = MessageBox.Show("¿Está seguro de salir?","SALIR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (conn == null)
+                return;
+        }
 
-			if(DialogResult.Yes == d)
-				Application.Exit();
+        private void salirToolStripMenuItem_Click(object sender,EventArgs e) {
+            DialogResult d = MessageBox.Show("¿Está seguro de salir?","SALIR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+             if (DialogResult.Yes == d) {
+                conn.Close();
+                Application.Exit();
+             }
 
 		}
 
@@ -53,16 +53,13 @@ namespace ProyectoVuelos {
 
 			int cont = 0;
 
-			foreach (Vuelo v in arrayVuelos)
-				if (v.pBoletosVendidos < v.pNumPasajeros)
-					cont++;
 
 		/*	if (checarCapacidad("vuelo WHERE ()") == 0) {
 				MessageBox.Show("YA NO HAY VUELOS CON CAPACIDAD.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 				return;
 			}
 			*/
-			frmAltaVuelo fV = new frmAltaVuelo(arrayCiudades, arrayVuelos, contador);
+			frmAltaVuelo fV = new frmAltaVuelo();
 			fV.ShowDialog();
 		}
 
@@ -74,7 +71,7 @@ namespace ProyectoVuelos {
 			}
 
 
-			frmConsultaVuelo fV = new frmConsultaVuelo(arrayVuelos);
+			frmConsultaVuelo fV = new frmConsultaVuelo();
 			fV.ShowDialog();
 		}
 
@@ -86,7 +83,7 @@ namespace ProyectoVuelos {
 
 			// o no hay vuelos con capacidad
 
-			frmCompraBoleto fB = new frmCompraBoleto(arrayVuelos, arrayBoletos, hashClub);
+			frmCompraBoleto fB = new frmCompraBoleto();
 			fB.ShowDialog();
 		}
 
@@ -97,7 +94,7 @@ namespace ProyectoVuelos {
 				return;
 			}
 
-			frmConsultaBoleto fB = new frmConsultaBoleto(arrayBoletos);
+			frmConsultaBoleto fB = new frmConsultaBoleto();
 			fB.ShowDialog();
 		}
 
@@ -125,9 +122,12 @@ namespace ProyectoVuelos {
 
 		private void frmMenu_Load(object sender,EventArgs e) {
 			pictureBoxMenu.Image = Image.FromFile("images/" + pictures[0]);
-		}
+ 
 
-		private void toolStripButton1_Click(object sender,EventArgs e) {
+        }
+
+
+        private void toolStripButton1_Click(object sender,EventArgs e) {
 			timerMenu.Enabled = false;
 			i++;
 			if (pictures.Length == i)
@@ -171,7 +171,7 @@ namespace ProyectoVuelos {
 				MessageBox.Show("AÚN SE HAN VENDIDO BOLETOS.","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
 				return;
 			}
-			frmConsultaBoleto fB = new frmConsultaBoleto(arrayBoletos);
+			frmConsultaBoleto fB = new frmConsultaBoleto();
 			fB.ShowDialog();
 		}
 
@@ -182,11 +182,7 @@ namespace ProyectoVuelos {
 
 		private int checarRegistros (string tabla) {
 			int r = 0;
-			SqlConnection conn = UsoDB.ConectaBD(strCon);
-
-			if (conn == null)
-				return -1;
-
+	
 			string strComando = "SELECT COUNT(*) FROM " + tabla + ";";
 
 			SqlDataReader lector = UsoDB.Consulta(strComando,conn);

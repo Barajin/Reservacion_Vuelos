@@ -5,17 +5,15 @@ using System.Data.SqlClient;
 
 namespace ProyectoVuelos {
 	public partial class frmConsultaCiudad : Form {
-		const string strCon = "Data Source=KARENGGV\\SQLEXPRESS;Initial Catalog=reservación_vuelos;Integrated Security=True";
 
+        SqlConnection conn;
 		public frmConsultaCiudad() {
 			InitializeComponent();
-		}
+            frmMenu f = new frmMenu();
+            this.conn = f.conn;
+        }
 
 		private void frmConsultaCiudad_Load(object sender,EventArgs e) {
-			SqlConnection conn = UsoDB.ConectaBD(strCon);
-
-			if (conn == null)
-				return;
 
 			string strComando = "SELECT cveCiudad, nombreCiudad, estado FROM ciudad;";
 
@@ -32,7 +30,9 @@ namespace ProyectoVuelos {
 				}
 			}
 
-			conn.Close();
+          
+
+         
 
 			
 				

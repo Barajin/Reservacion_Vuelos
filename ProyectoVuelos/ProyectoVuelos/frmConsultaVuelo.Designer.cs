@@ -53,7 +53,6 @@
 			this.dgvVuelos.Name = "dgvVuelos";
 			this.dgvVuelos.Size = new System.Drawing.Size(843, 312);
 			this.dgvVuelos.TabIndex = 0;
-			this.dgvVuelos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVuelos_CellContentClick);
 			// 
 			// cveVuelo
 			// 

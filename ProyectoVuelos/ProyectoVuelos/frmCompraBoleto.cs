@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using LibreriaBD;
 
 namespace ProyectoVuelos {
 	public partial class frmCompraBoleto : Form {
@@ -12,12 +14,13 @@ namespace ProyectoVuelos {
 		private Random random = new Random();
 		string claveBoleto;
 
-		public frmCompraBoleto(ArrayList arrayVuelos, ArrayList arrayBoletos, Hashtable hashClub) {
+        SqlConnection conn;
+
+		public frmCompraBoleto() {
 			InitializeComponent();
-			this.arrayBoletos = arrayBoletos;
-			this.arrayVuelos = arrayVuelos;
-			this.hashClub = hashClub;
-		}
+            frmMenu f = new frmMenu();
+            this.conn = f.conn;
+        }
 
 		private void btnComprar_Click(object sender,EventArgs e) {
 			int claveVuelo, claveClub;
@@ -128,7 +131,7 @@ namespace ProyectoVuelos {
 		}
 
 		private void Limpiar() {
-			txtCosto.Text = "";
+			lblCostoTotal.Text = "";
 			txtDestino.Text = "";
 			txtEdad.Text = "";
 			txtNombrePasajero.Text = "";
@@ -227,7 +230,7 @@ namespace ProyectoVuelos {
 				if (val.pClaveVuelo == claveVuelo) {
 					txtOrigen.Text = val.pOrigen;
 					txtDestino.Text = val.pDestino;
-					txtCosto.Text = val.pCosto.ToString();
+					lblCostoTotal.Text = "$" + val.pCosto.ToString();
 					break;
 				}
 		}
@@ -254,5 +257,12 @@ namespace ProyectoVuelos {
 			else
 				errorPNombre.SetError(txtNombrePasajero ,"");
 		}
-	}
+
+        private void chkBoletoExtra_CheckedChanged(object sender,EventArgs e) {
+            if(chkBoletoExtra.Checked) 
+                panelBoletoExtra.Visible = true;
+            else 
+                panelBoletoExtra.Visible = false;
+        }
+    }
 }

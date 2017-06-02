@@ -128,11 +128,48 @@
   <data name="menuSPrincipal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 9.75pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="altaDeCiudadToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+A</value>
+  </data>
+  <data name="altaDeCiudadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="altaDeCiudadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="consultaDeCiudadesToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F</value>
+  </data>
+  <data name="consultaDeCiudadesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="consultaDeCiudadesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
   <data name="ciudadesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 46</value>
   </data>
   <data name="ciudadesToolStripMenuItem.Text" xml:space="preserve">
     <value>Ciudades</value>
+  </data>
+  <data name="altaDeVuelosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="altaDeVuelosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="altaDeVuelosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="consultaDeVuelosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+U</value>
+  </data>
+  <data name="consultaDeVuelosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="consultaDeVuelosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consulta</value>
   </data>
   <data name="vuelosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 46</value>
@@ -140,7 +177,24 @@
   <data name="vuelosToolStripMenuItem.Text" xml:space="preserve">
     <value>Vuelos</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="comprarBoletosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+B</value>
+  </data>
+  <data name="comprarBoletosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="comprarBoletosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Comprar</value>
+  </data>
+  <data name="consultaToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F2</value>
+  </data>
+  <data name="consultaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="consultaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
   <data name="boletosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+B</value>
   </data>
@@ -149,6 +203,24 @@
   </data>
   <data name="boletosToolStripMenuItem.Text" xml:space="preserve">
     <value>Boletos</value>
+  </data>
+  <data name="altaDeClubPremierToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+P</value>
+  </data>
+  <data name="altaDeClubPremierToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="altaDeClubPremierToolStripMenuItem.Text" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="consultaCPToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+R</value>
+  </data>
+  <data name="consultaCPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="consultaCPToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consulta</value>
   </data>
   <data name="clubPremierToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 46</value>
@@ -219,80 +291,23 @@
   <data name="&gt;&gt;menuSPrincipal.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="altaDeCiudadToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+A</value>
-  </data>
-  <data name="altaDeCiudadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 22</value>
-  </data>
-  <data name="altaDeCiudadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alta</value>
-  </data>
-  <data name="consultaDeCiudadesToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F</value>
-  </data>
-  <data name="consultaDeCiudadesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 22</value>
-  </data>
-  <data name="consultaDeCiudadesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="altaDeVuelosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+V</value>
-  </data>
-  <data name="altaDeVuelosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="altaDeVuelosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alta</value>
-  </data>
-  <data name="consultaDeVuelosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+U</value>
-  </data>
-  <data name="consultaDeVuelosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="consultaDeVuelosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="comprarBoletosToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+B</value>
-  </data>
-  <data name="comprarBoletosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="comprarBoletosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Comprar</value>
-  </data>
-  <data name="consultaToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F2</value>
-  </data>
-  <data name="consultaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="consultaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="altaDeClubPremierToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+P</value>
-  </data>
-  <data name="altaDeClubPremierToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 22</value>
-  </data>
-  <data name="altaDeClubPremierToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alta</value>
-  </data>
-  <data name="consultaCPToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+R</value>
-  </data>
-  <data name="consultaCPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 22</value>
-  </data>
-  <data name="consultaCPToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
   <data name="panelMenu.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
+  </data>
+  <data name="pictureBoxMenu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pictureBoxMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 100</value>
+  </data>
+  <data name="pictureBoxMenu.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="pictureBoxMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;pictureBoxMenu.Name" xml:space="preserve">
     <value>pictureBoxMenu</value>
@@ -327,33 +342,6 @@
   <data name="&gt;&gt;panelMenu.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="pictureBoxMenu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pictureBoxMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="pictureBoxMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 100</value>
-  </data>
-  <data name="pictureBoxMenu.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>CenterImage</value>
-  </data>
-  <data name="pictureBoxMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMenu.Name" xml:space="preserve">
-    <value>pictureBoxMenu</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMenu.Parent" xml:space="preserve">
-    <value>panelMenu</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMenu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="toolStripMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>153, 17</value>
   </metadata>
@@ -368,30 +356,6 @@
   </data>
   <data name="toolStripMenu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
-  </data>
-  <data name="toolStripMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 275</value>
-  </data>
-  <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 19</value>
-  </data>
-  <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="toolStripMenu.Text" xml:space="preserve">
-    <value>toolStripFechas</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Name" xml:space="preserve">
-    <value>toolStripMenu</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -440,6 +404,30 @@
   </data>
   <data name="toolStripButton2.Text" xml:space="preserve">
     <value>&gt;</value>
+  </data>
+  <data name="toolStripMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 275</value>
+  </data>
+  <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 19</value>
+  </data>
+  <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="toolStripMenu.Text" xml:space="preserve">
+    <value>toolStripFechas</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Name" xml:space="preserve">
+    <value>toolStripMenu</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="timerMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>283, 17</value>

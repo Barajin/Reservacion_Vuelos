@@ -7,12 +7,14 @@ using LibreriaBD;
 namespace ProyectoVuelos {
 	public partial class frmAltaClubPremier : Form {
 
-		const string strCon = "Data Source=KARENGGV\\SQLEXPRESS;Initial Catalog=reservación_vuelos;Integrated Security=True";
+        SqlConnection conn;
 
-		public frmAltaClubPremier() {
+        public frmAltaClubPremier() {
 			InitializeComponent();
+            frmMenu f = new frmMenu();
+            this.conn = f.conn;
 
-		}
+        }
 
 		private void btnGuardar_Click(object sender,EventArgs e) {
 			string nombre, domicilio;
@@ -37,20 +39,11 @@ namespace ProyectoVuelos {
 					return;
 				}
 
-				int claveCliente = contarRegistros("cliente") + 1;
-
-				SqlConnection conn = UsoDB.ConectaBD(strCon);
-
-				if (conn == null)
-					return;
-
-				string strComando = "SET IDENTITY_INSERT cliente ON \n" +
-					"INSERT INTO cliente(cveCliente, nombre, edad)";
-				strComando += " VALUES (@clave, @nombre, @edad); \n" +
-					"SET IDENTITY_INSERT cliente OFF";
+				string strComando = 
+					"INSERT INTO cliente(nombre, edad)";
+                strComando += " VALUES ( @nombre, @edad);";
 
 				SqlCommand cmd = new SqlCommand(strComando,conn);
-				cmd.Parameters.AddWithValue("@clave",claveCliente);
 				cmd.Parameters.AddWithValue("@nombre",nombre);
 				cmd.Parameters.AddWithValue("@edad",edad);
 
@@ -61,15 +54,13 @@ namespace ProyectoVuelos {
 					return;
 				}
 
-				conn.Close();
-				conn.Open();
-				strComando = "SET IDENTITY_INSERT club_premier ON \n" + 
-					"INSERT INTO club_premier(cveClubPremier, cveCliente, domicilio, millasAcumuladas)";
-				strComando += " VALUES (@cP, @cC, @d, @m); \n"
-						+ "SET IDENTITY_INSERT club_premier OFF"; ;
+                generarClavePremier();
+				strComando = 
+					"INSERT INTO club_premier(claveClubPremier, cveCliente, domicilio, millasAcumuladas)";
+                strComando += " VALUES (@cP, @cC, @d, @m);";
 
 				int clavePremier = contarRegistros("club_premier") + 1;
-
+                int claveCliente = contarRegistros("cliente");
 				cmd = new SqlCommand(strComando,conn);
 				cmd.Parameters.AddWithValue("@cP",clavePremier);
 				cmd.Parameters.AddWithValue("@cC",claveCliente);
@@ -83,19 +74,17 @@ namespace ProyectoVuelos {
 					return;
 				}
 
-				conn.Close();
-
 
 				MessageBox.Show("CLIENTE REGISTRADO.","ALTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
 				Limpiar();
 			}
 		}
 
-		public bool ValidarNombre(string n) {
-			SqlConnection conn = UsoDB.ConectaBD(strCon);
+        private string generarClavePremier () {
+            return "";
+        }
 
-			if (conn == null)
-				return false;
+		public bool ValidarNombre(string n) {
 
 			string strComando = "SELECT * FROM club_premier cp" +
 			" INNER JOIN cliente c ON c.cveCliente = cp.cveCliente WHERE " +
@@ -105,6 +94,7 @@ namespace ProyectoVuelos {
 			if (lector.HasRows)
 				return true;
 
+            lector.Close();
 			return false;
 
 		}
@@ -116,10 +106,6 @@ namespace ProyectoVuelos {
 
 		private int contarRegistros (string tabla) {
 			int r = 0;
-			SqlConnection conn = UsoDB.ConectaBD(strCon);
-
-			if (conn == null)
-				return -1;
 
 			string strComando = "SELECT COUNT(*) FROM " + tabla + ";";
 
@@ -129,6 +115,7 @@ namespace ProyectoVuelos {
 				while (lector.Read())
 					r = Convert.ToInt16(lector.GetValue(0));
 
+            lector.Close();
 			return r;
 
 		}
