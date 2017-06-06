@@ -296,24 +296,24 @@ namespace ProyectoVuelos {
                     cmbCveVuelo.Items.Add(lector.GetValue(0).ToString());
             }
 
-
-
             lector.Close();
-          
+
 
             AutoCompleteStringCollection collection = generateCollection("claveClubPremier","club_premier");
             txtClavePremier.AutoCompleteCustomSource = collection;
             txtClavePremier.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtClavePremier.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            AutoCompleteStringCollection collection2 = generateCollection("nombre","cliente");
+            AutoCompleteStringCollection collection2 = generateCollection("nombre","cliente c INNER JOIN clienteGenérico cg ON c.cveCliente = cg.cveCliente");
             txtNombrePasajero.AutoCompleteCustomSource = collection2;
             txtNombrePasajero.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtNombrePasajero.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
 
 
+
         }
+
 
         private void CrearClave () {
 			do {
@@ -472,5 +472,10 @@ namespace ProyectoVuelos {
             lector.Close();
                 
         }
+
+        
+      
+
+    
     }
 }

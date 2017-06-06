@@ -100,6 +100,7 @@
             // 
             // txtOrigen
             // 
+            this.txtOrigen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtOrigen.Location = new System.Drawing.Point(6, 106);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.ReadOnly = true;
@@ -108,6 +109,10 @@
             // 
             // txtDestino
             // 
+            this.txtDestino.AcceptsReturn = true;
+            this.txtDestino.AcceptsTab = true;
+            this.txtDestino.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtDestino.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDestino.Location = new System.Drawing.Point(6, 172);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.ReadOnly = true;

@@ -38,7 +38,12 @@ namespace ProyectoVuelos {
 			}
 
 
-			string strComando = "INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)";
+            if (ValidarCiudad(ciudad, estado)) {
+                MessageBox.Show("YA EXISTE ESA CIUDAD.","ATENCIÓN",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            string strComando = "INSERT INTO ciudad(cveCiudad, nombreCiudad, estado)";
 			strComando += " VALUES (@clave, @nombre, @estado)";
 
 			SqlCommand cmd = new SqlCommand(strComando,conn);
@@ -73,7 +78,21 @@ namespace ProyectoVuelos {
             return false;
 		}
 
-		private void Limpiar () {
+        private bool ValidarCiudad(string nombre, string estado) {
+            string strComando = "SELECT * FROM ciudad WHERE nombreCiudad = '" + nombre + "' AND estado = '"+estado+"';";
+
+            SqlDataReader lector = UsoDB.Consulta(strComando,conn);
+
+            if (lector.HasRows) {
+                lector.Close();
+                return true;
+            }
+
+            lector.Close();
+            return false;
+        }
+
+        private void Limpiar () {
 			txtEstado.Text = "";
 			txtClave.Text = "";
 			txtCiudad.Text = "";

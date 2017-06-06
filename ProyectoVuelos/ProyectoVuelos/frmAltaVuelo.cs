@@ -262,11 +262,12 @@ namespace ProyectoVuelos {
             dateTimePicker3.Value = dateTimePicker3.MinDate;
             dateTimePicker4.Value = dateTimePicker4.MinDate;
 
-
-
         }
 
+      
+
         private void frmAltaVuelo_Load(object sender,EventArgs e) {
+     
             dateTimePicker0.MinDate = DateTime.Now;
             dateTimePicker1.MinDate = DateTime.Now.AddDays(1);
             dateTimePicker2.MinDate = DateTime.Now.AddDays(2);
@@ -288,6 +289,7 @@ namespace ProyectoVuelos {
                 }
 
             }
+
             cmbDestino.AutoCompleteCustomSource = collection;
             cmbOrigen.AutoCompleteCustomSource = collection;
             cmbOrigen.AutoCompleteMode = AutoCompleteMode.SuggestAppend;

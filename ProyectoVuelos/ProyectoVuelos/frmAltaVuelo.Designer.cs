@@ -63,7 +63,7 @@
             // 
             // cmbOrigen
             // 
-            this.cmbOrigen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbOrigen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbOrigen.FormattingEnabled = true;
             this.cmbOrigen.Location = new System.Drawing.Point(112, 80);
             this.cmbOrigen.Name = "cmbOrigen";
@@ -73,7 +73,7 @@
             // 
             // cmbDestino
             // 
-            this.cmbDestino.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbDestino.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbDestino.FormattingEnabled = true;
             this.cmbDestino.Location = new System.Drawing.Point(112, 145);
             this.cmbDestino.Name = "cmbDestino";
