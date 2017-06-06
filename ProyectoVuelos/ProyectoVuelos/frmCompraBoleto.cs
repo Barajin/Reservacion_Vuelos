@@ -4,13 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using LibreriaBD;
+using System.Data;
+
 
 namespace ProyectoVuelos {
 	public partial class frmCompraBoleto : Form {
-		ArrayList arrayVuelos;
-		ArrayList arrayBoletos;
-		private Boleto newBoleto;
-		Hashtable hashClub;
+
 		private Random random = new Random();
 		string claveBoleto;
 
@@ -23,9 +22,9 @@ namespace ProyectoVuelos {
         }
 
 		private void btnComprar_Click(object sender,EventArgs e) {
-			int claveVuelo, claveClub;
-			string nomPasajero;
-			int edad;
+            int claveVuelo;
+            string claveClub;
+			string nomPasajero = txtNombrePasajero.Text;
 
 			if(cmbCveVuelo.SelectedItem == null) {
 				MessageBox.Show("DEBE SELECCIONAR UN VUELO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -34,101 +33,221 @@ namespace ProyectoVuelos {
 
 			claveVuelo = Convert.ToInt16(cmbCveVuelo.SelectedItem);
 
-				if (chkClubPremier.Checked) {
+            if (chkClubPremier.Checked) {
+                claveClub = txtClavePremier.Text;
 
+                if (!existe("'" + claveClub + "'","claveClubPremier","club_premier")) {
+                    MessageBox.Show("NO EXISTE ESA CLAVE DE CLUB PREMIER.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
 
-				try {
-					claveClub = Convert.ToInt16(txtClavePremier.Text);
-				} catch (FormatException ne) {
-					MessageBox.Show("LA CLAVE DEBE SER NUMÉRICA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+            }
 
-				if (!hashClub.ContainsKey(claveClub)) {
-					MessageBox.Show("NO EXISTE ESA CLAVE DE CLUB PREMIER.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+                if (nomPasajero == "") {
+                    MessageBox.Show("DEBE INGRESAR EL NOMBRE DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
 
-				nomPasajero = ((ClubPremier)hashClub[claveClub]).Nombre;
+                if (txtEdad.Text == "") {
+                    MessageBox.Show("DEBE INGRESAR LA EDAD DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
 
-				try {
-					edad = Convert.ToInt16(txtEdad.Text);
-				} catch (FormatException ne) {
-					MessageBox.Show("LA EDAD DEBE SER NUMÉRICA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+                int edad = Convert.ToInt16(txtEdad.Text);
+				
 
 				if(edad<1) {
 					MessageBox.Show("INGRESE UNA EDAD VÁLIDA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 					return;
 				}
 
-				if(nomPasajero == "") {
-					MessageBox.Show("DEBE INGRESAR EL NOMBRE DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+            string strComando = "INSERT INTO boleto(claveBoleto, cveVuelo, cveCliente, fecha_compra)";
+            strComando += " VALUES (@boleto, @vuelo, @cliente, @fecha)";
+
+            SqlCommand cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@boleto",txtClaveBoleto.Text);
+            cmd.Parameters.AddWithValue("@vuelo",claveVuelo);
+            int claveCliente = buscarClub(nomPasajero);
+            if (claveCliente == -1) {
+                guardarClienteGenerico(nomPasajero, edad);
+            }
+            cmd.Parameters.AddWithValue("@cliente", claveCliente);
+            cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+
+            MessageBox.Show("BOLETO VENDIDO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            if (!chkClubPremier.Checked)
+                revisarMillas(nomPasajero);
+            else
+                acumularMillas (claveCliente,claveVuelo);
 			
-
-					newBoleto = new Boleto(claveBoleto,nomPasajero,edad,claveVuelo);
-					newBoleto.ClaveClubPremier = claveClub;
-
-					existePremier(claveClub).Millas = existeVuelo(claveVuelo).pMillas;
-					existeVuelo(claveVuelo).pBoletosVendidos = 1;
-
-					arrayBoletos.Add(newBoleto);
-				MessageBox.Show("BOLETO VENDIDO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
-			} else {
-					nomPasajero = txtNombrePasajero.Text;
-				if (nomPasajero == "") {
-					MessageBox.Show("DEBE INGRESAR EL NOMBRE DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
-				try {
-					edad = Convert.ToInt16(txtEdad.Text);
-				} catch (FormatException ne) {
-					MessageBox.Show("LA EDAD DEBE SER NUMÉRICA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
-				newBoleto = new Boleto(claveBoleto,nomPasajero,edad,claveVuelo);
-					arrayBoletos.Add(newBoleto);
-					existeVuelo(claveVuelo).pBoletosVendidos = 1;
-					MessageBox.Show("BOLETO VENDIDO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
-			}
 
 			Limpiar();
 		}
 
+        private void acumularMillas (int clave, int vuelo) {
+            // sacar millas del vuelo
+            SqlDataReader lector = null;
+            string strComando = "SELECT millas FROM vuelo WHERE cveVuelo = " + vuelo;
+            Double millas = 0;
+            lector = UsoDB.Consulta(strComando,conn);
 
-		private bool existeBoleto(string claveBoleto) {
-			foreach (Boleto val in arrayBoletos)
-				if (val.ClaveBoleto.Equals(claveBoleto))
-					return true;
+            if (lector.HasRows)
+                while (lector.Read())
+                    millas = Convert.ToDouble(lector.GetValue(0));
+           
 
-			return false;
-		}
+            lector.Close();
 
 
-		private string RandomKey(int length) {
+            // actualizar datos
+            strComando = "UPDATE club_premier SET millasAcumuladas = millasAcumuladas + @m";
+            strComando += " WHERE cveCliente = @cliente";
+
+            SqlCommand cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@m", millas);
+            cmd.Parameters.AddWithValue("@cliente", clave);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+        }
+
+        private bool existe (string valor, string campo, string tabla) {
+            SqlDataReader lector = null;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            string strComando = "SELECT * FROM " + tabla + " WHERE "+campo+ " = " + valor +";";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+            if (lector.HasRows) {
+                lector.Close();
+                return true;
+            }
+             
+            lector.Close();
+            return false;
+        }
+
+        private void revisarMillas(string nombre) {
+            SqlDataReader lector;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "MillasCliente";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@nombre",SqlDbType.VarChar,25).Value = nombre;
+            cmd.Connection = conn;
+
+            try {
+               lector = cmd.ExecuteReader();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            Double resultado = 0;
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    resultado = Convert.ToDouble(lector.GetValue(0));
+
+            if(resultado >5000) {
+                 DialogResult result = MessageBox.Show("EL CLIENTE " + nombre + " HA VIAJADO MUCHO SIN BENEFICIOS. ¿DESEA AGREGARLO AL CLUB PREMIER?","AVISO",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                if (result.Equals(DialogResult.Yes)) {
+                    frmAltaClubPremier f = new frmAltaClubPremier(nombre);
+                    f.ShowDialog();
+                }
+            }
+
+            lector.Close();
+
+
+        }
+
+        private void guardarClienteGenerico(string nombre, int edad) {
+            string strComando = "INSERT INTO cliente(nombre)";
+            strComando += " VALUES (@nombre)";
+
+            SqlCommand cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            cmd = null;
+
+            strComando = "INSERT INTO clienteGenérico(cveCliente, edad)";
+            strComando += " VALUES (@clave, @edad)";
+            int clave = 0;
+
+            string str = "SELECT MAX(cveCliente) FROM cliente";
+            SqlDataReader lector = UsoDB.Consulta(str,conn);
+            if (lector.HasRows)
+                while (lector.Read())
+                    clave = Convert.ToInt16(lector.GetValue(0));
+
+            lector.Close();
+
+            cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@clave", clave);
+            cmd.Parameters.AddWithValue("@edad", edad);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+
+
+        }
+
+        private int buscarClub (string nombre) {
+            int clave = -1;
+            SqlDataReader lector = null;
+            string strComando = "SELECT cveCliente FROM cliente WHERE nombre='" + nombre+"';";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    clave = Convert.ToInt32(lector.GetValue(0));
+                    
+               
+
+            lector.Close();
+            return clave;
+  
+
+         }
+
+
+
+    private string RandomKey(int length) {
 			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 			return new string(Enumerable.Repeat(chars,length)
 			  .Select(s => s[random.Next(s.Length)]).ToArray());
 		}
 
-		private Vuelo existeVuelo(int clave) {
-			foreach (Vuelo val in arrayVuelos)
-				if ((val.pClaveVuelo == clave) && (val.pBoletosVendidos < val.pNumPasajeros))
-					return val;
 
-			return null;
-		}
-
-		private ClubPremier existePremier(int key) {
-			foreach (DictionaryEntry entry in hashClub)
-				if (entry.Key.Equals(key))
-					return (ClubPremier)entry.Value;
-
-			return null;
-		}
 
 		private void Limpiar() {
 			lblCostoTotal.Text = "";
@@ -148,9 +267,7 @@ namespace ProyectoVuelos {
 
 			int cont = 0;
 
-			foreach (Vuelo v in arrayVuelos)
-				if (v.pBoletosVendidos < v.pNumPasajeros)
-					cont++;
+	
 
 			if(cont == 0) {
 				MessageBox.Show("YA NO HAY VUELOS CON CAPACIDAD.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -158,11 +275,8 @@ namespace ProyectoVuelos {
 			}
 
 			
-			cmbCveVuelo.Items.Clear();
 
-			foreach (Vuelo v in arrayVuelos)
-				if (v.pBoletosVendidos < v.pNumPasajeros)
-					cmbCveVuelo.Items.Add(v.pClaveVuelo);
+
 
 			CrearClave();
 
@@ -171,39 +285,101 @@ namespace ProyectoVuelos {
 
 		private void frmCompraBoleto_Load(object sender,EventArgs e) {
 			CrearClave();
-			foreach (Vuelo v in arrayVuelos) 
-				if (v.pBoletosVendidos < v.pNumPasajeros)
-					cmbCveVuelo.Items.Add(v.pClaveVuelo);
-			
-		}
+            SqlDataReader lector = null;
+            string strComando = "SELECT v.cveVuelo FROM vuelo v INNER JOIN fecha_vuelo f ON v.cveVuelo = f.cveVuelo WHERE fecha > GETDATE();";
+            lector = UsoDB.Consulta(strComando,conn);
 
-		private void CrearClave () {
+
+            if (lector.HasRows) {
+                cmbCveVuelo.Items.Clear();
+                while (lector.Read())
+                    cmbCveVuelo.Items.Add(lector.GetValue(0).ToString());
+            }
+
+
+
+            lector.Close();
+          
+
+            AutoCompleteStringCollection collection = generateCollection("claveClubPremier","club_premier");
+            txtClavePremier.AutoCompleteCustomSource = collection;
+            txtClavePremier.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtClavePremier.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection2 = generateCollection("nombre","cliente");
+            txtNombrePasajero.AutoCompleteCustomSource = collection2;
+            txtNombrePasajero.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtNombrePasajero.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+
+        }
+
+        private void CrearClave () {
 			do {
 				claveBoleto = RandomKey(15).Trim().ToUpper();
-			} while (existeBoleto(claveBoleto));
+			} while (existe("'" + claveBoleto + "'","claveBoleto","boleto"));
 
 			txtClaveBoleto.Text = claveBoleto;
 		}
 
 		private void txtClavePremier_Leave(object sender,EventArgs e) {
 
-			int claveClub; 
+            revisarClave();
+            
 
-			try {
-				claveClub = Convert.ToInt16(txtClavePremier.Text);
-			} catch (FormatException ne) {
-				MessageBox.Show("LA CLAVE DEBE SER NUMÉRICA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-				return;
-			}
-
-			if (!hashClub.ContainsKey(claveClub)) {
-				MessageBox.Show("NO EXISTE ESA CLAVE DE CLUB PREMIER.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-				return;
-			}
-
-			txtNombrePasajero.Text = ((ClubPremier)hashClub[claveClub]).Nombre;
 
 		}
+
+        private void revisarClave () {
+            if (txtClavePremier.Text == "")
+                return;
+
+            string claveClub = txtClavePremier.Text;
+
+            SqlDataReader lector = null;
+            string strComando = "SELECT c.nombre, fecha_nacimiento FROM club_premier cp INNER JOIN cliente c ON cp.cveCliente = c.cveCliente";
+            strComando += " WHERE claveClubpremier = '" + claveClub + "';";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+
+            if (lector.HasRows)
+                while (lector.Read()) {
+                    txtNombrePasajero.Text = lector.GetValue(0).ToString();
+                    DateTime fecha = Convert.ToDateTime(lector.GetValue(1));
+                    int dias = (DateTime.Now.Subtract(fecha)).Days;
+                    int edad = dias / 365;
+                    txtEdad.Text = edad.ToString();
+                } else {
+                MessageBox.Show("NO EXISTE ESA CLAVE DE CLUB PREMIER.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                txtNombrePasajero.Text = "";
+                txtEdad.Text = "";
+
+            }
+
+            lector.Close();
+
+        }
+
+        private AutoCompleteStringCollection generateCollection (string campo, string tabla) {
+            SqlDataReader lector = null;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            string strComando = "SELECT "+ campo + " FROM " + tabla+";";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    collection.Add(lector.GetValue(0).ToString());
+                   
+            
+
+
+            lector.Close();
+            return collection;
+        }
 
 		private void chkClubPremier_CheckedChanged(object sender,EventArgs e) {
 			if (chkClubPremier.Checked) {
@@ -212,35 +388,49 @@ namespace ProyectoVuelos {
 				txtClavePremier.Enabled = true;
 				txtClavePremier.Visible = true;
 				txtNombrePasajero.Enabled = false;
+                txtEdad.Enabled = false;
 			} else {
 				txtClavePremier.Text = "";
 				lblCvePremier.Enabled = false;
 				lblCvePremier.Visible = false;
 				txtClavePremier.Enabled = false;
 				txtClavePremier.Visible = false;
-				txtNombrePasajero.Enabled = false;
-				txtNombrePasajero.Text = "";
-			}
-			}
+				txtNombrePasajero.Enabled = true;
+                txtEdad.Enabled = true;
+                txtNombrePasajero.Text = "";
+                txtEdad.Text = "";
+            }
+		}
 
 		private void cmbCveVuelo_SelectedIndexChanged(object sender,EventArgs e) {
 			int claveVuelo = Convert.ToInt16(cmbCveVuelo.SelectedItem);
 
-			foreach (Vuelo val in arrayVuelos)
-				if (val.pClaveVuelo == claveVuelo) {
-					txtOrigen.Text = val.pOrigen;
-					txtDestino.Text = val.pDestino;
-					lblCostoTotal.Text = "$" + val.pCosto.ToString();
-					break;
-				}
+            SqlDataReader lector = null;
+            string strComando = "SELECT o.nombreCiudad, d.nombreCiudad, fecha, costo FROM vuelo v INNER JOIN ciudad o ON v.origen = o.cveCiudad ";
+                strComando += "INNER JOIN ciudad d ON d.cveCiudad = v.destino INNER JOIN fecha_vuelo f ON f.cveVuelo = v.cveVuelo";
+                strComando += " WHERE v.cveVuelo = " + claveVuelo;
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+
+            if (lector.HasRows)
+                while (lector.Read()) {
+                    txtOrigen.Text = lector.GetValue(0).ToString();
+                    txtDestino.Text = lector.GetValue(1).ToString();
+                    dateTimePicker1.Value = Convert.ToDateTime(lector.GetValue(2));
+                    lblHora.Text = dateTimePicker1.Value.Hour.ToString() + ":" + dateTimePicker1.Value.Minute.ToString();
+                    lblCostoTotal.Text = "$" + lector.GetValue(3).ToString();
+                }
+                   
+
+
+
+
+            lector.Close();
+
 		}
 
-		private void txtClavePremier_KeyPress(object sender,KeyPressEventArgs e) {
-			if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
-				errorPCvePremier.SetError(txtClavePremier,"Sólo se permiten números.");
-			else
-				errorPCvePremier.SetError(txtClavePremier,"");
-		}
+
 
 		private void txtEdad_KeyPress(object sender,KeyPressEventArgs e) {
 			if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
@@ -258,11 +448,29 @@ namespace ProyectoVuelos {
 				errorPNombre.SetError(txtNombrePasajero ,"");
 		}
 
-        private void chkBoletoExtra_CheckedChanged(object sender,EventArgs e) {
-            if(chkBoletoExtra.Checked) 
-                panelBoletoExtra.Visible = true;
-            else 
-                panelBoletoExtra.Visible = false;
+        private void txtClavePremier_AcceptsTabChanged(object sender,EventArgs e) {
+            revisarClave();
+        }
+
+        private void txtNombrePasajero_Leave(object sender,EventArgs e) {
+            if (chkClubPremier.Checked)
+                return;
+
+            string nombre = txtNombrePasajero.Text;
+            SqlDataReader lector = null;
+            string strComando = "SELECT edad FROM cliente c INNER JOIN clienteGenérico cg ON c.cveCliente = cg.cveCliente";
+                strComando += " WHERE nombre = '"+nombre+"';";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    txtEdad.Text = Convert.ToInt32(lector.GetValue(0)).ToString();
+
+
+            lector.Close();
+                
         }
     }
 }

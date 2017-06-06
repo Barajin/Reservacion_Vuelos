@@ -28,6 +28,16 @@
             this.cmbOrigen = new System.Windows.Forms.ComboBox();
             this.cmbDestino = new System.Windows.Forms.ComboBox();
             this.grpDias = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkFecha4 = new System.Windows.Forms.CheckBox();
+            this.chkFecha1 = new System.Windows.Forms.CheckBox();
+            this.chkFecha3 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.chkFecha2 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.txtCosto = new System.Windows.Forms.TextBox();
             this.txtMillas = new System.Windows.Forms.TextBox();
             this.txtCveVuelo = new System.Windows.Forms.TextBox();
@@ -42,27 +52,18 @@
             this.errorPCosto = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorPMillas = new System.Windows.Forms.ErrorProvider(this.components);
             this.dateTimePicker0 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.chkFecha1 = new System.Windows.Forms.CheckBox();
-            this.chkFecha2 = new System.Windows.Forms.CheckBox();
-            this.chkFecha3 = new System.Windows.Forms.CheckBox();
-            this.chkFecha4 = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpDias.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericNumPasajeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPCosto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPMillas)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbOrigen
             // 
+            this.cmbOrigen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbOrigen.FormattingEnabled = true;
             this.cmbOrigen.Location = new System.Drawing.Point(112, 80);
             this.cmbOrigen.Name = "cmbOrigen";
@@ -72,6 +73,7 @@
             // 
             // cmbDestino
             // 
+            this.cmbDestino.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbDestino.FormattingEnabled = true;
             this.cmbDestino.Location = new System.Drawing.Point(112, 145);
             this.cmbDestino.Name = "cmbDestino";
@@ -82,14 +84,116 @@
             // grpDias
             // 
             this.grpDias.BackColor = System.Drawing.Color.Transparent;
-            this.grpDias.Controls.Add(this.btnAgregar);
             this.grpDias.Controls.Add(this.panel1);
-            this.grpDias.Location = new System.Drawing.Point(295, 12);
+            this.grpDias.Location = new System.Drawing.Point(792, 12);
             this.grpDias.Name = "grpDias";
-            this.grpDias.Size = new System.Drawing.Size(273, 255);
+            this.grpDias.Size = new System.Drawing.Size(273, 290);
             this.grpDias.TabIndex = 6;
             this.grpDias.TabStop = false;
             this.grpDias.Text = "Frecuencia";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chkFecha4);
+            this.panel1.Controls.Add(this.chkFecha1);
+            this.panel1.Controls.Add(this.chkFecha3);
+            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.chkFecha2);
+            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.dateTimePicker3);
+            this.panel1.Controls.Add(this.dateTimePicker4);
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(9, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(258, 255);
+            this.panel1.TabIndex = 125;
+            // 
+            // chkFecha4
+            // 
+            this.chkFecha4.AutoSize = true;
+            this.chkFecha4.Location = new System.Drawing.Point(17, 215);
+            this.chkFecha4.Name = "chkFecha4";
+            this.chkFecha4.Size = new System.Drawing.Size(15, 14);
+            this.chkFecha4.TabIndex = 8;
+            this.chkFecha4.UseVisualStyleBackColor = true;
+            this.chkFecha4.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
+            // 
+            // chkFecha1
+            // 
+            this.chkFecha1.AutoSize = true;
+            this.chkFecha1.Location = new System.Drawing.Point(17, 19);
+            this.chkFecha1.Name = "chkFecha1";
+            this.chkFecha1.Size = new System.Drawing.Size(15, 14);
+            this.chkFecha1.TabIndex = 5;
+            this.chkFecha1.UseVisualStyleBackColor = true;
+            this.chkFecha1.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
+            // 
+            // chkFecha3
+            // 
+            this.chkFecha3.AutoSize = true;
+            this.chkFecha3.Location = new System.Drawing.Point(17, 148);
+            this.chkFecha3.Name = "chkFecha3";
+            this.chkFecha3.Size = new System.Drawing.Size(15, 14);
+            this.chkFecha3.TabIndex = 7;
+            this.chkFecha3.UseVisualStyleBackColor = true;
+            this.chkFecha3.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(38, 17);
+            this.dateTimePicker1.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
+            // chkFecha2
+            // 
+            this.chkFecha2.AutoSize = true;
+            this.chkFecha2.Location = new System.Drawing.Point(17, 81);
+            this.chkFecha2.Name = "chkFecha2";
+            this.chkFecha2.Size = new System.Drawing.Size(15, 14);
+            this.chkFecha2.TabIndex = 6;
+            this.chkFecha2.UseVisualStyleBackColor = true;
+            this.chkFecha2.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Enabled = false;
+            this.dateTimePicker2.Location = new System.Drawing.Point(38, 81);
+            this.dateTimePicker2.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 2;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Enabled = false;
+            this.dateTimePicker3.Location = new System.Drawing.Point(38, 148);
+            this.dateTimePicker3.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker3.TabIndex = 3;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Enabled = false;
+            this.dateTimePicker4.Location = new System.Drawing.Point(38, 215);
+            this.dateTimePicker4.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker4.TabIndex = 4;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Location = new System.Drawing.Point(458, 334);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(314, 48);
+            this.btnAgregar.TabIndex = 126;
+            this.btnAgregar.Text = "Agregar más días";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtCosto
             // 
@@ -177,9 +281,10 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(369, 292);
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(263, 334);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(105, 51);
+            this.btnGuardar.Size = new System.Drawing.Size(174, 48);
             this.btnGuardar.TabIndex = 120;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -217,131 +322,29 @@
             // 
             // dateTimePicker0
             // 
-            this.dateTimePicker0.Location = new System.Drawing.Point(25, 323);
+            this.dateTimePicker0.Location = new System.Drawing.Point(30, 362);
+            this.dateTimePicker0.MaxDate = new System.DateTime(2017, 12, 25, 23, 59, 59, 0);
             this.dateTimePicker0.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
             this.dateTimePicker0.Name = "dateTimePicker0";
             this.dateTimePicker0.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker0.TabIndex = 0;
             this.dateTimePicker0.Value = new System.DateTime(2017, 6, 2, 0, 48, 19, 0);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(38, 17);
-            this.dateTimePicker1.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Enabled = false;
-            this.dateTimePicker2.Location = new System.Drawing.Point(38, 60);
-            this.dateTimePicker2.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Enabled = false;
-            this.dateTimePicker3.Location = new System.Drawing.Point(38, 101);
-            this.dateTimePicker3.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 3;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Enabled = false;
-            this.dateTimePicker4.Location = new System.Drawing.Point(38, 145);
-            this.dateTimePicker4.MinDate = new System.DateTime(2017, 6, 2, 0, 0, 0, 0);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker4.TabIndex = 4;
-            // 
-            // chkFecha1
-            // 
-            this.chkFecha1.AutoSize = true;
-            this.chkFecha1.Location = new System.Drawing.Point(17, 19);
-            this.chkFecha1.Name = "chkFecha1";
-            this.chkFecha1.Size = new System.Drawing.Size(15, 14);
-            this.chkFecha1.TabIndex = 5;
-            this.chkFecha1.UseVisualStyleBackColor = true;
-            this.chkFecha1.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
-            // 
-            // chkFecha2
-            // 
-            this.chkFecha2.AutoSize = true;
-            this.chkFecha2.Location = new System.Drawing.Point(17, 60);
-            this.chkFecha2.Name = "chkFecha2";
-            this.chkFecha2.Size = new System.Drawing.Size(15, 14);
-            this.chkFecha2.TabIndex = 6;
-            this.chkFecha2.UseVisualStyleBackColor = true;
-            this.chkFecha2.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
-            // 
-            // chkFecha3
-            // 
-            this.chkFecha3.AutoSize = true;
-            this.chkFecha3.Location = new System.Drawing.Point(17, 101);
-            this.chkFecha3.Name = "chkFecha3";
-            this.chkFecha3.Size = new System.Drawing.Size(15, 14);
-            this.chkFecha3.TabIndex = 7;
-            this.chkFecha3.UseVisualStyleBackColor = true;
-            this.chkFecha3.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
-            // 
-            // chkFecha4
-            // 
-            this.chkFecha4.AutoSize = true;
-            this.chkFecha4.Location = new System.Drawing.Point(17, 145);
-            this.chkFecha4.Name = "chkFecha4";
-            this.chkFecha4.Size = new System.Drawing.Size(15, 14);
-            this.chkFecha4.TabIndex = 8;
-            this.chkFecha4.UseVisualStyleBackColor = true;
-            this.chkFecha4.CheckedChanged += new System.EventHandler(this.chkFecha1_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.chkFecha4);
-            this.panel1.Controls.Add(this.chkFecha1);
-            this.panel1.Controls.Add(this.chkFecha3);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.chkFecha2);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dateTimePicker3);
-            this.panel1.Controls.Add(this.dateTimePicker4);
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(6, 76);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 173);
-            this.panel1.TabIndex = 125;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(6, 19);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(258, 48);
-            this.btnAgregar.TabIndex = 126;
-            this.btnAgregar.Text = "Agregar más días";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(597, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(263, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(509, 333);
+            this.pictureBox1.Size = new System.Drawing.Size(509, 290);
             this.pictureBox1.TabIndex = 125;
             this.pictureBox1.TabStop = false;
             // 
             // frmAltaVuelo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1118, 387);
+            this.ClientSize = new System.Drawing.Size(789, 404);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.numericNumPasajeros);
             this.Controls.Add(this.btnGuardar);
@@ -358,17 +361,21 @@
             this.Controls.Add(this.grpDias);
             this.Controls.Add(this.cmbDestino);
             this.Controls.Add(this.cmbOrigen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAltaVuelo";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ALTA DE VUELOS";
             this.Load += new System.EventHandler(this.frmAltaVuelo_Load);
             this.grpDias.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericNumPasajeros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPCosto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPMillas)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

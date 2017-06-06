@@ -196,7 +196,12 @@ namespace ProyectoVuelos {
 
 		}
 
-		/*private int checarCapacidad () {
+        private void chartsToolStripMenuItem_Click(object sender,EventArgs e) {
+            frmCharts f = new frmCharts();
+            f.ShowDialog();
+        }
+
+        /*private int checarCapacidad () {
 			SqlConnection conn = UsoDB.ConectaBD(strCon);
 			if (conn == null)
 				return false;
@@ -220,5 +225,5 @@ namespace ProyectoVuelos {
 				return false;
 			}
 		} */
-	}
+    }
 }

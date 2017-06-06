@@ -16,6 +16,8 @@ namespace ProyectoVuelos {
 			InitializeComponent();
             frmMenu f = new frmMenu();
             this.conn = f.conn;
+
+            
 		}
 
 
@@ -119,11 +121,15 @@ namespace ProyectoVuelos {
 
 
             WebClient wc = new WebClient();
-            byte[] bytes = wc.DownloadData(imgTagSrc);
-            MemoryStream ms = new MemoryStream(bytes);
-            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-     
-            pictureBox1.Image = img;
+            try {
+                byte[] bytes = wc.DownloadData(imgTagSrc);
+                MemoryStream ms = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+
+                pictureBox1.Image = img;
+            } catch {
+                return;
+            }
             
         }
     }

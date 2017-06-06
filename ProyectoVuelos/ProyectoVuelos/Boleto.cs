@@ -10,7 +10,7 @@ namespace ProyectoVuelos {
 		private string nomPasajero;
 		private int edadPasajero;
 		private int claveVuelo;
-		private int claveClubPremier;
+		private string claveClubPremier;
 
 		public Boleto(string claveBoleto,string nomPasajero,int edadPasajero,int claveVuelo) {
 			this.claveBoleto = claveBoleto;
@@ -39,7 +39,7 @@ namespace ProyectoVuelos {
 			set { claveVuelo = value; }
 		}
 
-		public int ClaveClubPremier {
+		public string ClaveClubPremier {
 			get { return claveClubPremier; }
 			set { claveClubPremier = value; }
 		}

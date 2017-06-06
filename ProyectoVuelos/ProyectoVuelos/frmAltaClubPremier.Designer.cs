@@ -26,8 +26,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaClubPremier));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtEdad = new System.Windows.Forms.TextBox();
-            this.lblEdad = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBeneficios = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.lblClave = new System.Windows.Forms.Label();
@@ -37,17 +39,17 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.errorPNombre = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.txtEdad);
-            this.panel1.Controls.Add(this.lblEdad);
+            this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Controls.Add(this.txtClave);
             this.panel1.Controls.Add(this.lblClave);
@@ -58,26 +60,44 @@
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Location = new System.Drawing.Point(32, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(697, 353);
+            this.panel1.Size = new System.Drawing.Size(758, 353);
             this.panel1.TabIndex = 0;
             // 
-            // txtEdad
+            // panel2
             // 
-            this.txtEdad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEdad.Location = new System.Drawing.Point(139, 198);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(241, 20);
-            this.txtEdad.TabIndex = 9;
-            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
+            this.panel2.Controls.Add(this.lblBeneficios);
+            this.panel2.Location = new System.Drawing.Point(421, 33);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(307, 288);
+            this.panel2.TabIndex = 12;
             // 
-            // lblEdad
+            // lblBeneficios
             // 
-            this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(66, 247);
-            this.lblEdad.Name = "lblEdad";
-            this.lblEdad.Size = new System.Drawing.Size(32, 13);
-            this.lblEdad.TabIndex = 10;
-            this.lblEdad.Text = "Edad";
+            this.lblBeneficios.AutoSize = true;
+            this.lblBeneficios.Location = new System.Drawing.Point(122, 30);
+            this.lblBeneficios.Name = "lblBeneficios";
+            this.lblBeneficios.Size = new System.Drawing.Size(73, 13);
+            this.lblBeneficios.TabIndex = 0;
+            this.lblBeneficios.Text = "BENEFICIOS:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(139, 230);
+            this.dateTimePicker1.MaxDate = new System.DateTime(1999, 6, 9, 0, 0, 0, 0);
+            this.dateTimePicker1.MinDate = new System.DateTime(1910, 1, 25, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(241, 20);
+            this.dateTimePicker1.TabIndex = 11;
+            this.dateTimePicker1.Value = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(66, 202);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(106, 13);
+            this.lblFecha.TabIndex = 10;
+            this.lblFecha.Text = "Fecha de nacimiento";
             // 
             // lblTitulo
             // 
@@ -109,20 +129,25 @@
             // 
             // txtDomicilio
             // 
+            this.txtDomicilio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDomicilio.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDomicilio.Location = new System.Drawing.Point(139, 157);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(241, 20);
             this.txtDomicilio.TabIndex = 1;
+            this.txtDomicilio.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // txtNombre
             // 
+            this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Location = new System.Drawing.Point(139, 113);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(241, 20);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // lblDomicilio
             // 
@@ -145,7 +170,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnGuardar.Location = new System.Drawing.Point(139, 267);
+            this.btnGuardar.Location = new System.Drawing.Point(181, 274);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(124, 47);
             this.btnGuardar.TabIndex = 2;
@@ -157,27 +182,21 @@
             // 
             this.errorPNombre.ContainerControl = this;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(139, 241);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(241, 20);
-            this.dateTimePicker1.TabIndex = 11;
-            // 
             // frmAltaClubPremier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProyectoVuelos.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(741, 414);
+            this.ClientSize = new System.Drawing.Size(817, 409);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAltaClubPremier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLUB PREMIER";
-            this.Load += new System.EventHandler(this.frmAltaClubPremier_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).EndInit();
             this.ResumeLayout(false);
 
@@ -195,8 +214,9 @@
 		private System.Windows.Forms.Label lblNombre;
 		private System.Windows.Forms.Button btnGuardar;
 		private System.Windows.Forms.ErrorProvider errorPNombre;
-		private System.Windows.Forms.TextBox txtEdad;
-		private System.Windows.Forms.Label lblEdad;
+		private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblBeneficios;
     }
 }

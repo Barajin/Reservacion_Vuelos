@@ -47,6 +47,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
+            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSPrincipal.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenu)).BeginInit();
@@ -65,7 +67,8 @@
             this.clubPremierToolStripMenuItem,
             this.salirToolStripMenuItem,
             this.xToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.consultasToolStripMenuItem});
             this.menuSPrincipal.Name = "menuSPrincipal";
             // 
             // ciudadesToolStripMenuItem
@@ -226,6 +229,19 @@
             this.timerMenu.Interval = 2000;
             this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
+            // consultasToolStripMenuItem
+            // 
+            this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chartsToolStripMenuItem});
+            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
+            resources.ApplyResources(this.consultasToolStripMenuItem, "consultasToolStripMenuItem");
+            // 
+            // chartsToolStripMenuItem
+            // 
+            this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
+            resources.ApplyResources(this.chartsToolStripMenuItem, "chartsToolStripMenuItem");
+            this.chartsToolStripMenuItem.Click += new System.EventHandler(this.chartsToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -275,5 +291,7 @@
 		private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-	}
+        private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chartsToolStripMenuItem;
+    }
 }

@@ -261,6 +261,18 @@
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>.</value>
   </data>
+  <data name="chartsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="chartsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Charts</value>
+  </data>
+  <data name="consultasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 46</value>
+  </data>
+  <data name="consultasToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consultas</value>
+  </data>
   <data name="menuSPrincipal.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -6735,6 +6747,18 @@
   </data>
   <data name="&gt;&gt;timerMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;consultasToolStripMenuItem.Name" xml:space="preserve">
+    <value>consultasToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;consultasToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chartsToolStripMenuItem.Name" xml:space="preserve">
+    <value>chartsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;chartsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMenu</value>

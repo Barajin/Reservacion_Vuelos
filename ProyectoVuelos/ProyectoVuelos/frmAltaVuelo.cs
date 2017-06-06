@@ -3,7 +3,6 @@ using System.Collections;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using System.Data.SqlClient;
-using Google.Maps;
 using Google.Maps.StaticMaps;
 using System.Net;
 using System.IO;
@@ -14,18 +13,23 @@ namespace ProyectoVuelos {
    
         SqlConnection conn;
     
-        string dias = "DIARIO";
-
         public frmAltaVuelo() {
             InitializeComponent();
             frmMenu f = new frmMenu();
             this.conn = f.conn;
+     
         }
 
         private void btnGuardar_Click(object sender,EventArgs e) {
+
+            if(!ValidarFechas()) {
+                MessageBox.Show("NO PUEDE SELECCIONAR LA MISMA FECHA MÁS DE UNA VEZ.","ATENCIÓN",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            String origen, destino;
             int numPasajeros;
-            string origen, destino;
-            double costo, millas;
+            Double costo, millas;
             DateTime fecha;
 
 
@@ -50,7 +54,7 @@ namespace ProyectoVuelos {
                 while (lector.Read())
                     ori = lector.GetValue(0).ToString();
 
-            lector = null;
+      
             lector.Close();
 
             str = "SELECT cveCiudad FROM ciudad WHERE nombreCiudad = '" + destino + "';";
@@ -107,22 +111,74 @@ namespace ProyectoVuelos {
             }
 
             GuardarFechas();
-
             MessageBox.Show("VUELO AÑADIDO CON ÉXITO.","ALTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
             Limpiar();
+        }
+
+        private bool Validar(ArrayList f, DateTime d) {
+            if (f.Contains(d))
+                return true;
+
+            return false;
+        }
+
+        private bool ValidarFechas() {
+            ArrayList fechas = new ArrayList();
+            fechas.Add(dateTimePicker0.Value);
+            if (chkFecha1.Checked) {
+                if (!Validar(fechas,dateTimePicker1.Value))
+                    fechas.Add(dateTimePicker1.Value);
+                else
+                    return false;
+            }
+            if (chkFecha2.Checked) {
+                if (!Validar(fechas,dateTimePicker2.Value))
+                    fechas.Add(dateTimePicker2.Value);
+                else
+                    return false;
+            }
+            if (chkFecha3.Checked) {
+                if (!Validar(fechas,dateTimePicker1.Value))
+                    fechas.Add(dateTimePicker3.Value);
+                else
+                    return false;
+            };
+            if (chkFecha4.Checked) {
+                if (!Validar(fechas,dateTimePicker4.Value))
+                    fechas.Add(dateTimePicker4.Value);
+                else
+                    return false;
+            }
+
+            return true;
+
         }
 
         private void GuardarFechas () {
             ArrayList fechas = new ArrayList();
             fechas.Add(dateTimePicker0.Value);
-            if (chkFecha1.Checked)
-                fechas.Add(dateTimePicker1.Value);
-            if (chkFecha2.Checked)
-                fechas.Add(dateTimePicker2.Value);
-            if (chkFecha3.Checked)
-                fechas.Add(dateTimePicker3.Value);
-            if (chkFecha4.Checked)
-                fechas.Add(dateTimePicker4.Value);
+            if (chkFecha1.Checked) 
+                  fechas.Add(dateTimePicker1.Value);
+
+            if (chkFecha2.Checked) 
+                   fechas.Add(dateTimePicker2.Value);
+  
+            if (chkFecha3.Checked) 
+                  fechas.Add(dateTimePicker3.Value);
+
+            if (chkFecha4.Checked) 
+                 fechas.Add(dateTimePicker4.Value);
+
+
+            int id = 0 ;
+            string str = "SELECT MAX(cveVuelo) FROM vuelo";
+            SqlDataReader lector = UsoDB.Consulta(str,conn);
+            if (lector.HasRows)
+                while (lector.Read())
+                    id = Convert.ToInt16(lector.GetValue(0));
+
+            lector.Close();
+
 
             for(int i = 0; i<fechas.Count; i++) {
                 string strComando = "INSERT INTO fecha_vuelo(cveVuelo, fecha)";
@@ -130,33 +186,40 @@ namespace ProyectoVuelos {
 
                 SqlCommand cmd = new SqlCommand(strComando,conn);
                 cmd.Parameters.AddWithValue("@fecha", fechas[i].ToString());
-                cmd.Parameters.AddWithValue("@clave", "");
+                cmd.Parameters.AddWithValue("@clave", id);
 
                 try {
                     cmd.ExecuteNonQuery();
                 } catch (Exception ex) {
 
                     MessageBox.Show(ex.Message);
-                    return;
+                                    return;
                 }
             }
+
+            
 
         }
 
 
 
+
         public string getDistance(string origin,string destination) {
-            System.Threading.Thread.Sleep(1000);
-            String distance = "";
-            string url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&sensor=false";
-            string requesturl = url;
-            string content = fileGetContents(requesturl);
-            JObject o = JObject.Parse(content);
             try {
-                distance = (string)o.SelectToken("routes[0].legs[0].distance.text");
-                return distance;
+                System.Threading.Thread.Sleep(1000);
+                String distance = "";
+                string url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&sensor=false";
+                string requesturl = url;
+                string content = fileGetContents(requesturl);
+                JObject o = JObject.Parse(content);
+                try {
+                    distance = (string)o.SelectToken("routes[0].legs[0].distance.text");
+                    return distance;
+                } catch {
+                    return distance;
+                }
             } catch {
-                return distance;
+                return "";
             }
 
         }
@@ -166,12 +229,11 @@ namespace ProyectoVuelos {
             string me = string.Empty;
             try {
                 if (fileName.ToLower().IndexOf("http:") > -1) {
-                    System.Net.WebClient wc = new System.Net.WebClient();
+                    WebClient wc = new WebClient();
                     byte[] response = wc.DownloadData(fileName);
                     sContents = System.Text.Encoding.ASCII.GetString(response);
-
                 } else {
-                    System.IO.StreamReader sr = new System.IO.StreamReader(fileName);
+                    StreamReader sr = new StreamReader(fileName);
                     sContents = sr.ReadToEnd();
                     sr.Close();
                 }
@@ -186,19 +248,34 @@ namespace ProyectoVuelos {
             cmbDestino.SelectedItem = null;
             cmbOrigen.SelectedItem = null;
             numericNumPasajeros.Value = 1;
-            dias = "DIARIO";
             txtCveVuelo.Text = "";
-     
+            Size = new System.Drawing.Size(805,442);
+            panel1.Enabled = false;
+            btnAgregar.Enabled = true;
+            chkFecha1.Checked = false;
+            chkFecha2.Checked = false;
+            chkFecha3.Checked = false;
+            chkFecha4.Checked = false;
+            dateTimePicker0.Value = dateTimePicker0.MinDate;
+            dateTimePicker1.Value = dateTimePicker1.MinDate;
+            dateTimePicker2.Value = dateTimePicker2.MinDate;
+            dateTimePicker3.Value = dateTimePicker3.MinDate;
+            dateTimePicker4.Value = dateTimePicker4.MinDate;
+
 
 
         }
 
-
         private void frmAltaVuelo_Load(object sender,EventArgs e) {
+            dateTimePicker0.MinDate = DateTime.Now;
+            dateTimePicker1.MinDate = DateTime.Now.AddDays(1);
+            dateTimePicker2.MinDate = DateTime.Now.AddDays(2);
+            dateTimePicker3.MinDate = DateTime.Now.AddDays(3);
+            dateTimePicker4.MinDate = DateTime.Now.AddDays(4);
 
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             string strComando = "SELECT nombreCiudad FROM ciudad;";
             SqlDataReader lector = UsoDB.Consulta(strComando,conn);
-
 
             if (lector.HasRows) {
                 cmbOrigen.Items.Clear();
@@ -207,21 +284,33 @@ namespace ProyectoVuelos {
                     string ciudad = lector.GetValue(0).ToString();
                     cmbOrigen.Items.Add(ciudad);
                     cmbDestino.Items.Add(ciudad);
+                    collection.Add(ciudad);
                 }
 
             }
-
+            cmbDestino.AutoCompleteCustomSource = collection;
+            cmbOrigen.AutoCompleteCustomSource = collection;
+            cmbOrigen.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbDestino.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbDestino.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cmbOrigen.AutoCompleteSource = AutoCompleteSource.CustomSource;
             lector.Close();
 
-        
+           
+            strComando = "SELECT MAX(cveVuelo) FROM vuelo;";
+            lector = UsoDB.Consulta(strComando,conn);
+            int id = 0;
+            if (lector.HasRows)
+                while (lector.Read())
+                    id = Convert.ToInt16(lector.GetValue(0));
 
-
-
+            txtCveVuelo.Text = (id + 1).ToString();
+            lector.Close();
         }
 
         private void txtCosto_KeyPress(object sender,KeyPressEventArgs e) {
 
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != ','))
                 errorPCosto.SetError(txtCosto,"Sólo se permiten números.");
             else
                 errorPCosto.SetError(txtCosto,"");
@@ -238,12 +327,11 @@ namespace ProyectoVuelos {
     
 	
 	
-
         private Double convertirMillas(string res) {
             string distancia = "";
 
             if (res == "" || res == null) 
-                return 1;
+                return 0;
             
             for (int i = 0; i<res.Length; i++) {
                 if (Char.IsNumber(res[i]) || res[i] == '.')
@@ -256,13 +344,13 @@ namespace ProyectoVuelos {
         }
 
         private void cmbDestino_SelectedIndexChanged(object sender,EventArgs e) {
-            if(cmbOrigen.SelectedItem != null)
+            if (cmbDestino.SelectedItem != null && cmbOrigen.SelectedItem != null)
                 apiMapas();
 
         }
 
         private void cmbOrigen_SelectedIndexChanged(object sender,EventArgs e) {
-            if (cmbDestino.SelectedItem != null)
+            if (cmbDestino.SelectedItem != null && cmbOrigen.SelectedItem != null)
                 apiMapas();
         }
 
@@ -279,16 +367,20 @@ namespace ProyectoVuelos {
             map.Path = new Google.Maps.Path(origen,destino);
             var imgTagSrc = map.ToUri();
 
-
-            WebClient wc = new WebClient();
-            byte[] bytes = wc.DownloadData(imgTagSrc);
-            MemoryStream ms = new MemoryStream(bytes);
-            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-
-            pictureBox1.Image = img;
+            try {
+                WebClient wc = new WebClient();
+                byte[] bytes = wc.DownloadData(imgTagSrc);
+                MemoryStream ms = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                pictureBox1.Image = img;
+            } catch {
+                return;
+            }
         }
 
         private void btnAgregar_Click(object sender,EventArgs e) {
+            Size = new System.Drawing.Size(1108,442);
+            Location = new System.Drawing.Point(this.ClientSize.Width /10,this.ClientSize.Height/3);
             panel1.Enabled = true;
             btnAgregar.Enabled = false;
         }

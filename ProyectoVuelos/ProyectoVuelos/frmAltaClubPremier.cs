@@ -3,6 +3,7 @@ using System.Collections;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using LibreriaBD;
+using System.Drawing;
 
 namespace ProyectoVuelos {
 	public partial class frmAltaClubPremier : Form {
@@ -16,11 +17,18 @@ namespace ProyectoVuelos {
 
         }
 
-		private void btnGuardar_Click(object sender,EventArgs e) {
-			string nombre, domicilio;
-			double millas = 0.0;
-			int edad = 0;
+        public frmAltaClubPremier(string nombre) {
+            InitializeComponent();
+            frmMenu f = new frmMenu();
+            this.conn = f.conn;
+            txtNombre.Text = nombre;
+            txtNombre.Enabled = false;
+        }
 
+        private void btnGuardar_Click(object sender,EventArgs e) {
+            string nombre, domicilio;
+			double millas = 0.0;
+        
 			nombre = txtNombre.Text;
 
 			if(nombre == "" || txtDomicilio.Text == "") { 
@@ -32,57 +40,86 @@ namespace ProyectoVuelos {
 				MessageBox.Show("ESE CLIENTE YA ESTÁ REGISTRADO.","ATENCIÓN",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 			else {
 				domicilio = txtDomicilio.Text;
-				edad = Convert.ToInt16(txtEdad.Text);
-			
-				if (edad < 1 ) {
-					MessageBox.Show("INGRESE UNA EDAD VÁLIDA.","ATENCIÓN",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+                string strComando = "";
+                int claveCliente = buscarCliente(nombre);
+                SqlCommand cmd;
 
-				string strComando = 
-					"INSERT INTO cliente(nombre, edad)";
-                strComando += " VALUES ( @nombre, @edad);";
+                if (claveCliente == -1) {
+                    strComando =
+                        "INSERT INTO cliente(nombre)";
+                    strComando += " VALUES ( @nombre);";
 
-				SqlCommand cmd = new SqlCommand(strComando,conn);
-				cmd.Parameters.AddWithValue("@nombre",nombre);
-				cmd.Parameters.AddWithValue("@edad",edad);
+                     cmd = new SqlCommand(strComando,conn);
+                    cmd.Parameters.AddWithValue("@nombre",nombre);
 
-				try {
-					cmd.ExecuteNonQuery();
-				} catch (Exception ex) {
-					MessageBox.Show(ex.Message);
-					return;
-				}
 
-                generarClavePremier();
-				strComando = 
-					"INSERT INTO club_premier(claveClubPremier, cveCliente, domicilio, millasAcumuladas)";
-                strComando += " VALUES (@cP, @cC, @d, @m);";
+                    try {
+                        cmd.ExecuteNonQuery();
+                    } catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
 
-				int clavePremier = contarRegistros("club_premier") + 1;
-                int claveCliente = contarRegistros("cliente");
-				cmd = new SqlCommand(strComando,conn);
-				cmd.Parameters.AddWithValue("@cP",clavePremier);
-				cmd.Parameters.AddWithValue("@cC",claveCliente);
-				cmd.Parameters.AddWithValue("@d",domicilio);
-				cmd.Parameters.AddWithValue("@m",millas);
+                    claveCliente = ultimaClave("cveCliente","cliente"); 
+                } else
+                    eliminarGenerico(claveCliente);
 
-				try {
-					cmd.ExecuteNonQuery();
-				} catch (Exception ex) {
-					MessageBox.Show(ex.Message);
-					return;
-				}
+                strComando =
+                        "INSERT INTO club_premier(claveClubPremier, cveCliente, domicilio, millasAcumuladas, fecha_nacimiento)";
+                    strComando += " VALUES (@cP, @cC, @d, @m, @f);";
 
+                    String clavePremier = txtClave.Text;
+                   
+                    DateTime fecha = dateTimePicker1.Value;
+
+                    cmd = new SqlCommand(strComando,conn);
+                    cmd.Parameters.AddWithValue("@cP",clavePremier);
+                    cmd.Parameters.AddWithValue("@cC",claveCliente);
+                    cmd.Parameters.AddWithValue("@d",domicilio);
+                    cmd.Parameters.AddWithValue("@m",millas);
+                    cmd.Parameters.AddWithValue("@f",fecha);
+
+                    try {
+                        cmd.ExecuteNonQuery();
+                    } catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
+                
 
 				MessageBox.Show("CLIENTE REGISTRADO.","ALTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
 				Limpiar();
 			}
 		}
 
-        private string generarClavePremier () {
-            return "";
+        private void eliminarGenerico (int cve) {
+            string strComando = "DELETE FROM clienteGenérico ";
+            strComando += "WHERE cveCliente = @clave" ;
+
+            SqlCommand cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@clave", cve);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return;
+            }
         }
+
+        public int buscarCliente(string nombre) {
+            int clave = -1;
+            string strComando = "SELECT cveCliente FROM cliente WHERE nombre = '" + nombre + "';";
+            SqlDataReader lector = UsoDB.Consulta(strComando,conn);
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    clave = Convert.ToInt32(lector.GetValue(0));
+
+            lector.Close();
+            return clave;
+        }
+
 
 		public bool ValidarNombre(string n) {
 
@@ -99,33 +136,24 @@ namespace ProyectoVuelos {
 
 		}
 
-		private void frmAltaClubPremier_Load(object sender,EventArgs e) {
-			int c = contarRegistros("club_premier"); // se modificará con Identity
-			txtClave.Text = Convert.ToString(c + 1);
-		}
-
-		private int contarRegistros (string tabla) {
-			int r = 0;
-
-			string strComando = "SELECT COUNT(*) FROM " + tabla + ";";
-
-			SqlDataReader lector = UsoDB.Consulta(strComando,conn);
-
-			if (lector.HasRows)
-				while (lector.Read())
-					r = Convert.ToInt16(lector.GetValue(0));
+        private int ultimaClave (string campo, string tabla) {
+            int r = 0;
+            string str = "SELECT MAX("+campo+") FROM "+tabla+";";
+            SqlDataReader lector = UsoDB.Consulta(str,conn);
+            if (lector.HasRows)
+                while (lector.Read())
+                    r = Convert.ToInt16(lector.GetValue(0));
 
             lector.Close();
-			return r;
-
-		}
+            return r;
+        }
 
 		private void Limpiar() {
 			txtDomicilio.Text = "";
 			txtNombre.Text = "";
-			int c = contarRegistros("club_premier"); // se modificará con Identity
-			txtClave.Text = Convert.ToString(c + 1);
-			txtEdad.Text = "";
+            txtClave.Text = "";
+            dateTimePicker1.Value = dateTimePicker1.MinDate;
+            txtNombre.Enabled = true;
 		}
 
 		private void txtNombre_KeyPress(object sender,KeyPressEventArgs e) {
@@ -135,15 +163,45 @@ namespace ProyectoVuelos {
 				errorPNombre.SetError(txtNombre,"");
 		}
 
-		private void txtEdad_KeyPress(object sender,KeyPressEventArgs e) {
-			try {
-				if (Char.IsNumber(e.KeyChar) || Char.IsControl(e.KeyChar)) {
-					e.Handled = false;
-				} else {
-					e.Handled = true;
-				}
-			} catch (FormatException) {
-			}
-		}
-	}
+
+        private void txtNombre_Leave(object sender,EventArgs e) {
+            if(txtDomicilio.Text != null && txtNombre.Text!= null) {
+                string nombre = txtNombre.Text;
+                string domicilio = txtDomicilio.Text;
+                string clave = "";
+                string c = "";
+
+                if (buscarCliente() == -1)
+                    c = (ultimaClave("cveCliente","cliente") + 1).ToString();
+                else
+                    c = buscarCliente().ToString();
+
+
+                if (nombre.Length >3 && domicilio.Length>2)
+                   clave = nombre.Substring(0,3) + c + domicilio.Substring(0,2);
+                else 
+                    clave = nombre.Substring(0,1) + "XX" + c + domicilio.Substring(0,1) + "X";
+
+                txtClave.Text = clave;
+            }
+        }
+
+        private int buscarCliente() {
+            int clave = -1;
+            SqlDataReader lector = null;
+            string strComando = "SELECT cveCliente FROM cliente WHERE nombre='" + txtNombre.Text + "';";
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    clave = Convert.ToInt32(lector.GetValue(0));
+
+
+            lector.Close();
+            return clave;
+
+
+        }
+    }
 }

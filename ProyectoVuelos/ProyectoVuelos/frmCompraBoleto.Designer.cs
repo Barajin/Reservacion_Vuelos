@@ -36,6 +36,10 @@
             this.lblCvePremier = new System.Windows.Forms.Label();
             this.lblCveVuelo = new System.Windows.Forms.Label();
             this.grpVuelo = new System.Windows.Forms.GroupBox();
+            this.lblHora1 = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblDestino = new System.Windows.Forms.Label();
             this.lblOrigen = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -47,28 +51,12 @@
             this.errorPCvePremier = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorPEdad = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorPNombre = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkBoletoExtra = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.panelBoletoExtra = new System.Windows.Forms.Panel();
             this.lblCostoTotal = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.grpClubPremier.SuspendLayout();
             this.grpVuelo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPCvePremier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPEdad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panelBoletoExtra.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbCveVuelo
@@ -93,12 +81,14 @@
             // 
             // txtNombrePasajero
             // 
+            this.txtNombrePasajero.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNombrePasajero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombrePasajero.Location = new System.Drawing.Point(510, 55);
+            this.txtNombrePasajero.Location = new System.Drawing.Point(298, 197);
             this.txtNombrePasajero.Name = "txtNombrePasajero";
             this.txtNombrePasajero.Size = new System.Drawing.Size(152, 20);
             this.txtNombrePasajero.TabIndex = 2;
             this.txtNombrePasajero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombrePasajero_KeyPress);
+            this.txtNombrePasajero.Leave += new System.EventHandler(this.txtNombrePasajero_Leave);
             // 
             // txtClaveBoleto
             // 
@@ -139,13 +129,17 @@
             // 
             // txtClavePremier
             // 
+            this.txtClavePremier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtClavePremier.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtClavePremier.Enabled = false;
             this.txtClavePremier.Location = new System.Drawing.Point(15, 60);
+            this.txtClavePremier.MaxLength = 8;
             this.txtClavePremier.Name = "txtClavePremier";
             this.txtClavePremier.Size = new System.Drawing.Size(100, 20);
             this.txtClavePremier.TabIndex = 3;
             this.txtClavePremier.Visible = false;
-            this.txtClavePremier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClavePremier_KeyPress);
+            this.txtClavePremier.AcceptsTabChanged += new System.EventHandler(this.txtClavePremier_AcceptsTabChanged);
+            this.txtClavePremier.Enter += new System.EventHandler(this.txtClavePremier_AcceptsTabChanged);
             this.txtClavePremier.Leave += new System.EventHandler(this.txtClavePremier_Leave);
             // 
             // lblCvePremier
@@ -172,6 +166,8 @@
             // 
             this.grpVuelo.BackColor = System.Drawing.Color.Transparent;
             this.grpVuelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.grpVuelo.Controls.Add(this.lblHora1);
+            this.grpVuelo.Controls.Add(this.lblHora);
             this.grpVuelo.Controls.Add(this.label1);
             this.grpVuelo.Controls.Add(this.dateTimePicker1);
             this.grpVuelo.Controls.Add(this.lblDestino);
@@ -183,10 +179,47 @@
             this.grpVuelo.ForeColor = System.Drawing.Color.Black;
             this.grpVuelo.Location = new System.Drawing.Point(29, 72);
             this.grpVuelo.Name = "grpVuelo";
-            this.grpVuelo.Size = new System.Drawing.Size(232, 275);
+            this.grpVuelo.Size = new System.Drawing.Size(232, 292);
             this.grpVuelo.TabIndex = 10;
             this.grpVuelo.TabStop = false;
             this.grpVuelo.Text = "VUELO";
+            // 
+            // lblHora1
+            // 
+            this.lblHora1.AutoSize = true;
+            this.lblHora1.Location = new System.Drawing.Point(8, 262);
+            this.lblHora1.Name = "lblHora1";
+            this.lblHora1.Size = new System.Drawing.Size(33, 13);
+            this.lblHora1.TabIndex = 28;
+            this.lblHora1.Text = "Hora:";
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(57, 258);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(49, 18);
+            this.lblHora.TabIndex = 27;
+            this.lblHora.Text = "00:00";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 209);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Fecha:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.No;
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 226);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 19;
             // 
             // lblDestino
             // 
@@ -210,7 +243,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Location = new System.Drawing.Point(510, 36);
+            this.lblNombre.Location = new System.Drawing.Point(298, 178);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 11;
@@ -220,7 +253,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(510, 83);
+            this.label5.Location = new System.Drawing.Point(298, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 13;
@@ -230,7 +263,7 @@
             // 
             this.lblCosto.AutoSize = true;
             this.lblCosto.BackColor = System.Drawing.Color.Transparent;
-            this.lblCosto.Location = new System.Drawing.Point(192, 398);
+            this.lblCosto.Location = new System.Drawing.Point(101, 399);
             this.lblCosto.Name = "lblCosto";
             this.lblCosto.Size = new System.Drawing.Size(34, 13);
             this.lblCosto.TabIndex = 15;
@@ -240,7 +273,7 @@
             // 
             this.btnComprar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnComprar.ForeColor = System.Drawing.Color.White;
-            this.btnComprar.Location = new System.Drawing.Point(439, 382);
+            this.btnComprar.Location = new System.Drawing.Point(301, 317);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(131, 46);
             this.btnComprar.TabIndex = 16;
@@ -260,7 +293,7 @@
             // 
             // txtEdad
             // 
-            this.txtEdad.Location = new System.Drawing.Point(510, 109);
+            this.txtEdad.Location = new System.Drawing.Point(298, 251);
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(152, 20);
             this.txtEdad.TabIndex = 18;
@@ -278,165 +311,23 @@
             // 
             this.errorPNombre.ContainerControl = this;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.No;
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 226);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 210);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "label1";
-            // 
-            // chkBoletoExtra
-            // 
-            this.chkBoletoExtra.AutoSize = true;
-            this.chkBoletoExtra.Location = new System.Drawing.Point(301, 144);
-            this.chkBoletoExtra.Name = "chkBoletoExtra";
-            this.chkBoletoExtra.Size = new System.Drawing.Size(83, 17);
-            this.chkBoletoExtra.TabIndex = 19;
-            this.chkBoletoExtra.Text = "Boleto Extra";
-            this.chkBoletoExtra.UseVisualStyleBackColor = true;
-            this.chkBoletoExtra.CheckedChanged += new System.EventHandler(this.chkBoletoExtra_CheckedChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(243, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(243, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Edad";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(243, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Nombre";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Location = new System.Drawing.Point(34, 68);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(152, 86);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Club Premier";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(15, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(43, 44);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Clave:";
-            this.label4.Visible = false;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(25, 22);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(77, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "¡Soy parte!";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Location = new System.Drawing.Point(243, 80);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(152, 20);
-            this.textBox3.TabIndex = 20;
-            // 
-            // panelBoletoExtra
-            // 
-            this.panelBoletoExtra.Controls.Add(this.label7);
-            this.panelBoletoExtra.Controls.Add(this.textBox4);
-            this.panelBoletoExtra.Controls.Add(this.groupBox1);
-            this.panelBoletoExtra.Controls.Add(this.textBox1);
-            this.panelBoletoExtra.Controls.Add(this.textBox3);
-            this.panelBoletoExtra.Controls.Add(this.label2);
-            this.panelBoletoExtra.Controls.Add(this.label3);
-            this.panelBoletoExtra.Location = new System.Drawing.Point(301, 176);
-            this.panelBoletoExtra.Name = "panelBoletoExtra";
-            this.panelBoletoExtra.Size = new System.Drawing.Size(442, 171);
-            this.panelBoletoExtra.TabIndex = 25;
-            this.panelBoletoExtra.Visible = false;
-            // 
             // lblCostoTotal
             // 
             this.lblCostoTotal.AutoSize = true;
             this.lblCostoTotal.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.Location = new System.Drawing.Point(252, 383);
+            this.lblCostoTotal.Location = new System.Drawing.Point(161, 384);
             this.lblCostoTotal.Name = "lblCostoTotal";
             this.lblCostoTotal.Size = new System.Drawing.Size(91, 32);
             this.lblCostoTotal.TabIndex = 26;
             this.lblCostoTotal.Text = "$ 0.0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(36, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 13);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Clave boleto";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(36, 32);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(182, 20);
-            this.textBox4.TabIndex = 25;
             // 
             // frmCompraBoleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(768, 453);
+            this.ClientSize = new System.Drawing.Size(505, 453);
             this.Controls.Add(this.lblCostoTotal);
-            this.Controls.Add(this.panelBoletoExtra);
-            this.Controls.Add(this.chkBoletoExtra);
             this.Controls.Add(this.txtEdad);
             this.Controls.Add(this.lblCveBoleto);
             this.Controls.Add(this.btnComprar);
@@ -460,10 +351,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorPCvePremier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPEdad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panelBoletoExtra.ResumeLayout(false);
-            this.panelBoletoExtra.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,17 +383,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lblCostoTotal;
-        private System.Windows.Forms.Panel panelBoletoExtra;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chkBoletoExtra;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label lblHora1;
     }
 }
