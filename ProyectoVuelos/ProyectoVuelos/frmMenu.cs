@@ -154,13 +154,6 @@ namespace ProyectoVuelos {
 			pictureBoxMenu.Image = Image.FromFile("images/" + pictures[i]);
 		}
 
-		private void salirToolStripMenuItem_Click_1(object sender,EventArgs e) {
-			DialogResult d = MessageBox.Show("¿Está seguro de salir?","SALIR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-
-			if (DialogResult.Yes == d)
-				Application.Exit();
-		}
-
 		private void xToolStripMenuItem_Click(object sender,EventArgs e) {
 			frmInfo fI = new frmInfo();
 			fI.ShowDialog();
@@ -199,6 +192,18 @@ namespace ProyectoVuelos {
         private void chartsToolStripMenuItem_Click(object sender,EventArgs e) {
             frmCharts f = new frmCharts();
             f.ShowDialog();
+        }
+
+        private void opToolStripMenuItem_Click(object sender,EventArgs e) {
+            frmCalendar f = new frmCalendar();
+            f.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender,EventArgs e) {
+            DialogResult d = MessageBox.Show("¿Está seguro de salir?","SALIR",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if (DialogResult.Yes == d)
+                Application.Exit();
         }
 
         /*private int checarCapacidad () {

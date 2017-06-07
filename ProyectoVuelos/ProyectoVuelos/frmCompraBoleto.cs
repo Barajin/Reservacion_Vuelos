@@ -265,18 +265,12 @@ namespace ProyectoVuelos {
 			chkClubPremier.Checked = false;
 			cmbCveVuelo.SelectedItem = null;
 
-			int cont = 0;
-
-	
-
+            /*
 			if(cont == 0) {
 				MessageBox.Show("YA NO HAY VUELOS CON CAPACIDAD.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 				this.Close();
 			}
-
-			
-
-
+            */
 
 			CrearClave();
 
@@ -422,9 +416,6 @@ namespace ProyectoVuelos {
                     lblCostoTotal.Text = "$" + lector.GetValue(3).ToString();
                 }
                    
-
-
-
 
             lector.Close();
 
