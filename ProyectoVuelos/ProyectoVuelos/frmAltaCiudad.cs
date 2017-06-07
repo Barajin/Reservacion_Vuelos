@@ -24,8 +24,8 @@ namespace ProyectoVuelos {
 		private void btnGuardar_Click(object sender,EventArgs e) {
 
 			string clave = txtClave.Text;
-			string ciudad = txtCiudad.Text;
-			string estado = txtEstado.Text;
+			string ciudad = txtCiudad.Text.Trim();
+			string estado = txtEstado.Text.Trim();
 
 			if (clave == "" || ciudad == "" || estado == "") {
 				MessageBox.Show("DEBE LLENAR TODOS LOS CAMPOS.","ATENCIÓN",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -132,7 +132,7 @@ namespace ProyectoVuelos {
             }
            
             var map = new StaticMapRequest();
-            map.Center = new Location(txtCiudad.Text + ", " + txtEstado.Text);
+            map.Center = new Location(txtCiudad.Text.Trim() + ", " + txtEstado.Text.Trim());
             map.Size = new System.Drawing.Size(600,400);
             map.Zoom = 11;
             map.Sensor = false;
@@ -150,6 +150,59 @@ namespace ProyectoVuelos {
                 return;
             }
             
+        }
+
+        private void bunifuTileButton1_Click(object sender,EventArgs e) {
+            this.Close();
+        }
+
+        private void bunifuMaterialTextbox1_KeyPress(object sender,KeyPressEventArgs e) {
+
+            try {
+                if (txtClave.Text.Length >= 3 && !Char.IsControl(e.KeyChar))
+                    e.Handled = true;
+                else {
+                    if (Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)) {
+                        e.KeyChar = Char.ToUpper(e.KeyChar);
+                        e.Handled = false;
+                    } else {
+                        e.Handled = true;
+                    }
+                }
+            } catch (FormatException) {
+            }
+        }
+
+        private void txtCiudad_KeyPress_1(object sender,KeyPressEventArgs e) {
+            try {
+                if (txtCiudad.Text.Length >= 20 && !Char.IsControl(e.KeyChar))
+                    e.Handled = true;
+                else {
+                    if (Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar)) {
+                        e.KeyChar = Char.ToUpper(e.KeyChar);
+                        e.Handled = false;
+                    } else {
+                        e.Handled = true;
+                    }
+                }
+            } catch (FormatException) {
+            }
+        }
+
+        private void txtEstado_KeyPress_1(object sender,KeyPressEventArgs e) {
+            try {
+                if (txtEstado.Text.Length >= 20 && !Char.IsControl(e.KeyChar))
+                    e.Handled = true;
+                else {
+                    if (Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar)) {
+                        e.KeyChar = Char.ToUpper(e.KeyChar);
+                        e.Handled = false;
+                    } else {
+                        e.Handled = true;
+                    }
+                }
+            } catch (FormatException) {
+            }
         }
     }
 }

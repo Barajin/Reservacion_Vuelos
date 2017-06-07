@@ -26,8 +26,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaClubPremier));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblBeneficios = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -40,14 +38,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.errorPNombre = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblTitulo);
@@ -60,25 +56,8 @@
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Location = new System.Drawing.Point(32, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 353);
+            this.panel1.Size = new System.Drawing.Size(454, 353);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblBeneficios);
-            this.panel2.Location = new System.Drawing.Point(421, 33);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(307, 288);
-            this.panel2.TabIndex = 12;
-            // 
-            // lblBeneficios
-            // 
-            this.lblBeneficios.AutoSize = true;
-            this.lblBeneficios.Location = new System.Drawing.Point(122, 30);
-            this.lblBeneficios.Name = "lblBeneficios";
-            this.lblBeneficios.Size = new System.Drawing.Size(73, 13);
-            this.lblBeneficios.TabIndex = 0;
-            this.lblBeneficios.Text = "BENEFICIOS:";
             // 
             // dateTimePicker1
             // 
@@ -187,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ProyectoVuelos.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(817, 409);
+            this.ClientSize = new System.Drawing.Size(499, 409);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAltaClubPremier";
@@ -195,8 +174,6 @@
             this.Text = "CLUB PREMIER";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPNombre)).EndInit();
             this.ResumeLayout(false);
 
@@ -216,7 +193,5 @@
 		private System.Windows.Forms.ErrorProvider errorPNombre;
 		private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblBeneficios;
     }
 }

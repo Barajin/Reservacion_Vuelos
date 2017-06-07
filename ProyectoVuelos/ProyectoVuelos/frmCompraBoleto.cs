@@ -21,17 +21,17 @@ namespace ProyectoVuelos {
             this.conn = f.conn;
         }
 
-		private void btnComprar_Click(object sender,EventArgs e) {
+        private void btnComprar_Click(object sender,EventArgs e) {
             int claveVuelo;
             string claveClub;
-			string nomPasajero = txtNombrePasajero.Text;
+            string nomPasajero = txtNombrePasajero.Text;
 
-			if(cmbCveVuelo.SelectedItem == null) {
-				MessageBox.Show("DEBE SELECCIONAR UN VUELO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-				return;
-			}
+            if (cmbCveVuelo.SelectedItem == null) {
+                MessageBox.Show("DEBE SELECCIONAR UN VUELO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
 
-			claveVuelo = Convert.ToInt16(cmbCveVuelo.SelectedItem);
+            claveVuelo = Convert.ToInt16(cmbCveVuelo.SelectedItem);
 
             if (chkClubPremier.Checked) {
                 claveClub = txtClavePremier.Text;
@@ -43,23 +43,23 @@ namespace ProyectoVuelos {
 
             }
 
-                if (nomPasajero == "") {
-                    MessageBox.Show("DEBE INGRESAR EL NOMBRE DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    return;
-                }
+            if (nomPasajero == "") {
+                MessageBox.Show("DEBE INGRESAR EL NOMBRE DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
 
-                if (txtEdad.Text == "") {
-                    MessageBox.Show("DEBE INGRESAR LA EDAD DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    return;
-                }
+            if (txtEdad.Text == "") {
+                MessageBox.Show("DEBE INGRESAR LA EDAD DEL PASAJERO.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
 
-                int edad = Convert.ToInt16(txtEdad.Text);
-				
+            int edad = Convert.ToInt16(txtEdad.Text);
 
-				if(edad<1) {
-					MessageBox.Show("INGRESE UNA EDAD VÁLIDA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-					return;
-				}
+
+            if (edad < 1) {
+                MessageBox.Show("INGRESE UNA EDAD VÁLIDA.","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
 
             string strComando = "INSERT INTO boleto(claveBoleto, cveVuelo, cveCliente, fecha_compra)";
             strComando += " VALUES (@boleto, @vuelo, @cliente, @fecha)";
@@ -69,10 +69,10 @@ namespace ProyectoVuelos {
             cmd.Parameters.AddWithValue("@vuelo",claveVuelo);
             int claveCliente = buscarClub(nomPasajero);
             if (claveCliente == -1) {
-                guardarClienteGenerico(nomPasajero, edad);
+                guardarClienteGenerico(nomPasajero,edad);
             }
-            cmd.Parameters.AddWithValue("@cliente", claveCliente);
-            cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
+            cmd.Parameters.AddWithValue("@cliente",claveCliente);
+            cmd.Parameters.AddWithValue("@fecha",DateTime.Now);
 
             try {
                 cmd.ExecuteNonQuery();
@@ -82,7 +82,17 @@ namespace ProyectoVuelos {
                 return;
             }
 
+            if (chkClubPremier.Checked) {
+                double resultado = revisarDescuento(nomPasajero);
 
+                if (resultado > 5000) {
+                    DialogResult result = MessageBox.Show("EL CLIENTE " + nomPasajero + " TIENE MÁS DE 5000 MILLAS. ¿DESEA APLICAR DESCUENTO?","AVISO",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                    if (result.Equals(DialogResult.Yes)) {
+                        descontar(claveVuelo,Convert.ToDouble(lblCostoTotal), txtClavePremier.Text);
+                    }
+                }
+            }
+        
             MessageBox.Show("BOLETO VENDIDO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
             if (!chkClubPremier.Checked)
@@ -93,6 +103,45 @@ namespace ProyectoVuelos {
 
 			Limpiar();
 		}
+
+        private void descontar (int clave, Double costo, string claveClub) {
+
+            MessageBox.Show("DESCUENTO APLICADO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            Double costoTotal = 0.90 * costo;
+
+            // insertar en tabla de descuentos
+            string strComando = "INSERT INTO descuento(claveBoleto, total)";
+            strComando += " VALUES (@cve, @total)";
+
+            SqlCommand cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@cve",clave);
+            cmd.Parameters.AddWithValue("@total",costoTotal);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            // actualizar millas
+            strComando = "UPDATE club_premier SET millasAcumuladas = millasAcumuladas - 5000";
+            strComando += " WHERE cveCliente = @cliente";
+
+            cmd = new SqlCommand(strComando,conn);
+            cmd.Parameters.AddWithValue("@cliente", claveClub);
+
+            try {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+        }
 
         private void acumularMillas (int clave, int vuelo) {
             // sacar millas del vuelo
@@ -124,6 +173,31 @@ namespace ProyectoVuelos {
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        private Double revisarDescuento (string nombre) {
+            Double resultado = 0;
+            SqlDataReader lector;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "MillasCliente";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@nombre",SqlDbType.VarChar,25).Value = nombre;
+            cmd.Connection = conn;
+
+            try {
+                lector = cmd.ExecuteReader();
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        
+
+            if (lector.HasRows)
+                while (lector.Read())
+                    resultado = Convert.ToDouble(lector.GetValue(0));
+
+            lector.Close();
+            return resultado;
         }
 
         private bool existe (string valor, string campo, string tabla) {
