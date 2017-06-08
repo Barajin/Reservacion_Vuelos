@@ -1,0 +1,53 @@
+  private void cambiarMillas() {
+            String str = "SELECT o.nombreCiudad, d.nombreCiudad FROM vuelo v INNER JOIN ciudad o ON o.cveCiudad = v.origen INNER JOIN ciudad d ON d.cveCiudad = v.destino;";
+            SqlDataReader lector = UsoDB.Consulta(str,conn);
+            ArrayList arrayOrigen = new ArrayList();
+            ArrayList arrayDestino = new ArrayList();
+            if (lector.HasRows)
+                while (lector.Read()) {
+                    arrayOrigen.Add(lector.GetValue(0).ToString());
+                    arrayDestino.Add(lector.GetValue(1).ToString());
+
+                }
+
+
+            lector.Close();
+
+            for (int i = 0; i < 107; i++) {
+                string origen = arrayOrigen[i].ToString();
+                string destino = arrayDestino[i].ToString();
+                string strComando = "SELECT DISTINCT v.cveVuelo FROM vuelo v INNER JOIN ciudad d ON v.destino = d.cveCiudad ";
+                strComando += "INNER JOIN ciudad o ON v.origen = o.cveCiudad ";
+                strComando += "WHERE o.nombreCiudad ='"+origen+"' AND d.nombreCiudad = '"+destino+"';";
+                lector = UsoDB.Consulta(strComando,conn);
+
+                int clave = 0;
+                if (lector.HasRows)
+                    while (lector.Read())
+                        clave = Convert.ToInt32(lector.GetValue(0));
+
+
+                lector.Close();
+                Double millas = convertirMillas(getDistance(origen,destino));
+
+                if (millas == 0)
+                    millas = 1;
+
+                strComando = "UPDATE vuelo SET millas = @millas WHERE cveVuelo = @clave";
+                SqlCommand cmd = new SqlCommand(strComando,conn);
+                cmd.Parameters.AddWithValue("@millas",millas);
+                cmd.Parameters.AddWithValue("@clave",clave);
+
+                try {
+                    cmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
+ 
+
+            }
+
+            MessageBox.Show("listo",arrayDestino[43].ToString(),MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+        }
