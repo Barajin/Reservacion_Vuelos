@@ -114,7 +114,6 @@ namespace ProyectoVuelos {
                     txtOrigen.Text = lector.GetValue(0).ToString();
                     txtDestino.Text = lector.GetValue(1).ToString();
                     txtHora.Text = Convert.ToDateTime(lector.GetValue(2)).Hour.ToString() + ":" + Convert.ToDateTime(lector.GetValue(2)).Minute.ToString();
-                    txtBoletosVendidos.Text = "";
 
                 } 
             else
@@ -122,6 +121,34 @@ namespace ProyectoVuelos {
 
 
             lector.Close();
+            txtBoletosVendidos.Text = contarBoletos(claveVuelo).ToString();
+
+
+
+        }
+
+        private int contarBoletos (int claveVuelo) {
+            int r = 0;
+            SqlDataReader lector = null;
+            string strComando = "SELECT COUNT(cveVuelo) FROM boleto WHERE cveVuelo = " + claveVuelo;
+
+            lector = UsoDB.Consulta(strComando,conn);
+
+
+            if (lector.HasRows)
+                while (lector.Read()) 
+                    r  = Convert.ToInt16(lector.GetValue(0));
+                   
+
+    
+
+
+            lector.Close();
+            return r;
+        }
+
+        private void btnRegresar_Click(object sender,EventArgs e) {
+            this.Close();
         }
     }
 }
