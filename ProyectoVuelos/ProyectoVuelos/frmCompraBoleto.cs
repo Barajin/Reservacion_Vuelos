@@ -88,7 +88,7 @@ namespace ProyectoVuelos {
                 if (resultado > 5000) {
                     DialogResult result = MessageBox.Show("EL CLIENTE " + nomPasajero + " TIENE MÁS DE 5000 MILLAS. ¿DESEA APLICAR DESCUENTO?","AVISO",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                     if (result.Equals(DialogResult.Yes)) {
-                        descontar(claveVuelo,Convert.ToDouble(lblCostoTotal), txtClavePremier.Text);
+                        descontar(claveVuelo,Convert.ToDouble(lblCosto.Text), txtClavePremier.Text);
                     }
                 }
             }
@@ -106,9 +106,10 @@ namespace ProyectoVuelos {
 
         private void descontar (int clave, Double costo, string claveClub) {
 
-            MessageBox.Show("DESCUENTO APLICADO.","VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
-
             Double costoTotal = 0.90 * costo;
+
+            MessageBox.Show("DESCUENTO APLICADO. COSTO FINAL: $ " + costoTotal.ToString(),"VENTA",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
 
             // insertar en tabla de descuentos
             string strComando = "INSERT INTO descuento(claveBoleto, total)";
@@ -538,9 +539,8 @@ namespace ProyectoVuelos {
                 
         }
 
-        
-      
-
-    
+        private void btnRegresar_Click(object sender,EventArgs e) {
+            this.Close();
+        }
     }
 }

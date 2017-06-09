@@ -242,6 +242,7 @@ namespace ProyectoVuelos {
         }
 
         private void Limpiar() {
+            dateTimePicker0.Size = new System.Drawing.Size(195,27);
             txtCosto.Text = "";
             txtCveVuelo.Text = "";
             txtMillas.Text = "";
@@ -249,7 +250,7 @@ namespace ProyectoVuelos {
             cmbOrigen.SelectedItem = null;
             numericNumPasajeros.Value = 1;
             txtCveVuelo.Text = "";
-            Size = new System.Drawing.Size(805,442);
+            Size = new System.Drawing.Size(803,501);
             panel1.Enabled = false;
             btnAgregar.Enabled = true;
             chkFecha1.Checked = false;
@@ -267,7 +268,7 @@ namespace ProyectoVuelos {
       
 
         private void frmAltaVuelo_Load(object sender,EventArgs e) {
-     
+            dateTimePicker0.Size = new System.Drawing.Size(195,27);
             dateTimePicker0.MinDate = DateTime.Now;
             dateTimePicker1.MinDate = DateTime.Now.AddDays(1);
             dateTimePicker2.MinDate = DateTime.Now.AddDays(2);
@@ -311,19 +312,30 @@ namespace ProyectoVuelos {
         }
 
         private void txtCosto_KeyPress(object sender,KeyPressEventArgs e) {
-
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != ','))
-                errorPCosto.SetError(txtCosto,"Sólo se permiten números.");
-            else
-                errorPCosto.SetError(txtCosto,"");
+            try {
+                if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != ',')) {
+                    errorPCosto.SetError(txtCosto,"Sólo se permiten números.");
+                    e.Handled = true;
+                } else {
+                    e.Handled = false;
+                    errorPCosto.SetError(txtCosto,"");
+                }
+            } catch (FormatException) {
+			}
         }
 
         private void txtMillas_KeyPress(object sender,KeyPressEventArgs e) {
-
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != '.'))
+            try { 
+             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != ',')) {
                 errorPMillas.SetError(txtMillas,"Sólo se permiten números.");
-            else
+                 e.Handled = true;
+                } else {
+                e.Handled = false;
                 errorPMillas.SetError(txtMillas,"");
+                 }
+            } catch (FormatException) {
+            }
+
         }
 
     
@@ -381,9 +393,10 @@ namespace ProyectoVuelos {
         }
 
         private void btnAgregar_Click(object sender,EventArgs e) {
-            Size = new System.Drawing.Size(1108,442);
+            Size = new System.Drawing.Size(1108,501);
             Location = new System.Drawing.Point(this.ClientSize.Width /10,this.ClientSize.Height/3);
             panel1.Enabled = true;
+            dateTimePicker0.Size = new System.Drawing.Size(195,27);
             btnAgregar.Enabled = false;
         }
 
@@ -407,6 +420,10 @@ namespace ProyectoVuelos {
                 dateTimePicker4.Enabled = true;
             else
                 dateTimePicker4.Enabled = false;
+        }
+
+        private void btnRegresar_Click(object sender,EventArgs e) {
+            this.Close();
         }
     }
 }

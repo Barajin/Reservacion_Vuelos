@@ -165,7 +165,7 @@ namespace ProyectoVuelos {
 
 
         private void txtNombre_Leave(object sender,EventArgs e) {
-            if(txtDomicilio.Text != null && txtNombre.Text!= null) {
+            if(txtDomicilio.Text != null && txtNombre.Text!= null && txtNombre.Text != "" && txtDomicilio.Text != "") {
                 string nombre = txtNombre.Text;
                 string domicilio = txtDomicilio.Text;
                 string clave = "";
@@ -202,6 +202,10 @@ namespace ProyectoVuelos {
             return clave;
 
 
+        }
+
+        private void btnRegresar_Click(object sender,EventArgs e) {
+            this.Close();
         }
     }
 }

@@ -74,6 +74,8 @@
     <Reference Include="LibreriaBD">
       <HintPath>..\..\LibreriaBD.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\gmaps-api-net.0.14.51\lib\net\Newtonsoft.Json.dll</HintPath>
@@ -82,6 +84,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -94,6 +97,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAltaCiudad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,11 +159,23 @@
     <Compile Include="frmConsultaCiudad2.Designer.cs">
       <DependentUpon>frmConsultaCiudad2.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaClientes.Designer.cs">
+      <DependentUpon>frmConsultaClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaClubPremier.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConsultaClubPremier.Designer.cs">
       <DependentUpon>frmConsultaClubPremier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaGeneralClubPremier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaGeneralClubPremier.Designer.cs">
+      <DependentUpon>frmConsultaGeneralClubPremier.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaVuelo.cs">
       <SubType>Form</SubType>
@@ -184,8 +207,30 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteBoletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteBoletos.Designer.cs">
+      <DependentUpon>frmReporteBoletos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteClubPremier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteClubPremier.Designer.cs">
+      <DependentUpon>frmReporteClubPremier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reservación_vuelosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reservación_vuelosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="reservación_vuelosDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reservación_vuelosDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAltaCiudad.resx">
       <DependentUpon>frmAltaCiudad.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,8 +258,14 @@
     <EmbeddedResource Include="frmConsultaCiudad2.resx">
       <DependentUpon>frmConsultaCiudad2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaClientes.resx">
+      <DependentUpon>frmConsultaClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaClubPremier.resx">
       <DependentUpon>frmConsultaClubPremier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaGeneralClubPremier.resx">
+      <DependentUpon>frmConsultaGeneralClubPremier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaVuelo.resx">
       <DependentUpon>frmConsultaVuelo.cs</DependentUpon>
@@ -231,6 +282,12 @@
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteBoletos.resx">
+      <DependentUpon>frmReporteBoletos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteClubPremier.resx">
+      <DependentUpon>frmReporteClubPremier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -241,6 +298,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="ReporteBoletos.rdlc" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -251,6 +321,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="reservación_vuelosDataSet.xsc">
+      <DependentUpon>reservación_vuelosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="reservación_vuelosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>reservación_vuelosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="reservación_vuelosDataSet.xss">
+      <DependentUpon>reservación_vuelosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="reservación_vuelosDataSet1.xsc">
+      <DependentUpon>reservación_vuelosDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="reservación_vuelosDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>reservación_vuelosDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="reservación_vuelosDataSet1.xss">
+      <DependentUpon>reservación_vuelosDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Scripts\dhtmlxScheduler\sources\dhtmlxscheduler.js.map" />
     <None Include="Scripts\dhtmlxScheduler\sources\ext\dhtmlxscheduler_active_links.js.map" />
     <None Include="Scripts\dhtmlxScheduler\sources\ext\dhtmlxscheduler_agenda_view.js.map" />
